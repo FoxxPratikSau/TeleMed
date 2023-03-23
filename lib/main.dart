@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tele_med/Log_in_page/Intro_log_in.dart';
 import 'package:tele_med/Log_in_page/log_in_doctor.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: signup_doctor(),
+      home: sign_in_page(),
     );
   }
 }

@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:tele_med/Log_in_page/Intro_log_in.dart';
+
 
 import '../widgets/big_font.dart';
 import '../widgets/small_font.dart';
 import '../widgets/dimensions.dart';
 
-class signup_doctor extends StatefulWidget {
-  const signup_doctor({super.key});
+class sign_up_page extends StatefulWidget {
+  const sign_up_page({super.key});
 
   @override
-  State<signup_doctor> createState() => _signup_doctorState();
+  State<sign_up_page> createState() => _sign_up_pageState();
 }
 
-class _signup_doctorState extends State<signup_doctor> {
+class _sign_up_pageState extends State<sign_up_page> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
@@ -31,7 +33,7 @@ class _signup_doctorState extends State<signup_doctor> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: Color.fromARGB(255, 255, 255, 255),
         child: SingleChildScrollView(
           child: Form(
             key: _formkey,
@@ -42,6 +44,7 @@ class _signup_doctorState extends State<signup_doctor> {
               big_font(
                 text: "Create Account",
                 size: 35,
+                color: Colors.teal,
               ),
               SizedBox(
                 height: 5,
@@ -76,7 +79,7 @@ class _signup_doctorState extends State<signup_doctor> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                    width: 3, color: Colors.blue),
+                                    width: 3, color: Colors.teal),
                                 borderRadius: BorderRadius.circular(15),
                               )),
                           validator: (value) {
@@ -94,7 +97,7 @@ class _signup_doctorState extends State<signup_doctor> {
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Row(
                     children: [
@@ -118,7 +121,7 @@ class _signup_doctorState extends State<signup_doctor> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                    width: 3, color: Colors.blue),
+                                    width: 3, color: Colors.teal),
                                 borderRadius: BorderRadius.circular(15),
                               )),
                           validator: (value) {
@@ -136,7 +139,7 @@ class _signup_doctorState extends State<signup_doctor> {
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Row(
                     children: [
@@ -161,7 +164,7 @@ class _signup_doctorState extends State<signup_doctor> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                    width: 3, color: Colors.blue),
+                                    width: 3, color: Colors.teal),
                                 borderRadius: BorderRadius.circular(15),
                               )),
                           validator: (value) {
@@ -179,7 +182,7 @@ class _signup_doctorState extends State<signup_doctor> {
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Row(
                     children: [
@@ -203,7 +206,7 @@ class _signup_doctorState extends State<signup_doctor> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                    width: 3, color: Colors.blue),
+                                    width: 3, color: Colors.teal),
                                 borderRadius: BorderRadius.circular(15),
                               )),
                           validator: (value) {
@@ -221,7 +224,7 @@ class _signup_doctorState extends State<signup_doctor> {
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Row(
                     children: [
@@ -245,7 +248,7 @@ class _signup_doctorState extends State<signup_doctor> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                    width: 3, color: Colors.blue),
+                                    width: 3, color: Colors.teal),
                                 borderRadius: BorderRadius.circular(15),
                               )),
                           validator: (value) {
@@ -271,7 +274,7 @@ class _signup_doctorState extends State<signup_doctor> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(
                               Radius.circular(dimensions.size20)),
-                          color: Color.fromARGB(255, 2, 49, 220)),
+                          color: Colors.teal),
                       child: GestureDetector(
                         onTap: () {
                           // googleLogin();
@@ -293,15 +296,24 @@ class _signup_doctorState extends State<signup_doctor> {
                       small_font(text: "Already have an account?"),
                       GestureDetector(
                         //onTap: () => Get.toNamed(RouteHelper.getlogin()),
-                        child: small_font(
-                          text: " Login ",
-                          color: Colors.red,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(sign_in_page());
+                          },
+                          child: small_font(
+                            text: " Login ",
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: dimensions.size20,
+                  ),
+                  Center(child: big_font(text: "Sign Up with")),
+                  SizedBox(
+                    height: dimensions.size15,
                   ),
                   Container(
                       height: 40,
@@ -312,16 +324,13 @@ class _signup_doctorState extends State<signup_doctor> {
                         children: [
                           Image.asset("assets/images/google_logo.png"),
                           SizedBox(
-                            width: 15,
+                            width: 30,
                           ),
                           Image.asset("assets/images/facebook_logo.png"),
                           SizedBox(
-                            width: 15,
+                            width: 30,
                           ),
                           Image.asset("assets/images/linkedin_logo.png"),
-                          SizedBox(
-                            width: 15,
-                          ),
                         ],
                       ))
                 ]),
