@@ -38,6 +38,7 @@ dependencies:
 
   get: ^4.6.5
   loading_animation_widget: ^1.2.0+4
+  dots_indicator: ^2.1.0
   
 
 dev_dependencies:
