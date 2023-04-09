@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'images/profile2.png',
+            'images/profile_solid.png',
             scale: 2.7,
             color: Colors.black26,
           ),

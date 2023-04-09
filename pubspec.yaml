@@ -33,6 +33,9 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.5
+  intl: ^0.18.0
+  google_fonts: ^4.0.3
+  dots_indicator: ^2.1.0
   provider: ^6.0.5
   tflite_flutter: ^0.7.0
 

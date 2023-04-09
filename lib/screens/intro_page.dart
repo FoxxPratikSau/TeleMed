@@ -3,6 +3,7 @@ import 'package:tele_med/constants.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:tele_med/screens/signup_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -28,19 +29,22 @@ class IntroPage extends StatelessWidget {
                       height: 20.0,
                     ),
                     SizedBox(
-                      width: 250.0,
+                      width: 213.0,
                       child: DefaultTextStyle(
-                        style: const TextStyle(
-                          color: Colors.black87,
-                          fontSize: 50.0,
-                          //fontFamily: 'Bobbers',
-                          fontWeight: FontWeight.w800,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.rammettoOne(
+                          textStyle: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                         child: AnimatedTextKit(
+                          totalRepeatCount: 1,
                           animatedTexts: [
                             TypewriterAnimatedText(
-                              '  TeleMed',
-                              speed: const Duration(milliseconds: 100),
+                              'TeleMed',
+                              speed: const Duration(milliseconds: 110),
                             ),
                           ],
                         ),
