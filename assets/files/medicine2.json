@@ -1,0 +1,67 @@
+{
+    "medicines": [
+        {
+            "id": 1,
+            "name": "Azithromycin",
+            "desc": "Azithromycin is a macrolide antibiotic used to treat a variety of bacterial infections. It is commonly used to treat respiratory infections, skin infections, and ear infections. Azithromycin works by interfering with the protein synthesis of bacteria, which eventually leads to their death.",
+            "price": 495,
+            "image": "images/Azithromycin.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Domperidone",
+            "desc": "Domperidone is a medication used to relieve nausea and vomiting. It works by blocking the action of dopamine, which is responsible for triggering nausea and vomiting.",
+            "price": 364,
+            "image": "images/Domperidone.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Omeprazole",
+            "desc": "Omeprazole is a proton pump inhibitor (PPI) used to treat gastroesophageal reflux disease (GERD) and peptic ulcers. It works by reducing the amount of acid produced in the stomach.",
+            "price": 124,
+            "image": "images/Omeprazole.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Metformin",
+            "desc": "Metformin is an oral medication used to treat type 2 diabetes. It works by reducing the amount of glucose produced by the liver and improving the sensitivity of the body to insulin.",
+            "price": 53,
+            "image": "images/Metformin.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Atorvastatin",
+            "desc": "Atorvastatin is a statin medication used to treat high cholesterol levels. It works by reducing the amount of cholesterol produced by the liver and increasing the uptake of cholesterol by the body's cells.",
+            "price": 156,
+            "image": "images/Atorvastatin.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Metoprolol",
+            "desc": "Metoprolol is a beta blocker medication used to treat high blood pressure, angina, and heart failure. It works by blocking the action of adrenaline, which is responsible for increasing the heart rate and blood pressure.",
+            "price": 42,
+            "image": "images/Metoprolol.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Telmisartan",
+            "desc": "Telmisartan works by blocking the action of a hormone called angiotensin II, which causes blood vessels to narrow and increases blood pressure. By blocking the action of this hormone, Telmisartan relaxes blood vessels and helps lower blood pressure, making it easier for the heart to pump blood. Telmisartan is usually taken orally, once a day, with or without food. The dose may vary depending on the individual's medical condition, age, and response to treatment. It may take several weeks for the medication to reach its full effect.",
+            "price": 160,
+            "image": "images/Telmisartan.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Amlodipine",
+            "desc": "Amlodipine is a medication that belongs to a class of drugs called calcium channel blockers. It is used to treat high blood pressure (hypertension) and chest pain (angina) caused by coronary artery disease. Amlodipine works by relaxing and widening blood vessels, allowing blood to flow more easily and reducing the workload on the heart. This helps lower blood pressure and relieve chest pain.",
+            "price": 420,
+            "image": "images/Amlodipine.jpeg"
+        },
+        {
+            "id": 9,
+            "name": "Gabapentin",
+            "desc": "Gabapentin is a medication that is primarily used to treat seizures and neuropathic pain (nerve pain) caused by various conditions such as diabetes, shingles, or spinal cord injuries. It is also sometimes prescribed off-label for conditions such as anxiety disorders, restless leg syndrome, and alcohol withdrawal. Gabapentin works by decreasing the activity of certain chemicals in the brain and nerves that are involved in seizures and pain. It is structurally related to the neurotransmitter GABA (gamma-aminobutyric acid), which helps to reduce excessive electrical activity in the brain.",
+            "price": 306,
+            "image": "images/Gabapentin.jpeg"
+        }
+    ]
+}

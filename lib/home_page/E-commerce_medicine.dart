@@ -1,4 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/home_page/medicine_details.dart';
+import 'package:tele_med/models/medicines.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +28,8 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
   double _height = dimensions.size260;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
     pageController.addListener(() {
       setState(() {
         _currentPageValue = pageController.page!;
@@ -105,29 +110,37 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
             SizedBox(
               height: dimensions.size30,
             ),
-            Container(
-              height: dimensions.size260,
-              child: PageView.builder(
-                  controller: pageController,
-                  itemCount: 6,
-                  itemBuilder: (context, position) {
-                    return _buildPageItem(position);
-                  }),
-            ),
+            GetBuilder<medicine_controller>(builder: (medicineList) {
+              return Container(
+                height: dimensions.size260,
+                child: PageView.builder(
+                    controller: pageController,
+                    itemCount: medicineList.medicine_items.length,
+                    itemBuilder: (context, position) {
+                      final medicine_index1 =
+                          medicineList.medicine_items[position];
+                      return _buildPageItem(
+                          position, medicineList.medicine_items[position]);
+                    }),
+              );
+            }),
+
             SizedBox(
               height: dimensions.size15,
             ),
-            DotsIndicator(
-              dotsCount: 6,
-              position: _currentPageValue,
-              decorator: DotsDecorator(
-                activeColor: Color.fromARGB(255, 34, 18, 156),
-                size: const Size.square(9.0),
-                activeSize: const Size(18.0, 9.0),
-                activeShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
-              ),
-            ),
+            GetBuilder<medicine_controller>(builder: (medicineList) {
+              return DotsIndicator(
+                dotsCount: medicineList.medicine_items.length,
+                position: _currentPageValue,
+                decorator: DotsDecorator(
+                  activeColor: Color.fromARGB(255, 34, 18, 156),
+                  size: const Size.square(9.0),
+                  activeSize: const Size(18.0, 9.0),
+                  activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
+                ),
+              );
+            }),
 
             //Popular text*********************************************
             SizedBox(height: dimensions.size10),
@@ -146,74 +159,85 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
               ),
             ),
             //Recommended food*****************************
-            ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    // onTap: () {
-                    //   Get.toNamed(RouteHelper.getRecommendedFood(index));
-                    // },
-                    onTap: () {
-                      Get.to(medicine_details());
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          bottom: dimensions.size15,
-                          right: dimensions.size10 * 2),
-                      child: Row(
-                        children: [
-                          //image section**************
-                          Container(
-                            width: dimensions.size45 * 2,
-                            height: dimensions.size45 * 2,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 253, 208, 200),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image:
-                                      AssetImage("assets/images/saridon.png")),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
+            GetBuilder<medicine_controller>(builder: (medicines) {
+              return ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: medicines.medicine_items2.length,
+                  itemBuilder: (context, index) {
+                    final medicine_index = medicines.medicine_items2[index];
+                    return GestureDetector(
+                      // onTap: () {
+                      //   Get.toNamed(RouteHelper.getRecommendedFood(index));
+                      // },
+                      onTap: () {
+                        Get.to(medicine_details(pageId: index));
+                        print(medicines.medicine_items.length);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            bottom: dimensions.size15,
+                            right: dimensions.size10 * 2),
+                        child: Row(
+                          children: [
+                            //image section**************
+                            Container(
+                              width: dimensions.size45 * 2,
                               height: dimensions.size45 * 2,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(dimensions.size20),
-                                  bottomRight:
-                                      Radius.circular(dimensions.size20),
-                                ),
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 253, 208, 200),
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        "assets/images/saridon.png")),
                               ),
-                              child: Padding(
-                                padding:
-                                    EdgeInsets.only(left: dimensions.size10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    big_font(text: "Saridon"),
-                                    small_font(text: 'Triple Action'),
-                                  ],
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: dimensions.size45 * 2,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topRight:
+                                        Radius.circular(dimensions.size20),
+                                    bottomRight:
+                                        Radius.circular(dimensions.size20),
+                                  ),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding:
+                                      EdgeInsets.only(left: dimensions.size10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      big_font(text: medicine_index.name!),
+                                      big_font(
+                                        text: "₹" +
+                                            medicine_index.price.toString(),
+                                        color: Colors.red,
+                                        size: dimensions.size25,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                })
+                    );
+                  });
+            })
           ],
         ),
       ),
     );
   }
 
-  Widget _buildPageItem(int index) {
+  Widget _buildPageItem(int index, medicine medicine_item) {
     Matrix4 matrix = Matrix4.identity();
     if (index == _currentPageValue.floor()) {
       var currScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
@@ -249,7 +273,9 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
             //   );
             // },
             onTap: () {
-              Get.to(medicine_details());
+              Get.to(medicine_details(
+                pageId: index,
+              ));
             },
             child: Container(
               height: dimensions.size210,
@@ -286,22 +312,15 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
                             height: dimensions.size15 / 2,
                           ),
                           big_font(
-                            text: "Paracetamol",
+                            text: medicine_item.name!,
                             color: Colors.white,
                           ),
                           SizedBox(
                             height: dimensions.size15 / 2,
                           ),
                           big_font(
-                            text: "650Mg",
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            height: dimensions.size15 / 2,
-                          ),
-                          big_font(
-                            text: "60/-",
-                            color: Colors.white,
+                            text: "₹" + medicine_item.price.toString(),
+                            color: Colors.red,
                           ),
                         ],
                       ),

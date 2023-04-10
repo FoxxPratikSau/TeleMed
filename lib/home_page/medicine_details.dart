@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/widgets/dimensions.dart';
 
 import 'package:get/get.dart';
@@ -7,11 +8,12 @@ import '../../widgets/big_font.dart';
 import '../../widgets/reusable_icons.dart';
 
 class medicine_details extends StatelessWidget {
-  //final int pageId;
-  const medicine_details({Key? key}) : super(key: key);
+  final int pageId;
+  const medicine_details({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<medicine_controller>().medicine_items[pageId];
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
@@ -72,7 +74,7 @@ class medicine_details extends StatelessWidget {
                 child: Container(
                   child: Center(
                     child: big_font(
-                      text: "Paracetamol",
+                      text: product.name!,
                       size: 23,
                     ),
                   ),
@@ -103,7 +105,7 @@ class medicine_details extends StatelessWidget {
                 children: [
                   Container(
                     child: Text(
-                      " Paracetamol is a commonly used medicine that can help treat pain and reduce a high temperature (fever).It's typically used to relieve mild or moderate pain, such as headaches, toothache or sprains, and reduce fevers caused by illnesses such as colds and flu.Paracetamol is often recommended as one of the first treatments for pain, as it's safe for most people to take and side effects are rare.",
+                      product.desc!,
                       style: TextStyle(
                           fontSize: dimensions.size15,
                           fontWeight: FontWeight.w500),
@@ -176,7 +178,7 @@ class medicine_details extends StatelessWidget {
                       color: Color.fromARGB(255, 34, 18, 156),
                     ),
                     child: big_font(
-                      text: '₹120 | Add to Cart',
+                      text: '₹' + product.price.toString() + '| Add to Cart',
                       color: Colors.white,
                     ),
                   ),
