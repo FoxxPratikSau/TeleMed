@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:tele_med/helpers_n_controllers/cart_controller.dart';
+import 'package:tele_med/models/cart_model.dart';
 import 'package:tele_med/models/medicines.dart';
 
 class medicine_controller extends GetxController {
@@ -10,7 +12,7 @@ class medicine_controller extends GetxController {
 
   List<medicine> _medicine_items2 = [];
   List<medicine> get medicine_items2 => _medicine_items2;
-  // late CartController _cart;
+  late CartController _cart;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
@@ -69,8 +71,8 @@ class medicine_controller extends GetxController {
       return quantity;
     }
   }
-/*
-  void initProduct(ProductModel product, CartController cart) {
+
+  void initProduct(medicine product, CartController cart) {
     _quantity = 0;
     _inCartItems = 0;
     _cart = cart;
@@ -82,11 +84,11 @@ class medicine_controller extends GetxController {
     //print('The qty in the cart is $_inCartItems');
   }
 
-  void addItem(ProductModel product) {
-    // if (_quantity > 0) {
+  void addItem(medicine product) {
     _cart.addItem(product, _quantity);
     _quantity = 0;
     _inCartItems = _cart.getQuantity(product);
+
     _cart.items.forEach((key, value) {
       //print('The id is ${value.id} and the quantity is ${value.quantity}');
     });
@@ -97,8 +99,7 @@ class medicine_controller extends GetxController {
     return _cart.totalItems;
   }
 
-  List<CartModel> get getItems {
+  List<cart_model> get getItems {
     return _cart.getItems;
   }
-  */
 }

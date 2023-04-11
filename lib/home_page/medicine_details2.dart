@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:tele_med/helpers_n_controllers/cart_controller.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/home_page/E-commerce_medicine.dart';
-import 'package:tele_med/home_page/cart_page.dart';
 import 'package:tele_med/widgets/dimensions.dart';
 
 import 'package:get/get.dart';
 
 import '../../widgets/big_font.dart';
 import '../../widgets/reusable_icons.dart';
+import 'cart_page.dart';
 
-class medicine_details extends StatelessWidget {
+class medicine_details2 extends StatelessWidget {
   final int pageId;
-  const medicine_details({Key? key, required this.pageId}) : super(key: key);
+  const medicine_details2({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var product = Get.find<medicine_controller>().medicine_items[pageId];
+    var product = Get.find<medicine_controller>().medicine_items2[pageId];
     Get.find<medicine_controller>()
         .initProduct(product, Get.find<CartController>());
     return Scaffold(
@@ -36,6 +36,7 @@ class medicine_details extends StatelessWidget {
                           Get.to(e_commerce_medicine());
                         },
                         child: reusable_icons(icon: Icons.arrow_back_ios)),
+                    //reusable_icons(icon: Icons.shopping_cart_outlined),
                     GetBuilder<medicine_controller>(builder: (controller) {
                       return GestureDetector(
                         onTap: () {
@@ -61,8 +62,8 @@ class medicine_details extends StatelessWidget {
                                 : Container(),
                             Get.find<medicine_controller>().totalItems >= 1
                                 ? Positioned(
-                                    right: 4,
-                                    top: 4,
+                                    right: 3,
+                                    top: 3,
                                     child: big_font(
                                       text: Get.find<medicine_controller>()
                                           .totalItems
@@ -129,78 +130,81 @@ class medicine_details extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar:
-            GetBuilder<medicine_controller>(builder: (medicine) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                height: dimensions.size100,
-                padding: EdgeInsets.symmetric(
-                  vertical: dimensions.size10,
-                  horizontal: dimensions.size20,
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.4),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(dimensions.size20 * 2),
-                      topRight: Radius.circular(dimensions.size20 * 2),
-                    )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(dimensions.size20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(dimensions.size20),
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                              onTap: () {
-                                medicine.setQuantity(false);
-                              },
-                              child: Icon(Icons.remove, color: Colors.grey)),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 5.0),
-                            child: big_font(
-                              text: medicine.inCartItems.toString(),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              medicine.setQuantity(true);
-                            },
-                            child: Icon(Icons.add, color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        medicine.addItem(product);
-                      },
-                      child: Container(
+        bottomNavigationBar: GetBuilder<medicine_controller>(
+          builder: (medicine) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  height: dimensions.size100,
+                  padding: EdgeInsets.symmetric(
+                    vertical: dimensions.size10,
+                    horizontal: dimensions.size20,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.4),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(dimensions.size20 * 2),
+                        topRight: Radius.circular(dimensions.size20 * 2),
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
                         padding: EdgeInsets.all(dimensions.size20),
                         decoration: BoxDecoration(
                           borderRadius:
                               BorderRadius.circular(dimensions.size20),
-                          color: Color.fromARGB(255, 34, 18, 156),
-                        ),
-                        child: big_font(
-                          text:
-                              '₹' + product.price.toString() + '| Add to Cart',
                           color: Colors.white,
                         ),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                                onTap: () {
+                                  medicine.setQuantity(false);
+                                },
+                                child: Icon(Icons.remove, color: Colors.grey)),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
+                              child: big_font(
+                                text: medicine.inCartItems.toString(),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                medicine.setQuantity(true);
+                              },
+                              child: Icon(Icons.add, color: Colors.grey),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      GestureDetector(
+                        onTap: () {
+                          medicine.addItem(product);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(dimensions.size20),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(dimensions.size20),
+                            color: Color.fromARGB(255, 34, 18, 156),
+                          ),
+                          child: big_font(
+                            text: '₹' +
+                                product.price.toString() +
+                                '| Add to Cart',
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        }));
+              ],
+            );
+          },
+        ));
   }
 }

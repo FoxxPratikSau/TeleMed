@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/home_page/medicine_details.dart';
+import 'package:tele_med/home_page/medicine_details2.dart';
 import 'package:tele_med/models/medicines.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/dimensions.dart';
@@ -171,7 +172,7 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
                       //   Get.toNamed(RouteHelper.getRecommendedFood(index));
                       // },
                       onTap: () {
-                        Get.to(medicine_details(pageId: index));
+                        Get.to(medicine_details2(pageId: index));
                         print(medicines.medicine_items.length);
                       },
                       child: Container(
@@ -188,8 +189,7 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
                                 color: Color.fromARGB(255, 253, 208, 200),
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        "assets/images/saridon.png")),
+                                    image: AssetImage(medicine_index.image!)),
                               ),
                             ),
                             Expanded(
@@ -284,8 +284,7 @@ class _e_commerce_medicineState extends State<e_commerce_medicine> {
                 borderRadius: BorderRadius.circular(30),
                 color: index.isEven ? Color(0xff69c5df) : Color(0xFF9294cc),
                 image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/images/paracetamol.png")),
+                    fit: BoxFit.cover, image: AssetImage(medicine_item.image!)),
               ),
             ),
           ),

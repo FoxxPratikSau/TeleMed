@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.5
   loading_animation_widget: ^1.2.0+4
   dots_indicator: ^2.1.0
+  shared_preferences: ^2.1.0
   
 
 dev_dependencies:
@@ -67,6 +68,7 @@ flutter:
   assets:
   - assets/images/
   - assets/files/
+  - images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
