@@ -1,14 +1,26 @@
+// ignore_for_file: use_build_context_synchronously, must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:tele_med/essentials/auth_service.dart';
+import 'package:tele_med/screens/login_page.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'package:tele_med/constants.dart';
+import 'package:get/get.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfilePage extends StatefulWidget {
+  final loginController = Get.find<AuthService>();
+  ProfilePage({super.key});
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBGColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -40,34 +52,33 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         BigFont(
                           text: 'Profile',
-                          size: 40.0,
+                          size: 35.0,
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
                         ),
                         const SizedBox(
-                          height: 20.0,
+                          height: 15.0,
                         ),
                         Center(
-                          child: GestureDetector(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(60.0),
-                              child: Image.asset(
-                                'images/sampleProfile.jpg',
-                                height: 150.0,
-                                width: 150.0,
+                          child: Container(
+                            height: 150,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60),
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 5,
+                              ),
+                              shape: BoxShape.rectangle,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                  widget.loginController
+                                      .returnUserData()
+                                      .photoUrl,
+                                ),
                               ),
                             ),
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Dialog(
-                                    child:
-                                        Image.asset('images/sampleProfile.jpg'),
-                                  );
-                                },
-                              );
-                            },
                           ),
                         ),
                         const SizedBox(
@@ -75,7 +86,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         Center(
                           child: BigFont(
-                            text: 'Nitin Chandra Sahu',
+                            text: widget.loginController.returnUserData().name,
                             size: 25.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
@@ -98,7 +109,7 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          height: 40.0,
+                          height: 30.0,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -107,8 +118,9 @@ class ProfilePage extends StatelessWidget {
                               Material(
                                 elevation: 10.0,
                                 borderRadius: BorderRadius.circular(15.0),
-                                child: GestureDetector(
-                                  onTap: () => print('Tapped'),
+                                child: MaterialButton(
+                                  padding: const EdgeInsets.all(0.0),
+                                  onPressed: () => print('Tapped'),
                                   child: Container(
                                     height: 60.0,
                                     decoration: BoxDecoration(
@@ -146,8 +158,9 @@ class ProfilePage extends StatelessWidget {
                               Material(
                                 elevation: 10.0,
                                 borderRadius: BorderRadius.circular(15.0),
-                                child: GestureDetector(
-                                  onTap: () => print('Tapped'),
+                                child: MaterialButton(
+                                  padding: const EdgeInsets.all(0.0),
+                                  onPressed: () => print('Tapped'),
                                   child: Container(
                                     height: 60.0,
                                     decoration: BoxDecoration(
@@ -185,10 +198,13 @@ class ProfilePage extends StatelessWidget {
                               Material(
                                 elevation: 10.0,
                                 borderRadius: BorderRadius.circular(15.0),
-                                child: GestureDetector(
-                                  onTap: () => print('Tapped'),
+                                child: MaterialButton(
+                                  padding: const EdgeInsets.all(0.0),
+                                  //minWidth: double.infinity,
+                                  onPressed: () => print('Tapped'),
                                   child: Container(
                                     height: 60.0,
+                                    //width: double.maxFinite,
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: Colors.black54,
@@ -224,16 +240,34 @@ class ProfilePage extends StatelessWidget {
                               Center(
                                 child: Material(
                                   elevation: 8.0,
-                                  color: kPrimaryColor,
+                                  //color: kPrimaryColor,
                                   borderRadius: BorderRadius.circular(15.0),
-                                  child: GestureDetector(
-                                    onTap: () => print('Log Out'),
+                                  child: MaterialButton(
+                                    //splashColor: Colors.black,
+                                    padding: const EdgeInsets.all(0.0),
+                                    onPressed: () async {
+                                      await widget.loginController.signOut();
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignIn(),
+                                          ));
+                                    },
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 45.0),
                                       height: 60.0,
                                       width: 250.0,
                                       decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            kPrimaryColor,
+                                            const Color(0xFF000030),
+                                          ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                        ),
                                         borderRadius:
                                             BorderRadius.circular(15.0),
                                       ),

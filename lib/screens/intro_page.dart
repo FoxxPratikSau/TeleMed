@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tele_med/constants.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:tele_med/screens/signup_page.dart';
+import 'package:tele_med/screens/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
+import 'package:tele_med/widgets/big_font.dart';
+import 'package:tele_med/widgets/small_font.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -11,7 +14,7 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBGColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 50.0, left: 30, right: 30.0),
@@ -62,7 +65,7 @@ class IntroPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Signup(),
+                        builder: (context) => const SignIn(),
                       ),
                     );
                   }),
@@ -74,11 +77,19 @@ class IntroPage extends StatelessWidget {
                   bgColor: kPrimaryColor,
                   title: 'Continue as Doctor',
                   onPress: (() {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Signup(),
+                    Get.snackbar(
+                      '',
+                      '',
+                      animationDuration: const Duration(seconds: 2),
+                      barBlur: 10.0,
+                      titleText: BigFont(
+                        text: 'Attention',
+                        color: Colors.red,
+                        textAlign: TextAlign.left,
+                        fontWeight: FontWeight.bold,
+                        size: 20.0,
                       ),
+                      messageText: SmallFont(text: 'Currently unavailable'),
                     );
                   }),
                 ),

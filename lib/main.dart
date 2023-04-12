@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tele_med/screens/initiate_app.dart';
 import 'screens/intro_page.dart';
-import 'screens/doc_profile.dart';
-import 'screens/profile_page.dart';
-import 'screens/consultation_page.dart';
-import 'screens/shop_medicine_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const GetMaterialApp(
       home: IntroPage(),
     );
   }

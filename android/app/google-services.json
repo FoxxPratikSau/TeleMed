@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "160469130761",
+    "project_id": "telemed-383316",
+    "storage_bucket": "telemed-383316.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160469130761:android:600b6169f0b7737a83e2d8",
+        "android_client_info": {
+          "package_name": "com.example.tele_med"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160469130761-ntt02ght0kpa2oh1nh2unah38m4v8ti4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tele_med",
+            "certificate_hash": "86da51a2fe4a04165b39db2e29ee67b8c459af61"
+          }
+        },
+        {
+          "client_id": "160469130761-oebghvf7c145jdcsi07ro9tiq7k186a1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAssbnV7_T_PRWY0Ez0zDBOrZ-xRUyBiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160469130761-oebghvf7c145jdcsi07ro9tiq7k186a1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

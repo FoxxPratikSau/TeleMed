@@ -12,6 +12,7 @@ class MedDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBGColor,
       body: SafeArea(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(
@@ -72,7 +73,8 @@ class MedDetailPage extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: kBGColor,
+                    border: Border.all(color: kPrimaryColor, width: 2.0),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(dimensions.size20),
                       topRight: Radius.circular(dimensions.size20),
@@ -86,7 +88,7 @@ class MedDetailPage extends StatelessWidget {
                 ),
               ),
               pinned: true,
-              backgroundColor: const Color.fromARGB(255, 113, 133, 229),
+              backgroundColor: kPrimaryColor,
               expandedHeight: 230,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(

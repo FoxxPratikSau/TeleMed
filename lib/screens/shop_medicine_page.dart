@@ -4,6 +4,7 @@ import 'package:tele_med/widgets/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:tele_med/widgets/small_font.dart';
+import 'package:tele_med/constants.dart';
 
 class ShopMedicinePage extends StatefulWidget {
   const ShopMedicinePage({Key? key}) : super(key: key);
@@ -39,170 +40,174 @@ class _ShopMedicinePageState extends State<ShopMedicinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 189, 217, 231),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: dimensions.size45,
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: dimensions.size15, right: dimensions.size15),
-              child: BigFont(
-                textAlign: TextAlign.left,
-                text: "Buy Medicines",
-                color: const Color.fromARGB(255, 34, 18, 156),
-                size: dimensions.size30,
-                fontWeight: FontWeight.bold,
+      backgroundColor: const Color.fromARGB(255, 215, 227, 255),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                height: dimensions.size45,
               ),
-            ),
-            SizedBox(
-              height: dimensions.size20,
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: dimensions.size15, right: dimensions.size15),
-              child: Container(
-                height: dimensions.size20 * 2,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(dimensions.size10),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: dimensions.size15, right: dimensions.size15),
+                child: BigFont(
+                  textAlign: TextAlign.left,
+                  text: "Buy Medicines",
+                  color: const Color.fromARGB(255, 34, 18, 156),
+                  size: dimensions.size30,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: TextField(
-                  controller: searchController,
-                  decoration: InputDecoration(
-                    hintStyle: const TextStyle(fontSize: 17),
-                    hintText: 'Search ,e.g. Paracetamol',
-                    suffixIcon: Container(
-                        decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 29, 60, 146),
-                            borderRadius:
-                                BorderRadius.circular(dimensions.size10)),
-                        child: const Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        )),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.all(dimensions.size10),
+              ),
+              SizedBox(
+                height: dimensions.size20,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: dimensions.size15, right: dimensions.size15),
+                child: Container(
+                  height: dimensions.size20 * 2,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(dimensions.size10),
                   ),
-                  onChanged: (value) {
-                    search = value;
-                    setState(() {});
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintStyle: const TextStyle(fontSize: 17),
+                      hintText: 'Search ,e.g. Paracetamol',
+                      suffixIcon: Container(
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 29, 60, 146),
+                              borderRadius:
+                                  BorderRadius.circular(dimensions.size10)),
+                          child: const Icon(
+                            Icons.search,
+                            color: Colors.white,
+                          )),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(dimensions.size10),
+                    ),
+                    onChanged: (value) {
+                      search = value;
+                      setState(() {});
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: dimensions.size30,
+              ),
+              SizedBox(
+                height: dimensions.size260,
+                child: PageView.builder(
+                  controller: pageController,
+                  itemCount: 6,
+                  itemBuilder: (context, position) {
+                    return _buildPageItem(position);
                   },
                 ),
               ),
-            ),
-            SizedBox(
-              height: dimensions.size30,
-            ),
-            SizedBox(
-              height: dimensions.size260,
-              child: PageView.builder(
-                controller: pageController,
-                itemCount: 6,
-                itemBuilder: (context, position) {
-                  return _buildPageItem(position);
-                },
+              SizedBox(
+                height: dimensions.size15,
               ),
-            ),
-            SizedBox(
-              height: dimensions.size15,
-            ),
-            DotsIndicator(
-              dotsCount: 6,
-              position: _currentPageValue,
-              decorator: DotsDecorator(
-                activeColor: const Color.fromARGB(255, 34, 18, 156),
-                size: const Size.square(9.0),
-                activeSize: const Size(18.0, 9.0),
-                activeShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+              DotsIndicator(
+                dotsCount: 6,
+                position: _currentPageValue,
+                decorator: DotsDecorator(
+                  activeColor: const Color.fromARGB(255, 34, 18, 156),
+                  size: const Size.square(9.0),
+                  activeSize: const Size(18.0, 9.0),
+                  activeShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
                 ),
               ),
-            ),
 
-            //Popular text*********************************************
-            SizedBox(height: dimensions.size10),
-            Container(
-              margin: EdgeInsets.only(left: dimensions.size30),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  BigFont(text: 'New Stock'),
-                  SizedBox(width: dimensions.size10),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 3),
-                    child: BigFont(text: '.', color: Colors.black26),
-                  ),
-                ],
-              ),
-            ),
-            //Recommended food*****************************
-            ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MedDetailPage(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          bottom: dimensions.size15,
-                          right: dimensions.size10 * 2),
-                      child: Row(
-                        children: [
-                          //image section**************
-                          Container(
-                            width: dimensions.size45 * 2,
-                            height: dimensions.size45 * 2,
-                            decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 253, 208, 200),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("images/saridon.png")),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              height: dimensions.size45 * 2,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(dimensions.size20),
-                                  bottomRight:
-                                      Radius.circular(dimensions.size20),
-                                ),
-                                color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding:
-                                    EdgeInsets.only(left: dimensions.size10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    BigFont(text: "Saridon"),
-                                    SmallFont(text: 'Triple Action'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+              //Popular text*********************************************
+              SizedBox(height: dimensions.size10),
+              Container(
+                margin: EdgeInsets.only(left: dimensions.size30),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    BigFont(text: 'New Stock'),
+                    SizedBox(width: dimensions.size10),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 3),
+                      child: BigFont(text: '.', color: Colors.black26),
                     ),
-                  );
-                })
-          ],
+                  ],
+                ),
+              ),
+              //Recommended food*****************************
+              ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MedDetailPage(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            bottom: dimensions.size15,
+                            right: dimensions.size10 * 2),
+                        child: Row(
+                          children: [
+                            //image section**************
+                            Container(
+                              width: dimensions.size45 * 2,
+                              height: dimensions.size45 * 2,
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(255, 253, 208, 200),
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage("images/saridon.png")),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: dimensions.size45 * 2,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topRight:
+                                        Radius.circular(dimensions.size20),
+                                    bottomRight:
+                                        Radius.circular(dimensions.size20),
+                                  ),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding:
+                                      EdgeInsets.only(left: dimensions.size10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      BigFont(text: "Saridon"),
+                                      SmallFont(text: 'Triple Action'),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  })
+            ],
+          ),
         ),
       ),
     );
