@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:tele_med/constants.dart';
+import 'package:tele_med/screens/initiate_app.dart';
 import '../widgets/big_font.dart';
 import '../widgets/small_font.dart';
 import 'package:tele_med/screens/login_page.dart';
 import 'package:tele_med/components/textfield.dart';
+import 'package:tele_med/screens/initiate_app.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -39,13 +41,6 @@ class _SignupState extends State<Signup> {
           BigFont(
             text: "Create Account",
             size: 35,
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          SmallFont(
-            text: "Create a new account",
-            color: Colors.grey,
           ),
           const SizedBox(
             height: 20,
@@ -153,7 +148,14 @@ class _SignupState extends State<Signup> {
                   height: 20,
                 ),
                 IntroButton(
-                  onPress: null,
+                  onPress: (() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const InitiatePage(),
+                      ),
+                    );
+                  }),
                   bgColor: kPrimaryColor,
                   title: 'CREATE ACCOUNT',
                 ),
