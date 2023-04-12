@@ -49,7 +49,7 @@ class _sign_up_pageState extends State<sign_up_page> {
               SizedBox(
                 height: 5,
               ),
-              small_font(text: "Create a new account"),
+              SmallFont(text: "Create a new account"),
               SizedBox(
                 height: 20,
               ),
@@ -293,14 +293,14 @@ class _sign_up_pageState extends State<sign_up_page> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      small_font(text: "Already have an account?"),
+                      SmallFont(text: "Already have an account?"),
                       GestureDetector(
                         //onTap: () => Get.toNamed(RouteHelper.getlogin()),
                         child: GestureDetector(
                           onTap: () {
                             Get.to(sign_in_page());
                           },
-                          child: small_font(
+                          child: SmallFont(
                             text: " Login ",
                             color: Colors.red,
                           ),

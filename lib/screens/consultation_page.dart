@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/dimensions.dart';
 import 'package:tele_med/widgets/small_font.dart';
 
-class consultation_page extends StatefulWidget {
-  const consultation_page({super.key});
+class ConsultPage extends StatefulWidget {
+  const ConsultPage({super.key});
 
   @override
-  State<consultation_page> createState() => _consultation_pageState();
+  State<ConsultPage> createState() => _ConsultPageState();
 }
 
 final searchController = TextEditingController();
 String search = "";
 
-class _consultation_pageState extends State<consultation_page> {
+class _ConsultPageState extends State<ConsultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +28,10 @@ class _consultation_pageState extends State<consultation_page> {
             SizedBox(
               height: dimensions.size45,
             ),
-            Text(
-              "Consult a Doctor",
-              style: TextStyle(
-                fontSize: dimensions.size30 + dimensions.size10 / 3,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.normal,
-              ),
+            BigFont(
+              text: "Consult a Doctor",
+              size: dimensions.size30,
+              fontWeight: FontWeight.w800,
             ),
             SizedBox(
               height: dimensions.size20,
@@ -44,19 +39,19 @@ class _consultation_pageState extends State<consultation_page> {
             Container(
               height: dimensions.size20 * 2,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 211, 211, 211),
+                color: const Color.fromARGB(255, 211, 211, 211),
                 borderRadius: BorderRadius.circular(dimensions.size10),
               ),
               child: TextField(
                 decoration: InputDecoration(
-                  hintStyle: TextStyle(fontSize: 17),
+                  hintStyle: const TextStyle(fontSize: 17),
                   hintText: 'Search ,e.g. Dr.Bhagad Billa',
                   suffixIcon: Container(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 29, 60, 146),
+                          color: const Color.fromARGB(255, 29, 60, 146),
                           borderRadius:
                               BorderRadius.circular(dimensions.size10)),
-                      child: Icon(
+                      child: const Icon(
                         Icons.search,
                         color: Colors.white,
                       )),
@@ -72,9 +67,10 @@ class _consultation_pageState extends State<consultation_page> {
             SizedBox(
               height: dimensions.size30,
             ),
-            Text(
-              "Categories",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            BigFont(
+              text: "Categories",
+              size: 30,
+              fontWeight: FontWeight.bold,
             ),
             SizedBox(
               height: dimensions.size15,
@@ -93,9 +89,10 @@ class _consultation_pageState extends State<consultation_page> {
             SizedBox(
               height: dimensions.size15,
             ),
-            Text(
-              "Top Ranking Doctors",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            BigFont(
+              text: "Top Ranking Doctors",
+              size: 30,
+              fontWeight: FontWeight.bold,
             ),
             SizedBox(
               height: dimensions.size15,
@@ -126,10 +123,11 @@ class _consultation_pageState extends State<consultation_page> {
           child: Container(
             height: dimensions.size30 * 3,
             width: dimensions.size30 * 3,
-            margin: EdgeInsets.only(left: 10, right: 5),
+            margin: const EdgeInsets.only(left: 10, right: 5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(dimensions.size20),
-                color: Color.fromARGB(255, 211, 211, 211).withOpacity(0.5)),
+                color:
+                    const Color.fromARGB(255, 211, 211, 211).withOpacity(0.5)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -137,12 +135,10 @@ class _consultation_pageState extends State<consultation_page> {
                   Icons.health_and_safety_outlined,
                   size: dimensions.size25 * 2.5,
                 ),
-                Text(
-                  "Ear",
-                  style: TextStyle(
-                    fontSize: dimensions.size15,
-                    fontWeight: FontWeight.w600,
-                  ),
+                SmallFont(
+                  text: "Ear",
+                  size: dimensions.size15,
+                  fontWeight: FontWeight.w600,
                 ),
               ],
             ),
@@ -159,10 +155,11 @@ class _consultation_pageState extends State<consultation_page> {
           child: Container(
             height: dimensions.size20 * 4,
             width: dimensions.size300,
-            margin: EdgeInsets.only(bottom: 20),
+            margin: const EdgeInsets.only(bottom: 20),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(dimensions.size15),
-                color: Color.fromARGB(255, 211, 211, 211).withOpacity(0.5)),
+                color:
+                    const Color.fromARGB(255, 211, 211, 211).withOpacity(0.5)),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -172,7 +169,7 @@ class _consultation_pageState extends State<consultation_page> {
                   margin: EdgeInsets.only(left: dimensions.size10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(dimensions.size15),
-                      color: Color.fromARGB(255, 7, 18, 95)),
+                      color: const Color.fromARGB(255, 7, 18, 95)),
                   child: Icon(
                     Icons.person,
                     size: dimensions.size25 * 2,
@@ -182,53 +179,52 @@ class _consultation_pageState extends State<consultation_page> {
                 SizedBox(
                   width: dimensions.size15,
                 ),
-                Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SmallFont(text: "Cardiologist"),
-                      Text(
-                        "Dr.Dibya Ranjan Sahu",
-                        style: TextStyle(
-                          fontSize: dimensions.size15,
-                          fontWeight: FontWeight.w600,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SmallFont(
+                      text: "Cardiologist",
+                      fontWeight: FontWeight.w600,
+                    ),
+                    SmallFont(
+                      text: "Dr.Dibya Ranjan Sahu",
+                      size: dimensions.size15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(
+                      height: dimensions.size10 / 3,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber[800],
+                          size: dimensions.size10,
                         ),
-                      ),
-                      SizedBox(
-                        height: dimensions.size10 / 3,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.star,
-                            color: Colors.green,
-                            size: dimensions.size10,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.green,
-                            size: dimensions.size10,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.green,
-                            size: dimensions.size10,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.green,
-                            size: dimensions.size10,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.green,
-                            size: dimensions.size10,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber[800],
+                          size: dimensions.size10,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber[800],
+                          size: dimensions.size10,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber[800],
+                          size: dimensions.size10,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber[800],
+                          size: dimensions.size10,
+                        ),
+                      ],
+                    )
+                  ],
                 )
               ],
             ),

@@ -46,7 +46,7 @@ class _sign_in_pageState extends State<sign_in_page> {
               SizedBox(
                 height: 5,
               ),
-              small_font(text: "Sign in to Continue"),
+              SmallFont(text: "Sign in to Continue"),
               SizedBox(
                 height: dimensions.size20,
               ),
@@ -141,7 +141,7 @@ class _sign_in_pageState extends State<sign_in_page> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      small_font(
+                      SmallFont(
                         text: "Forgot Password?",
                         color: Colors.teal,
                       ),
@@ -175,14 +175,14 @@ class _sign_in_pageState extends State<sign_in_page> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      small_font(text: "Don't have account?"),
+                      SmallFont(text: "Don't have account?"),
                       GestureDetector(
                         //onTap: () => Get.toNamed(RouteHelper.getlogin()),
                         child: GestureDetector(
                           onTap: () {
                             Get.to(sign_up_page());
                           },
-                          child: small_font(
+                          child: SmallFont(
                             text: " Create a new account",
                             color: Colors.red,
                           ),

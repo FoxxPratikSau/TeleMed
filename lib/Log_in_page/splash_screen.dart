@@ -68,7 +68,7 @@ class _splash_screenState extends State<splash_screen> {
                         ),
                       ),
                       Padding(padding: EdgeInsets.only(top: 20)),
-                      small_font(text: "Going into the world"),
+                      SmallFont(text: "Going into the world"),
                     ],
                   ))
             ],

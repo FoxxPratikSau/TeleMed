@@ -35,7 +35,7 @@ class medicine_details2 extends StatelessWidget {
                         onTap: () {
                           Get.to(e_commerce_medicine());
                         },
-                        child: reusable_icons(icon: Icons.arrow_back_ios)),
+                        child: ReusableIcon(icon: Icons.arrow_back_ios)),
                     //reusable_icons(icon: Icons.shopping_cart_outlined),
                     GetBuilder<medicine_controller>(builder: (controller) {
                       return GestureDetector(
@@ -44,14 +44,14 @@ class medicine_details2 extends StatelessWidget {
                         },
                         child: Stack(
                           children: [
-                            reusable_icons(icon: Icons.shopping_cart_outlined),
+                            ReusableIcon(icon: Icons.shopping_cart_outlined),
                             controller.totalItems >= 1
                                 // ignore: prefer_const_constructors
                                 ? Positioned(
                                     right: 0,
                                     top: 0,
                                     // ignore: prefer_const_constructors
-                                    child: reusable_icons(
+                                    child: ReusableIcon(
                                       icon: Icons.circle,
                                       size: 20,
                                       iconColor: Colors.transparent,

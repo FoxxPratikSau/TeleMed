@@ -1,33 +1,38 @@
-import 'dart:ui';
+// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class small_font extends StatelessWidget {
+class SmallFont extends StatelessWidget {
   Color? color;
   final String text;
   double size;
   double height;
   TextOverflow overflow;
+  FontWeight? fontWeight;
 
-  small_font(
+  SmallFont(
       {super.key,
       this.color = const Color(0xFF332d2b),
       required this.text,
       this.overflow = TextOverflow.ellipsis,
       this.size = 15,
-      this.height = 1.4});
+      this.height = 1.4,
+      this.fontWeight = FontWeight.bold});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      //overflow: overflow,
-      style: TextStyle(
+      style: GoogleFonts.poppins(
+        textStyle: TextStyle(
           color: color,
-          fontFamily: 'ROBOTO',
+          fontWeight: fontWeight,
           fontSize: size,
           height: height,
-          overflow: null),
+          overflow: null,
+        ),
+      ),
     );
   }
 }

@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class reusable_icons extends StatelessWidget {
+class ReusableIcon extends StatelessWidget {
   final IconData icon;
   final Color backgroundColor;
   final Color iconColor;
   final double size;
 
-  const reusable_icons({
+  const ReusableIcon({
     Key? key,
     required this.icon,
     this.backgroundColor = const Color(0xFFfcf4e4),

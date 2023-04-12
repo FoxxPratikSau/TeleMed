@@ -26,7 +26,7 @@ class CartPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  reusable_icons(
+                  ReusableIcon(
                     icon: Icons.arrow_back_ios,
                     iconColor: Colors.white,
                     backgroundColor: Color.fromARGB(255, 34, 18, 156),
@@ -36,13 +36,13 @@ class CartPage extends StatelessWidget {
                     onTap: () {
                       Get.to(e_commerce_medicine());
                     },
-                    child: reusable_icons(
+                    child: ReusableIcon(
                       icon: Icons.home,
                       iconColor: Colors.white,
                       backgroundColor: Color.fromARGB(255, 34, 18, 156),
                     ),
                   ),
-                  reusable_icons(
+                  ReusableIcon(
                     icon: Icons.shopping_cart,
                     iconColor: Colors.white,
                     backgroundColor: Color.fromARGB(255, 34, 18, 156),
@@ -144,7 +144,7 @@ class CartPage extends StatelessWidget {
                                                     .getItems[index].name!,
                                                 color: Colors.black54,
                                               ),
-                                              small_font(text: 'Spicey'),
+                                              SmallFont(text: 'Spicey'),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
