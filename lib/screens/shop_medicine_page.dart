@@ -232,7 +232,10 @@ class _ShopMedicinePageState extends State<ShopMedicinePage> {
                         ),
                       );
                     });
-              })
+              }),
+              const SizedBox(
+                height: 80.0,
+              )
             ],
           ),
         ),

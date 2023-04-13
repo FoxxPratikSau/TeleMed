@@ -116,7 +116,7 @@ class _ConsultPageState extends State<ConsultPage> {
                 return Expanded(
                   child: Container(
                     width: dimensions.size300,
-                    color: Colors.white,
+                    color: kBGColor,
                     child: ListView.builder(
                         padding: EdgeInsets.zero,
                         scrollDirection: Axis.vertical,
@@ -147,9 +147,9 @@ class _ConsultPageState extends State<ConsultPage> {
             width: dimensions.size300,
             margin: const EdgeInsets.only(bottom: 20),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(dimensions.size15),
-                color:
-                    const Color.fromARGB(255, 211, 211, 211).withOpacity(0.5)),
+              borderRadius: BorderRadius.circular(dimensions.size15),
+              color: const Color.fromARGB(255, 189, 217, 231),
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -242,22 +242,21 @@ Widget _buildcatagoriesItem(int index, Category catagorylist) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 75,
-                width: 75,
+                height: 65,
+                width: 65,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(dimensions.size15),
                   color: const Color.fromARGB(255, 189, 217, 231),
                 ),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(dimensions.size15),
-                    child: Image.asset(
-                      catagorylist.image!,
-                      fit: BoxFit.cover,
-                    )),
+                child: Image.asset(
+                  catagorylist.image!,
+                  fit: BoxFit.cover,
+                ),
               ),
               SmallFont(
                 text: catagorylist.name!,
                 size: dimensions.size15,
+                color: Colors.black,
                 fontWeight: FontWeight.w600,
               ),
             ],
