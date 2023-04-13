@@ -1,0 +1,47 @@
+{
+    "medicines": [
+        {
+            "id": 1,
+            "name": "Paracetamol",
+            "desc": "Paracetamol is a commonly used over-the-counter pain reliever and fever reducer. It is also used to relieve headaches, toothaches, menstrual cramps, and other types of pain. It works by blocking the production of prostaglandins, which are substances that cause pain and inflammation in the body.",
+            "price": 259,
+            "image": "images/Paracetamol.png"
+        },
+        {
+            "id": 2,
+            "name": "Aspirin",
+            "desc": "Aspirin is an anti-inflammatory drug that is commonly used to treat pain, fever, and inflammation. It is also used to prevent heart attacks and strokes in people who have a high risk of developing these conditions. Aspirin works by blocking the production of prostaglandins, which are substances that cause pain and inflammation in the body.",
+            "price": 129,
+            "image": "images/Aspirin.png"
+        },
+        {
+            "id": 3,
+            "name": "Ibuprofen",
+            "desc": "Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) commonly used to reduce fever, relieve pain, and alleviate inflammation. It works by blocking the production of certain chemicals in the body that cause pain and inflammation. It is used to treat a variety of conditions, including headaches, dental pain, menstrual cramps, muscle aches, and arthritis. ",
+            "price": 550,
+            "image": "images/Ibuprofen.png"
+        },
+        {
+            "id": 4,
+            "name": "Ciprofloxacin",
+            "desc": "Ciprofloxacin is an antibiotic used to treat a variety of bacterial infections. It is commonly used to treat urinary tract infections, respiratory infections, skin infections, and gastrointestinal infections. Ciprofloxacin works by interfering with the DNA replication of bacteria, which eventually leads to their death.",
+            "price": 386,
+            "image": "images/Ciprofloxacin.png"
+        },
+        {
+            "id": 5,
+            "name": "Amoxicillin",
+            "desc": "Amoxicillin is a penicillin antibiotic used to treat bacterial infections. It is commonly used to treat respiratory infections, skin infections, ear infections, and urinary tract infections. Amoxicillin works by interfering with the cell wall synthesis of bacteria, which eventually leads to their death.",
+            "price": 564,
+            "image": "images/Amoxicillin.png"
+        },
+        {
+            "id": 6,
+            "name": "Levofloxacin",
+            "desc": "Levofloxacin is an antibiotic used to treat bacterial infections. It is commonly used to treat respiratory infections, skin infections, and urinary tract infections. Levofloxacin works by interfering with the DNA replication of bacteria, which eventually leads to their death.",
+            "price": 173,
+            "image": "images/Levofloxacin.png"
+        }
+        
+    ]
+}

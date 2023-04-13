@@ -1,0 +1,34 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Heart",
+            "image": "images/heart.png"
+        },
+        {
+            "id": 2,
+            "name": "Brain",
+            "image": "images/brain.png"
+        },
+        {
+            "id": 3,
+            "name": "Kidney",
+            "image": "images/kidney.png"
+        },
+        {
+            "id": 4,
+            "name": "Liver",
+            "image": "images/liver.png"
+        },
+        {
+            "id": 5,
+            "name": "Orthopedic",
+            "image": "images/orthopedic.png"
+        },
+        {
+            "id": 6,
+            "name": "Tooth",
+            "image": "images/tooth.png"
+        }
+    ]
+}

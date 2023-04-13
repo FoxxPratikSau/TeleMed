@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tele_med/widgets/app_preview.dart';
 import 'package:get/get.dart';
 import 'package:tele_med/essentials/auth_service.dart';
+import 'package:tele_med/symptoms1/symptoms_flask.dart';
 
 class HomePage extends StatefulWidget {
   final loginController = Get.find<AuthService>();
@@ -124,7 +125,12 @@ class _HomePageState extends State<HomePage> {
                                 padding: const EdgeInsets.all(10.0),
                                 child: GestureDetector(
                                   onTap: () {
-                                    print('Symptom Checker');
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SymptomChecker(),
+                                      ),
+                                    );
                                   },
                                   child: PhysicalModel(
                                     elevation: 8.0,

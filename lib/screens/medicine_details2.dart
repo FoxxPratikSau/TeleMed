@@ -3,20 +3,19 @@ import 'package:tele_med/constants.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/helpers_n_controllers/cart_controller.dart';
 import 'package:get/get.dart';
-import 'package:tele_med/screens/shop_medicine_page.dart';
 import 'package:tele_med/widgets/dimensions.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'cart_page.dart';
 import '../../widgets/big_font.dart';
 import '../../widgets/reusable_icons.dart';
 
-class MedDetailPage extends StatelessWidget {
+class MedDetailPage2 extends StatelessWidget {
   final int pageId;
-  const MedDetailPage({Key? key, required this.pageId}) : super(key: key);
+  const MedDetailPage2({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var product = Get.find<medicine_controller>().medicine_items[pageId];
+    var product = Get.find<medicine_controller>().medicine_items2[pageId];
     Get.find<medicine_controller>()
         .initProduct(product, Get.find<CartController>());
     return Scaffold(

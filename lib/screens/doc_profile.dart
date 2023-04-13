@@ -2,13 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:tele_med/constants.dart';
+import 'package:get/get.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'package:intl/intl.dart';
+import 'package:tele_med/helpers_n_controllers/doctorList_controller.dart';
 import 'package:tele_med/components/expandabl_text.dart';
 
 class DocProfilePage extends StatefulWidget {
-  const DocProfilePage({super.key});
+  final int pageId;
+  const DocProfilePage({super.key, required this.pageId});
 
   @override
   State<DocProfilePage> createState() => _DocProfilePageState();
@@ -18,6 +21,8 @@ class _DocProfilePageState extends State<DocProfilePage> {
   int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<doctorList_controller>().doctorlist[widget.pageId];
+
     return Scaffold(
       backgroundColor: kBGColor,
       body: SafeArea(
@@ -27,12 +32,15 @@ class _DocProfilePageState extends State<DocProfilePage> {
               padding: const EdgeInsets.only(top: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   TextButton(
-                    onPressed: null,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Icon(
                       Icons.arrow_back_rounded,
                       size: 30.0,
+                      color: kPrimaryColor,
                     ),
                   ),
                 ],
@@ -52,7 +60,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(60.0),
                               child: Image.asset(
-                                'images/sampleProfile.jpg',
+                                product.image!,
                                 height: 150.0,
                                 width: 150.0,
                               ),
@@ -62,8 +70,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return Dialog(
-                                    child:
-                                        Image.asset('images/sampleProfile.jpg'),
+                                    child: Image.asset(product.image!),
                                   );
                                 },
                               );
@@ -75,7 +82,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                         ),
                         Center(
                           child: SmallFont(
-                            text: 'Neurologist',
+                            text: product.prof!,
                             color: Colors.grey.shade600,
                             size: 15.0,
                           ),
@@ -85,7 +92,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                         ),
                         Center(
                           child: BigFont(
-                            text: 'Dr. Nitin Chandra Sahu',
+                            text: product.name!,
                             size: 25.0,
                             fontWeight: FontWeight.w800,
                           ),
@@ -95,7 +102,9 @@ class _DocProfilePageState extends State<DocProfilePage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 60.0, vertical: 20.0),
+                            horizontal: 60.0,
+                            vertical: 20.0,
+                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -195,8 +204,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                         ExpandableText(
                           color: Colors.grey.shade600,
                           fontWeight: FontWeight.w600,
-                          text:
-                              'Dr. Nitin Chandra Sahu is a Neurologist in Bhubaneswar and completed his graduation in AIIMS Delhi. He is a proficient and an honest doctor helping people to cure. ',
+                          text: product.about!,
                         ),
                         const SizedBox(
                           height: 20.0,
@@ -218,9 +226,9 @@ class _DocProfilePageState extends State<DocProfilePage> {
                               (index) {
                                 final date =
                                     DateTime.now().add(Duration(days: index));
-                                final DateFormat formatter = DateFormat('dd');
+                                final DateFormat dFormatter = DateFormat('dd');
                                 final String formattedDate =
-                                    formatter.format(date);
+                                    dFormatter.format(date);
                                 final String day = DateFormat('E').format(date);
                                 final isSelected = selectedIndex == index;
 
@@ -301,7 +309,23 @@ class _DocProfilePageState extends State<DocProfilePage> {
                             color: kPrimaryColor,
                             borderRadius: BorderRadius.circular(15.0),
                             child: GestureDetector(
-                              onTap: () => print('Book'),
+                              onTap: () {
+                                Get.snackbar(
+                                  '',
+                                  '',
+                                  animationDuration: const Duration(seconds: 2),
+                                  barBlur: 10.0,
+                                  titleText: BigFont(
+                                    text: 'Successful',
+                                    color: Colors.red,
+                                    textAlign: TextAlign.left,
+                                    fontWeight: FontWeight.bold,
+                                    size: 20.0,
+                                  ),
+                                  messageText: SmallFont(
+                                      text: 'Appointment Booked Successfully.'),
+                                );
+                              },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 45.0),
