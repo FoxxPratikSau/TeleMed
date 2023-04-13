@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:tele_med/helpers_n_controllers/catagories_controller.dart';
+import 'package:tele_med/helpers_n_controllers/doctorList_controller.dart';
+import 'package:tele_med/models/catagories.dart';
+import 'package:tele_med/models/doctors.dart';
+import 'package:tele_med/screens/doc_profile.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/dimensions.dart';
 import 'package:tele_med/widgets/small_font.dart';
@@ -79,47 +85,53 @@ class _consultation_pageState extends State<consultation_page> {
             SizedBox(
               height: dimensions.size15,
             ),
-            Container(
-              height: dimensions.size100,
-              color: Colors.white,
-              child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, position) {
-                    return _buildcatagoriesItem(position);
-                  }),
-            ),
+            GetBuilder<catagories_controller>(builder: (controller) {
+              return Container(
+                height: dimensions.size100,
+                color: Colors.white,
+                child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.catagorylist.length,
+                    itemBuilder: (context, position) {
+                      return _buildcatagoriesItem(
+                          position, controller.catagorylist[position]);
+                    }),
+              );
+            }),
             SizedBox(
               height: dimensions.size15,
             ),
             Text(
-              "Top Ranking Doctors",
+              "Featured Doctors",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: dimensions.size15,
             ),
-            Expanded(
-              child: Container(
-                width: dimensions.size300,
-                color: Colors.white,
-                child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    itemCount: 8,
-                    itemBuilder: (context, position) {
-                      return _builddoctorsItem(position);
-                    }),
-              ),
-            ),
+            GetBuilder<doctorList_controller>(builder: (controller) {
+              return Expanded(
+                child: Container(
+                  width: dimensions.size300,
+                  color: Colors.white,
+                  child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.vertical,
+                      itemCount: controller.doctorlist.length,
+                      itemBuilder: (context, position) {
+                        return _builddoctorsItem(
+                            position, controller.doctorlist[position]);
+                      }),
+                ),
+              );
+            })
           ],
         ),
       ),
     );
   }
 
-  Widget _buildcatagoriesItem(int index) {
+  Widget _buildcatagoriesItem(int index, Category catagorylist) {
     return Stack(
       children: [
         GestureDetector(
@@ -129,16 +141,26 @@ class _consultation_pageState extends State<consultation_page> {
             margin: EdgeInsets.only(left: 10, right: 5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(dimensions.size20),
-                color: Color.fromARGB(255, 211, 211, 211).withOpacity(0.5)),
+                color: Color.fromARGB(255, 189, 217, 231)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.health_and_safety_outlined,
-                  size: dimensions.size25 * 2.5,
+                Container(
+                  height: 75,
+                  width: 75,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(dimensions.size15),
+                      child: Image.asset(
+                        catagorylist.image!,
+                        fit: BoxFit.cover,
+                      )),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(dimensions.size15),
+                    color: Color.fromARGB(255, 189, 217, 231),
+                  ),
                 ),
                 Text(
-                  "Ear",
+                  catagorylist.name!,
                   style: TextStyle(
                     fontSize: dimensions.size15,
                     fontWeight: FontWeight.w600,
@@ -152,31 +174,36 @@ class _consultation_pageState extends State<consultation_page> {
     );
   }
 
-  Widget _builddoctorsItem(int index) {
+  Widget _builddoctorsItem(int index, Doctor doctorlist) {
     return Stack(
       children: [
         GestureDetector(
+          onTap: () {
+            Get.to(DocProfilePage(pageId: index));
+          },
           child: Container(
             height: dimensions.size20 * 4,
             width: dimensions.size300,
             margin: EdgeInsets.only(bottom: 20),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(dimensions.size15),
-                color: Color.fromARGB(255, 211, 211, 211).withOpacity(0.5)),
+                color: Color.fromARGB(255, 189, 217, 231)),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  height: 70,
-                  width: 70,
+                  height: 75,
+                  width: 75,
                   margin: EdgeInsets.only(left: dimensions.size10),
-                  decoration: BoxDecoration(
+                  child: ClipRRect(
                       borderRadius: BorderRadius.circular(dimensions.size15),
-                      color: Color.fromARGB(255, 7, 18, 95)),
-                  child: Icon(
-                    Icons.person,
-                    size: dimensions.size25 * 2,
-                    color: Colors.white,
+                      child: Image.asset(
+                        doctorlist.image!,
+                        fit: BoxFit.cover,
+                      )),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(dimensions.size15),
+                    color: Color.fromARGB(255, 7, 18, 95),
                   ),
                 ),
                 SizedBox(
@@ -187,9 +214,9 @@ class _consultation_pageState extends State<consultation_page> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SmallFont(text: "Cardiologist"),
+                      SmallFont(text: doctorlist.prof!),
                       Text(
-                        "Dr.Dibya Ranjan Sahu",
+                        doctorlist.name!,
                         style: TextStyle(
                           fontSize: dimensions.size15,
                           fontWeight: FontWeight.w600,

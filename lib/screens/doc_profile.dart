@@ -1,23 +1,31 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tele_med/constants.dart';
+import 'package:tele_med/helpers_n_controllers/doctorList_controller.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'package:intl/intl.dart';
 import 'package:tele_med/components/expandabl_text.dart';
 
 class DocProfilePage extends StatefulWidget {
-  const DocProfilePage({super.key});
+  final int pageId;
+  const DocProfilePage({Key? key, required this.pageId}) : super(key: key);
 
   @override
   State<DocProfilePage> createState() => _DocProfilePageState();
 }
 
 class _DocProfilePageState extends State<DocProfilePage> {
+  
   int selectedIndex = -1;
+  
+  
   @override
   Widget build(BuildContext context) {
+
+    var product = Get.find<doctorList_controller>().doctorlist[widget.pageId];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -50,7 +58,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(60.0),
                             child: Image.asset(
-                              'images/sampleProfile.jpg',
+                              product.image!,
                               height: 150.0,
                               width: 150.0,
                             ),
@@ -61,7 +69,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                               builder: (BuildContext context) {
                                 return Dialog(
                                   child:
-                                      Image.asset('images/sampleProfile.jpg'),
+                                      Image.asset(product.image!),
                                 );
                               },
                             );
@@ -73,7 +81,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                       ),
                       Center(
                         child: SmallFont(
-                          text: 'Neurologist',
+                          text: product.prof!,
                           color: Colors.grey.shade600,
                           size: 15.0,
                         ),
@@ -83,7 +91,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                       ),
                       Center(
                         child: BigFont(
-                          text: 'Dr. Nitin Chandra Sahu',
+                          text: product.name!,
                           size: 25.0,
                           fontWeight: FontWeight.w800,
                         ),
@@ -194,7 +202,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                         color: Colors.grey.shade600,
                         fontWeight: FontWeight.w600,
                         text:
-                            'Dr. Nitin Chandra Sahu is a Neurologist in Bhubaneswar and completed his graduation in AIIMS Delhi. He is a proficient and an honest doctor helping people to cure. ',
+                            product.about!,
                       ),
                       const SizedBox(
                         height: 20.0,
