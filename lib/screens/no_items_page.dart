@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:get/get.dart';
 import 'package:tele_med/widgets/dimensions.dart';
 
-class no_items_page extends StatelessWidget {
+class NoItemsPage extends StatelessWidget {
   final String text;
   final String imagepath;
-  const no_items_page(
+  const NoItemsPage(
       {super.key,
       required this.text,
       this.imagepath = "assets/images/empty_cart.png"});
@@ -31,7 +28,7 @@ class no_items_page extends StatelessWidget {
           child: Center(
               child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.red, fontSize: 16),
           )),
         )

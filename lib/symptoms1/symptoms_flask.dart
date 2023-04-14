@@ -1,8 +1,14 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:tele_med/widgets/big_font.dart';
+import 'package:tele_med/widgets/small_font.dart';
 
 class SymptomChecker extends StatefulWidget {
+  const SymptomChecker({super.key});
+
   @override
   _SymptomCheckerState createState() => _SymptomCheckerState();
 }
@@ -14,7 +20,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
   String _filter = '';
   bool _isSearching = false;
   late AnimationController _animationController;
-  final GlobalKey<AnimatedListState> _selectedSymptomListKey =
+  final GlobalKey<AnimatedListState> selectedSymptomListKey =
       GlobalKey<AnimatedListState>();
 
   @override
@@ -174,16 +180,16 @@ class _SymptomCheckerState extends State<SymptomChecker>
     'yellow_crust_ooze',
   ];
 
-  Map<String, bool> _symptomCheckboxes = {};
+  Map<String, bool> symptomCheckboxes = {};
 
   Future<void> _predictDisease(BuildContext context) async {
-    List<String> _symptoms = _symptomCheckboxes.keys
-        .where((symptom) => _symptomCheckboxes[symptom] == true)
+    List<String> symptoms = symptomCheckboxes.keys
+        .where((symptom) => symptomCheckboxes[symptom] == true)
         .toList();
 
     final response = await http.post(
       Uri.parse('http://10.0.2.2:5000/predict'),
-      body: json.encode({'symptoms': _symptoms}),
+      body: json.encode({'symptoms': symptoms}),
       headers: {'Content-Type': 'application/json'},
     );
 
@@ -205,38 +211,48 @@ class _SymptomCheckerState extends State<SymptomChecker>
 
   void _clearAllSelectedSymptoms() {
     setState(() {
-      _symptomCheckboxes.updateAll((key, value) => false);
+      symptomCheckboxes.updateAll((key, value) => false);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    List<String> _filteredSymptoms = symptomList
+    List<String> filteredSymptoms = symptomList
         .where(
             (symptom) => symptom.toLowerCase().contains(_filter.toLowerCase()))
         .toList();
     bool anySymptomSelected =
-        _symptomCheckboxes.values.any((isSelected) => isSelected);
+        symptomCheckboxes.values.any((isSelected) => isSelected);
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
+        preferredSize: const Size.fromHeight(80),
         child: AppBar(
+          backgroundColor: const Color.fromARGB(255, 2, 2, 119),
           titleSpacing: 20,
           elevation: 0,
-          title: Text('Predict Your Disease'),
-          shape: RoundedRectangleBorder(
+          title: BigFont(
+            text: 'Predict Your Disease',
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.elliptical(
-                30,20,
+                30,
+                20,
               ),
             ),
           ),
           actions: [
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
+            GestureDetector(
+              child: Image.asset(
+                'images/search.png',
+                scale: 17.0,
+                color: Colors.white,
+              ),
+              onTap: () {
                 setState(() {
                   _isSearching = !_isSearching;
                 });
@@ -251,7 +267,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
           children: [
             if (_isSearching)
               Padding(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: TextField(
                   controller: _searchQueryController,
                   decoration: InputDecoration(
@@ -271,23 +287,31 @@ class _SymptomCheckerState extends State<SymptomChecker>
                 child: Wrap(
                   spacing: 4,
                   runSpacing: 4,
-                  children: _filteredSymptoms.map((symptom) {
+                  children: filteredSymptoms.map((symptom) {
                     return ChoiceChip(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
-                        side: BorderSide(color: Colors.blue),
+                        side: const BorderSide(
+                            color: Color.fromARGB(255, 2, 2, 119)),
                       ),
-                      label: Text(symptom),
+                      label: SmallFont(
+                        text: symptom,
+                        color: symptomCheckboxes[symptom] ?? false
+                            ? Colors.white
+                            : Colors.black,
+                        size: 15.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                       backgroundColor: Colors.white,
-                      selectedColor: Colors.blue,
+                      selectedColor: const Color.fromARGB(255, 2, 2, 119),
                       labelStyle: TextStyle(
-                          color: _symptomCheckboxes[symptom] ?? false
+                          color: symptomCheckboxes[symptom] ?? false
                               ? Colors.white
                               : Colors.black),
-                      selected: _symptomCheckboxes[symptom] ?? false,
+                      selected: symptomCheckboxes[symptom] ?? false,
                       onSelected: (bool selected) {
                         setState(() {
-                          _symptomCheckboxes[symptom] = selected;
+                          symptomCheckboxes[symptom] = selected;
                         });
                       },
                     );
@@ -300,9 +324,14 @@ class _SymptomCheckerState extends State<SymptomChecker>
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 2),
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
+                      color: const Color.fromARGB(255, 2, 2, 119),
+                      width: 3,
+                    ),
                     color: Colors.white,
                   ),
                   child: Stack(
@@ -313,37 +342,43 @@ class _SymptomCheckerState extends State<SymptomChecker>
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
-                            child: Text(
-                              'Your selected symptoms are:',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue,
-                              ),
+                            child: BigFont(
+                              text: 'Your selected symptoms are:',
+                              size: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
                             ),
                           ),
                           _buildSelectedSymptoms(),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ElevatedButton(
-                                onPressed: () => _predictDisease(context),
-                                child: Text('Next'),
+                              TextButton(
+                                onPressed: _clearAllSelectedSymptoms,
+                                child: SmallFont(
+                                  text: 'Clear All',
+                                  color: const Color.fromARGB(255, 2, 2, 119),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () => _predictDisease(context),
+                                child: Container(
+                                  height: 40.0,
+                                  width: 60.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    color: const Color.fromARGB(255, 2, 2, 119),
+                                  ),
+                                  child: Center(
+                                      child: SmallFont(
+                                    text: 'Next',
+                                    color: Colors.white,
+                                  )),
+                                ),
                               ),
                             ],
                           ),
                         ],
-                      ),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: TextButton(
-                          onPressed: _clearAllSelectedSymptoms,
-                          child: Text(
-                            'Clear All',
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
                       ),
                     ],
                   ),
@@ -390,12 +425,17 @@ class _SymptomCheckerState extends State<SymptomChecker>
   }
 
   Widget _buildSelectedSymptoms() {
-    List<Widget> selectedSymptomChips = _symptomCheckboxes.entries
+    List<Widget> selectedSymptomChips = symptomCheckboxes.entries
         .where((entry) => entry.value)
         .map((entry) => Chip(
-              label: Text(entry.key),
-              backgroundColor: Colors.blue,
-              labelStyle: TextStyle(color: Colors.white),
+              label: SmallFont(
+                text: entry.key,
+                color: Colors.white,
+                size: 15.0,
+                fontWeight: FontWeight.w600,
+              ),
+              backgroundColor: const Color.fromARGB(255, 2, 2, 119),
+              //labelStyle: TextStyle(color: Colors.white),
             ))
         .toList();
 

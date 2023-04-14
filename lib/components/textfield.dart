@@ -1,18 +1,22 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:tele_med/constants.dart';
+import 'package:tele_med/widgets/constants.dart';
 
 class CustomTextField extends StatefulWidget {
   TextEditingController? fieldController;
   String? labelledText;
   bool obscureTextC;
   String? title;
+  TextInputType? keyboardType;
+  Function(String)? onChanged;
   CustomTextField(
       {super.key,
       this.fieldController,
       this.labelledText,
       this.obscureTextC = false,
+      this.onChanged,
+      this.keyboardType,
       this.title});
 
   @override
@@ -27,6 +31,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         elevation: 10.0,
         borderRadius: BorderRadius.circular(15.0),
         child: TextFormField(
+          keyboardType: widget.keyboardType,
           controller: widget.fieldController,
           obscureText: widget.obscureTextC,
           decoration: InputDecoration(
@@ -47,10 +52,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             }
             return null;
           },
-          onChanged: (value) {
-            widget.title = value;
-            setState(() {});
-          },
+          onChanged: widget.onChanged,
         ),
       ),
     );

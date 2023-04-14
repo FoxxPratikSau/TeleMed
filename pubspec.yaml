@@ -31,18 +31,24 @@ dependencies:
   animated_text_kit: ^4.2.2
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.1.0
+  firebase_auth: ^4.4.0
+  firebase_core: ^2.9.0
   flutter:
     sdk: flutter
+  flutter_facebook_auth: ^5.0.8
   get: ^4.6.5
   google_fonts: ^4.0.3
+  google_sign_in: ^6.1.0
   http: ^0.13.5
   image: ^4.0.15
   image_picker: ^0.8.7+2
-  intl: ^0.18.0
+  intl: ^0.17.0
   loading_animation_widget: ^1.2.0+4
+  modal_progress_hud_nsn: ^0.3.0
   provider: ^6.0.5
   shared_preferences: ^2.1.0
-  tflite_flutter: ^0.9.1
+  tflite_flutter: ^0.7.0
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -62,6 +68,10 @@ flutter:
   assets:
     - assets/images/
     - assets/files/
+    - assets/
+    - assets/symptom_checker.tflite
+    - assets/diseaseNames.txt
+    - assets/symptoms.txt
     - images/
     #   - images/a_dot_ham.jpeg
     # An image asset can refer to one or more resolution-specific "variants", see
