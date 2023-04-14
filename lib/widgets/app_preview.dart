@@ -2,15 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 import 'package:tele_med/widgets/constants.dart';
 
 class MyPageView extends StatefulWidget {
   final int numPages;
-  final List<String> pageTexts;
+  final List<String> pageImages;
   const MyPageView(
-      {super.key, required this.numPages, required this.pageTexts});
+      {super.key, required this.numPages, required this.pageImages});
 
   @override
   _MyPageViewState createState() => _MyPageViewState();
@@ -27,7 +26,7 @@ class _MyPageViewState extends State<MyPageView> {
         _currentPageValue = _controller.page!;
       });
     });
-    Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+    Timer.periodic(const Duration(seconds: 4), (Timer timer) {
       if (_currentPageValue < widget.numPages - 1) {
         _currentPageValue += 1.0;
       } else {
@@ -55,15 +54,7 @@ class _MyPageViewState extends State<MyPageView> {
       children: [
         Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                kPrimaryColor,
-                const Color(0xFF000030),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            color: kPrimaryColor,
+            color: Colors.transparent,
             borderRadius: BorderRadius.circular(30.0),
           ),
           height: 250.0,
@@ -71,20 +62,10 @@ class _MyPageViewState extends State<MyPageView> {
             controller: _controller,
             children: List.generate(
               widget.numPages,
-              (index) => Container(
-                margin: const EdgeInsets.only(
-                    top: 50.0, bottom: 15.0, left: 15.0, right: 70.0),
-                child: Text(
-                  widget.pageTexts[index],
-                  style: GoogleFonts.righteous(
-                    textStyle: TextStyle(
-                      color: kBGColor,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 40.0,
-                    ),
-                  ),
-                ),
-              ),
+              (index) => ClipRRect(
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: Image.asset(widget.pageImages[index],
+                      fit: BoxFit.fitHeight)),
             ),
           ),
         ),

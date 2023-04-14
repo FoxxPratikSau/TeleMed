@@ -36,7 +36,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> texts = ["ABCD🤣", "Nitin💯", "Priyansh🔥"];
+    List<String> images = [
+      "images/1.png",
+      "images/2.png",
+      "images/3.png",
+      "images/4.png",
+      "images/5.png"
+    ];
     String checkTime() {
       final hour = DateTime.now().hour;
       if (hour >= 0 && hour < 12) {
@@ -94,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               children: [
-                MyPageView(numPages: 3, pageTexts: texts),
+                MyPageView(numPages: images.length, pageImages: images),
                 SizedBox(
                   height: dimensions.size20,
                 ),
