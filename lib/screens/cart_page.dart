@@ -1,16 +1,41 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/helpers_n_controllers/cart_controller.dart';
 import 'package:tele_med/screens/no_items_page.dart';
-import 'package:tele_med/widgets/small_font.dart';
 import '../../widgets/big_font.dart';
 import '../../widgets/reusable_icons.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:tele_med/widgets/dimensions.dart';
+import 'package:quickalert/quickalert.dart';
+import 'package:tele_med/essentials/auth_service.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({Key? key}) : super(key: key);
+class CartPage extends StatefulWidget {
+  final loginController = Get.find<AuthService>();
+  CartPage({Key? key}) : super(key: key);
+
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  final razorpay = Razorpay();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, handlePaymentSuccess);
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, handlePaymentError);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handleExternalWallet);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    razorpay.clear();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -226,9 +251,9 @@ class CartPage extends StatelessWidget {
           }),
         ],
       ),
-      bottomNavigationBar:
-          GetBuilder<CartController>(builder: (cartController) {
-        return Container(
+      bottomNavigationBar: GetBuilder<CartController>(
+        builder: (cartController) {
+          return Container(
             height: dimensions.size100,
             padding: EdgeInsets.symmetric(
               vertical: dimensions.size10,
@@ -265,7 +290,33 @@ class CartPage extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        //onTap: () => cartController.addtohistory(),
+                        onTap: () {
+                          var options = {
+                            'key': 'rzp_test_Tn7MWOXGjqVPbn',
+                            'amount': cartController.totalAmount * 100,
+                            "currency": "INR",
+                            'name': 'TeleMed',
+                            'description': 'Buy Medicines',
+                            'image': 'images/TelemedLogo.png',
+                            'prefill': {
+                              'name':
+                                  widget.loginController.returnUserData().name,
+                              'contact': widget.loginController
+                                  .returnUserData()
+                                  .phoneNumber,
+                              'email':
+                                  widget.loginController.returnUserData().email
+                            },
+                            'external': {
+                              'wallets': ['paytm']
+                            }
+                          };
+                          try {
+                            razorpay.open(options);
+                          } catch (e) {
+                            debugPrint('Error: $e');
+                          }
+                        },
                         child: Container(
                           padding: EdgeInsets.all(dimensions.size20),
                           decoration: BoxDecoration(
@@ -289,8 +340,32 @@ class CartPage extends StatelessWidget {
                       ),
                     ],
                   )
-                : Container());
-      }),
+                : Container(),
+          );
+        },
+      ),
     );
   }
+
+  void handlePaymentSuccess(PaymentSuccessResponse response) {
+    QuickAlert.show(
+      context: context,
+      title: 'Transaction Successful!',
+      type: QuickAlertType.success,
+      text: 'Payment ID: ${response.paymentId}',
+      confirmBtnColor: const Color.fromARGB(255, 34, 18, 156),
+    );
+  }
+
+  void handlePaymentError(PaymentFailureResponse response) {
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.error,
+      title: 'Transaction Failed',
+      text: '${response.message}',
+      confirmBtnColor: const Color.fromARGB(255, 34, 18, 156),
+    );
+  }
+
+  handleExternalWallet() {}
 }

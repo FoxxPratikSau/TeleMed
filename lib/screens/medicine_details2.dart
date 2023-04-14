@@ -44,7 +44,7 @@ class MedDetailPage2 extends StatelessWidget {
                     builder: (controller) {
                       return GestureDetector(
                         onTap: () {
-                          Get.to(const CartPage());
+                          Get.to(CartPage());
                         },
                         child: Stack(
                           children: [

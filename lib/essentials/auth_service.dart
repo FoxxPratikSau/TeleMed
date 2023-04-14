@@ -14,6 +14,7 @@ class AuthService extends GetxController {
     final userData = UserData(
         email: userCredential.value!.user!.email.toString(),
         name: userCredential.value!.user!.displayName.toString(),
+        phoneNumber: userCredential.value!.user!.phoneNumber.toString(),
         photoUrl: userCredential.value!.user!.photoURL.toString());
     return userData;
   }

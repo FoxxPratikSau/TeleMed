@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:tele_med/widgets/big_font.dart';
+import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/widgets/small_font.dart';
 
 class SymptomChecker extends StatefulWidget {
@@ -395,26 +396,39 @@ class _SymptomCheckerState extends State<SymptomChecker>
       context: context,
       builder: (BuildContext context) {
         return Dialog(
-          insetPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 80),
+          backgroundColor: kBGColor,
+          insetPadding:
+              const EdgeInsets.symmetric(horizontal: 30, vertical: 300),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Your Predicted Disease Is",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                BigFont(
+                  text: "Predicted Disease",
+                  size: 24,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  _disease!,
-                  style: TextStyle(fontSize: 20, color: Colors.blue),
+                SmallFont(
+                  text: _disease!,
+                  fontWeight: FontWeight.w600,
+                  size: 20,
+                  color: const Color.fromARGB(255, 2, 2, 119),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    backgroundColor: const Color.fromARGB(255, 2, 2, 119),
+                  ),
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text('Close'),
+                  child: SmallFont(
+                    text: 'Close',
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),

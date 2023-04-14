@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tele_med/widgets/constants.dart';
-import 'package:get/get.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'package:intl/intl.dart';
@@ -19,10 +18,8 @@ class DocProfilePage extends StatefulWidget {
 }
 
 class _DocProfilePageState extends State<DocProfilePage> {
-  
   int selectedIndex = -1;
-  
-  
+
   @override
   Widget build(BuildContext context) {
     var product = Get.find<doctorList_controller>().doctorlist[widget.pageId];
@@ -314,21 +311,42 @@ class _DocProfilePageState extends State<DocProfilePage> {
                             borderRadius: BorderRadius.circular(15.0),
                             child: GestureDetector(
                               onTap: () {
-                                Get.snackbar(
-                                  '',
-                                  '',
-                                  animationDuration: const Duration(seconds: 2),
-                                  barBlur: 10.0,
-                                  titleText: BigFont(
-                                    text: 'Successful',
-                                    color: Colors.red,
-                                    textAlign: TextAlign.left,
-                                    fontWeight: FontWeight.bold,
-                                    size: 20.0,
-                                  ),
-                                  messageText: SmallFont(
-                                      text: 'Appointment Booked Successfully.'),
-                                );
+                                if (selectedIndex.isNegative) {
+                                  Get.snackbar(
+                                    '',
+                                    '',
+                                    animationDuration:
+                                        const Duration(seconds: 2),
+                                    barBlur: 10.0,
+                                    titleText: BigFont(
+                                      text: 'Warning',
+                                      color: Colors.red,
+                                      textAlign: TextAlign.left,
+                                      fontWeight: FontWeight.bold,
+                                      size: 20.0,
+                                    ),
+                                    messageText:
+                                        SmallFont(text: 'Select a date first.'),
+                                  );
+                                } else {
+                                  Get.snackbar(
+                                    '',
+                                    '',
+                                    animationDuration:
+                                        const Duration(seconds: 2),
+                                    barBlur: 10.0,
+                                    titleText: BigFont(
+                                      text: 'Successful',
+                                      color: Colors.red,
+                                      textAlign: TextAlign.left,
+                                      fontWeight: FontWeight.bold,
+                                      size: 20.0,
+                                    ),
+                                    messageText: SmallFont(
+                                        text:
+                                            'Appointment Booked Successfully.'),
+                                  );
+                                }
                               },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
