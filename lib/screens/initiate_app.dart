@@ -14,7 +14,7 @@ class InitiatePage extends StatefulWidget {
 
 class _InitiatePageState extends State<InitiatePage> {
   final List<Widget> _pages = <Widget>[
-    const DocProfilePage(),
+    
     const ConsultPage(),
     const ShopMedicinePage(),
     const ProfilePage(),

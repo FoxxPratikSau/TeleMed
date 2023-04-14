@@ -1,0 +1,84 @@
+{
+    "doctors": [
+        {
+            "id": 1,
+            "name": "Subhash Chandra",
+            "about": "Dr. Subhash Chandra is a renowned cardiologist currently serving as the Chairman and Head of the Cardiology Department at BLK Super Speciality Hospital in Delhi. With an extensive experience of several years in the field, he has previously worked at prestigious medical institutions including JN Medical College, Fortis Escorts Heart Institute, Narinder Mohan Heart Center, AIIMS, and Indraprastha Apollo Hospital in Delhi. Dr. Chandra is a specialist in treating a wide range of heart ailments such as valve heart disease, pacemaker, pulmonary hypertension (PH), and strain rate imaging, among others. His expertise and experience make him a trusted name in the medical community, and his patients speak highly of his compassionate and patient-centric approach to treatment.",
+            "exp": 33,
+            "image": "images/doc1.png",
+            "prof": "Cardiologist"
+        },
+        {
+            "id": 2,
+            "name": "Amit Agarwal",
+            "about": "Dr. Amit Agarwal is a highly experienced medical oncologist currently serving as the Head of the Medical Oncology Department and Director at BLK Super Speciality Hospital in Delhi. Prior to his current role, he has worked at several prestigious institutions, including International Oncology and Fortis Hospital, Mount Vernon Hospital in Hertfordshire, Addenbrookes NHS Trust in the UK, Churchill and Radcliffe Hospital in Oxford, Batra Hospital and Medical Research Center, and Royal Hospital in Oman. Dr. Agarwal specializes in providing comprehensive cancer care and treatment to patients with various types of cancers. Patients from around the world can easily book an appointment with Dr. Agarwal using MedMonks, a trusted platform that helps patients access quality medical care in India. His patients appreciate his empathetic and compassionate approach towards their care, making him one of the most sought-after oncologists in the country.",
+            "exp": 26,
+            "image": "images/doc2.png",
+            "prof": "Oncologist"
+        },
+        {
+            "id": 3,
+            "name": "Ritika Malhotra",
+            "about": "Dr. Ritika Malhotra is a highly experienced dental consultant currently serving as a consultant in the Department of Dental Sciences at Fortis Memorial Research Institute (FMRI) in Gurgaon. With over a decade of professional experience, she has a keen interest in aesthetics and smile design. Dr. Malhotra has successfully treated numerous patients in India, providing them with the best medical care possible. She has published several papers in India and abroad and is a proud member of prestigious medical associations. As a strong advocate of health awareness and a healthy lifestyle, Dr. Malhotra's compassionate patient care and lifestyle advocacy have helped several patients recover from various dental disorders. She is a committed doctor who has undergone specialized training programs and has attended many conferences held across the country, further enhancing her expertise in the field",
+            "exp": 15,
+            "image": "images/doc3.png",
+            "prof": "Dentist"
+        },
+        {
+            "id": 4,
+            "name": "Ashok Vaid",
+            "about": "Dr. Ashok Vaid is a renowned medical oncologist currently working with Medanta The Medicity since 2009. He has previously worked with several reputed hospitals, including AIIMS, Rajiv Gandhi Cancer Institute & Research Center in Delhi, Artemis Health Institute in Gurgaon, SGPGI in Lucknow, and Government Medical College in Jammu & Kashmir. Dr. Vaid specializes in Medical & Pediatric Oncology, Hematology, Stem Cell or bone marrow transplant. He has performed the first 25 bone marrow transplants in India, establishing himself as a pioneer in the field. Dr. Vaid is a well-known figure in the medical community and has been a crucial part of numerous seminars, conferences, and workshops. He has also been an active participant in over 40 clinical research studies conducted by national and international institutes, reflecting his commitment to staying up-to-date with the latest advancements in his field. Dr. Vaid's dedication and expertise have earned him the trust and respect of his patients, making him one of the most sought-after oncologists in the country.",
+            "exp": 30,
+            "image": "images/doc4.png",
+            "prof": "Hematologist"
+        },
+        {
+            "id": 5,
+            "name": "Saurabh Pokhariyal",
+            "about": "Dr. Saurabh Pokhriyal is a highly skilled nephrologist who has worked at prestigious hospitals such as Medanta The Medicity, Fortis Vasant Kunj, and Apollo Hospital in the past. Currently, he is associated with Manipal Hospitals in Dwarka, Delhi NCR. Dr. Pokhriyal's expertise in Nephrology and Renal Transplant Medicine covers a wide range of nephrology, but he has a particular interest in complex cases of nephrology and performing ABO-contrary transplants. He has also worked extensively in the primary treatment of Glomerular Diseases. Dr. Pokhriyal has authored several articles published in various national and global journals and books, highlighting his expertise in the field. With his vast experience and expertise, Dr. Pokhriyal is dedicated to providing the best possible medical care to his patients.",
+            "exp": 22,
+            "image": "images/doc5.png",
+            "prof": "Nephrologist"
+        },
+        {
+            "id": 6,
+            "name": "Rajiv Anand",
+            "about": "Dr. Rajiv Anand is a highly experienced neurologist with a career spanning 36 years. He has worked at Jaipur Golden Hospital as the Chairman of the Neurology Department and served as a Visiting Neurology Consultant at the Rajiv Gandhi Cancer Institute & Research Center. Currently, he is the Director of the Neurology Department at BLK Super Speciality Hospital in Delhi, one of the best hospitals in the city. Dr. Anand is a member of several medical associations, allowing him to stay up-to-date with the latest advancements in his field. He has also contributed his knowledge to several medical journals, further highlighting his expertise in the field of neurology. With his vast experience and knowledge, Dr. Anand is dedicated to providing his patients with the best possible medical care.",
+            "exp": 36,
+            "image": "images/doc6.png",
+            "prof": "Neurologist"
+        },
+        {
+            "id": 7,
+            "name": "Jyotsna Oak",
+            "about": "Dr Jyotsna Oak is a Rheumatology Consultant at the Kokilaben Dhirubhai Ambani Hospital & Medical Research Institute in Mumbai. With specialization in managing various disorders and conditions, including Ankylosing Spondylitis, Rheumatoid arthritis, Osteoarthritis, Vasculitis, Osteoporosis, Gout, Scleroderma, Psoriasis (Psoriatic Arthritis), Systemic Lupus Erythematosus (SLE), and Pediatric Rheumatology, she treats over 5000 patients annually at the hospital. Dr. Oak has also worked at SEM Hospital, KEM Hospital, and Sion LTNG Hospital in Mumbai.",
+            "exp": 25,
+            "image": "images/doc7.png",
+            "prof": "Rheumatologist"
+        },
+        {
+            "id": 8,
+            "name": "Rajesh Ahlawat",
+            "about": "Dr. Rajesh Ahlawat, who has completed his MBBS and MS (General Surgery) from KGMC, Lucknow, MCh (Urology) from AIIMS, and MNAMS (General Surgery) from DNB Board, New Delhi, has accomplished many achievements throughout his career. He has established the world's first renal transplant and is currently serving as the Chairman of the Urologist department at Medanta The Medicity in Gurugram. His areas of expertise include Robotic Kidney Transplantation, Robotic Urology Nephrectomy, Laparoscopic, and Endourology. Dr. Ahlawat has also been recognized with various awards such as the President's Gold Medal by USI in 2016, and he has successfully established four Urology and Suprarrenal Transplant programs in India.",
+            "exp": 38,
+            "image": "images/doc8.png",
+            "prof": "Urologist"
+        },
+        {
+            "id": 9,
+            "name": "Vikas Singhal",
+            "about": "Dr. Vishal Singhal is a dedicated practitioner who values ethics and honesty when it comes to caring for his patients. He is committed to practicing Evidence Based Medicine. Dr. Singhal received his medical degree from Maulana Azad Medical College and went on to receive his surgical training in Birmingham, Coventry, and Leeds, followed by higher training in America. He completed a five-year surgical residency at the Guthrie Clinic in Pennsylvania. With his extensive training and commitment to ethical patient care, Dr. Vishal Singhal is a highly respected and sought-after practitioner in his field.",
+            "exp": 16,
+            "image": "images/doc9.png",
+            "prof": "Gastroenterologist"
+        },
+        {
+            "id": 10,
+            "name": "Samir Parikh",
+            "about": "Dr. Samir Parikh has an experience of almost two decades behind him where he has contributed to promoting the idea of mental health awareness in the country. He possesses excellent oratory skills and has had the honour to unleash his wisdom and knowledge in various forums that exist nationally and internationally. He is known to be one of the most renowned and respected mental health- experts, who have restored the sound health of many patients.",
+            "exp": 18,
+            "image": "images/doc10.png",
+            "prof": "Psychiatrist"
+        }
+    ]
+}

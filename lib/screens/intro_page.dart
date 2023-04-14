@@ -3,6 +3,7 @@ import 'package:tele_med/constants.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:tele_med/screens/signup_page.dart';
+import 'package:tele_med/symptoms1/symptoms_flask.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class IntroPage extends StatelessWidget {
@@ -77,7 +78,7 @@ class IntroPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Signup(),
+                        builder: (context) => SymptomChecker(),
                       ),
                     );
                   }),
