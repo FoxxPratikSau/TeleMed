@@ -17,7 +17,7 @@
         {
             "id": 3,
             "name": "Ibuprofen",
-            "desc": "Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) commonly used to reduce fever, relieve pain, and alleviate inflammation. It works by blocking the production of certain chemicals in the body that cause pain and inflammation. It is used to treat a variety of conditions, including headaches, dental pain, menstrual cramps, muscle aches, and arthritis. Ibuprofen is available in different formulations, including tablets, capsules, suspensions, and injections, and is typically taken orally. ",
+            "desc": "Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) commonly used to reduce fever, relieve pain, and alleviate inflammation. It works by blocking the production of certain chemicals in the body that cause pain and inflammation. It is used to treat a variety of conditions, including headaches, dental pain, menstrual cramps, muscle aches, and arthritis. ",
             "price": 550,
             "image": "images/Ibuprofen.png"
         },

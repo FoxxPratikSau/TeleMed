@@ -11,7 +11,7 @@ class ReusableIcon extends StatelessWidget {
     required this.icon,
     this.backgroundColor = const Color(0xFFfcf4e4),
     this.iconColor = const Color(0xFF756d54),
-    this.size = 40,
+    this.size = 55,
   }) : super(key: key);
 
   @override

@@ -1,10 +1,18 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:tele_med/components/textfield.dart';
-import 'package:tele_med/constants.dart';
+import 'package:tele_med/widgets/constants.dart';
+import 'package:tele_med/screens/initiate_app.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'package:tele_med/screens/signup_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tele_med/essentials/auth_service.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:get/get.dart';
+import 'package:tele_med/essentials/user_data.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -14,122 +22,309 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final loginController = Get.put(AuthService());
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  String email = "";
-  String password = "";
+  final auth = FirebaseAuth.instance;
+  String email = '';
+  String password = '';
   bool change = false;
+  bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            'images/profile_solid.png',
-            scale: 2.7,
-            color: Colors.black26,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          BigFont(
-            text: "Welcome Back",
-            size: 35,
-            color: Colors.black87,
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          SmallFont(
-            text: "Sign in to Continue",
-            color: Colors.grey,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Scaffold(
+      backgroundColor: kBGColor,
+      body: SafeArea(
+        child: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: Material(
+            color: kBGColor,
+            child: ListView(
               children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.email_outlined,
-                      size: 35,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    CustomTextField(
-                      fieldController: emailController,
-                      labelledText: 'EMAIL',
-                      title: email,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.lock_open_outlined,
-                      size: 35,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    CustomTextField(
-                      fieldController: passwordController,
-                      labelledText: 'PASSWORD',
-                      title: password,
-                      obscureTextC: true,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SmallFont(
-                      text: "Forgot Password?",
-                      color: kPrimaryColor,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                IntroButton(
-                  onPress: null,
-                  bgColor: kPrimaryColor,
-                  title: 'LOGIN',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SmallFont(text: "Don't have account? "),
-                    GestureDetector(
-                      onTap: (() {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Signup(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Image.asset(
+                      'images/profile_solid.png',
+                      scale: 2.7,
+                      color: Colors.black45,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    BigFont(
+                      text: "Welcome Back",
+                      size: 35,
+                      color: Colors.black87,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    SmallFont(
+                      text: "Sign in to Continue",
+                      color: Colors.grey,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.email_outlined,
+                                size: 35,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              CustomTextField(
+                                onChanged: (value) {
+                                  email = value;
+                                  setState(() {});
+                                },
+                                keyboardType: TextInputType.emailAddress,
+                                fieldController: emailController,
+                                labelledText: 'EMAIL',
+                                title: email,
+                              ),
+                            ],
                           ),
-                        );
-                      }),
-                      child: SmallFont(
-                        text: "Create a new account",
-                        color: Colors.red,
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.lock_open_outlined,
+                                size: 35,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              CustomTextField(
+                                onChanged: (value) {
+                                  password = value;
+                                  setState(() {});
+                                },
+                                keyboardType: TextInputType.visiblePassword,
+                                fieldController: passwordController,
+                                labelledText: 'PASSWORD',
+                                title: password,
+                                obscureTextC: true,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              SmallFont(
+                                text: "Forgot Password?",
+                                color: kPrimaryColor,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          IntroButton(
+                            onPress: () async {
+                              setState(() {
+                                showSpinner = true;
+                              });
+                              try {
+                                await auth.signInWithEmailAndPassword(
+                                    email: email, password: password);
+                                Get.snackbar(
+                                  '',
+                                  '',
+                                  animationDuration: const Duration(seconds: 1),
+                                  barBlur: 5.0,
+                                  titleText: BigFont(
+                                    text: 'Login Successfull',
+                                    color: Colors.red,
+                                    textAlign: TextAlign.left,
+                                    fontWeight: FontWeight.bold,
+                                    size: 20.0,
+                                  ),
+                                  messageText: SmallFont(
+                                      text: 'Will be available soon.'),
+                                );
+                                setState(() {
+                                  showSpinner = false;
+                                });
+                                //Change screen to main Screen and use Name and Default image from firestore.
+                              } on FirebaseAuthException catch (e) {
+                                if (e.code == 'user-not-found') {
+                                  Get.snackbar(
+                                    '',
+                                    '',
+                                    animationDuration:
+                                        const Duration(seconds: 2),
+                                    barBlur: 5.0,
+                                    titleText: BigFont(
+                                      text: 'Attention',
+                                      color: Colors.red,
+                                      textAlign: TextAlign.left,
+                                      fontWeight: FontWeight.bold,
+                                      size: 20.0,
+                                    ),
+                                    messageText: SmallFont(
+                                        text:
+                                            'User not Found, Create an Account.'),
+                                  );
+                                  setState(
+                                    () {
+                                      showSpinner = false;
+                                    },
+                                  );
+                                } else if (e.code == 'wrong-password') {
+                                  Get.snackbar(
+                                    '',
+                                    '',
+                                    animationDuration:
+                                        const Duration(seconds: 2),
+                                    barBlur: 5.0,
+                                    titleText: BigFont(
+                                      text: 'Attention',
+                                      color: Colors.red,
+                                      textAlign: TextAlign.left,
+                                      fontWeight: FontWeight.bold,
+                                      size: 20.0,
+                                    ),
+                                    messageText:
+                                        SmallFont(text: 'Wrong Password.'),
+                                  );
+                                }
+                                setState(() {
+                                  showSpinner = false;
+                                });
+                              } catch (e) {
+                                print(e);
+                                setState(() {
+                                  showSpinner = false;
+                                });
+                              }
+                              emailController.clear();
+                              passwordController.clear();
+                            },
+                            bgColor: kPrimaryColor,
+                            title: 'LOGIN',
+                            cHeight: 60.0,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SmallFont(text: "Don't have account? "),
+                              GestureDetector(
+                                onTap: (() {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Signup(),
+                                    ),
+                                  );
+                                }),
+                                child: SmallFont(
+                                  text: "Create a new account",
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      //margin: const EdgeInsets.only(bottom: 20.0),
+                      height: 40,
+                      width: double.maxFinite,
+                      color: kBGColor,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          MaterialButton(
+                            onPressed: () async {
+                              setState(() {
+                                showSpinner = true;
+                              });
+                              final UserCredential? userCredential =
+                                  await loginController.signInWithGoogle();
+                              try {
+                                if (userCredential != null) {
+                                  // final User user = userCredential.user!;
+                                  // final userData = Get.put(UserData(
+                                  //   email: user.email.toString(),
+                                  //   name: user.displayName.toString(),
+                                  //   photoUrl: user.photoURL.toString(),
+                                  // ));
+                                  Get.snackbar(
+                                    '',
+                                    '',
+                                    animationDuration:
+                                        const Duration(seconds: 1),
+                                    barBlur: 5.0,
+                                    titleText: BigFont(
+                                      text: 'Successfull',
+                                      color: Colors.red,
+                                      textAlign: TextAlign.left,
+                                      fontWeight: FontWeight.bold,
+                                      size: 20.0,
+                                    ),
+                                    messageText: SmallFont(
+                                        text: 'Logged In successfully.'),
+                                  );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => InitiatePage(),
+                                    ),
+                                  );
+                                  setState(() {
+                                    showSpinner = false;
+                                  });
+                                } else {
+                                  print(
+                                      'User cancelled the sign-in/sign-up flow');
+                                }
+                              } catch (e) {
+                                print(e);
+                              }
+                            },
+                            child: Image.asset("images/google_logo.png"),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          MaterialButton(
+                            onPressed: null,
+                            child: Image.asset("images/facebook_logo.png"),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          MaterialButton(
+                            onPressed: null,
+                            child: Image.asset("images/twitter_logo.png"),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -137,38 +332,7 @@ class _SignInState extends State<SignIn> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            height: 40,
-            width: double.maxFinite,
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: null,
-                  child: Image.asset("images/google_logo.png"),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                GestureDetector(
-                  onTap: null,
-                  child: Image.asset("images/facebook_logo.png"),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                GestureDetector(
-                  onTap: null,
-                  child: Image.asset("images/twitter_logo.png"),
-                ),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
