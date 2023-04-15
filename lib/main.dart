@@ -6,16 +6,19 @@ import 'package:tele_med/helpers_n_controllers/catagories_controller.dart';
 import 'package:tele_med/helpers_n_controllers/doctorList_controller.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/helpers_n_controllers/dependencies.dart' as dep;
+import 'helpers_n_controllers/camera_control.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await dep.init();
-  runApp(const MyApp());
+  final cameraControl = Get.put(CameraControl());
+  runApp(MyApp(cameras: cameraControl));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final CameraControl cameras;
+  const MyApp({required this.cameras, super.key});
 
   @override
   Widget build(BuildContext context) {

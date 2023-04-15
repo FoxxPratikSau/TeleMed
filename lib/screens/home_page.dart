@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
       final hour = DateTime.now().hour;
       if (hour >= 0 && hour < 12) {
         return 'Morning,';
-      } else if (hour >= 12 && hour < 18) {
+      } else if (hour >= 12 && hour < 17) {
         return 'Afternoon,';
       } else {
         return 'Evening,';

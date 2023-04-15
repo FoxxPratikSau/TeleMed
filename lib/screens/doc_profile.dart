@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tele_med/screens/audio_call.dart';
+import 'package:tele_med/screens/chat_screen.dart';
+import 'package:tele_med/screens/video_call.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
@@ -19,10 +22,71 @@ class DocProfilePage extends StatefulWidget {
 
 class _DocProfilePageState extends State<DocProfilePage> {
   int selectedIndex = -1;
+  Map<String, bool> hoursCheckBoxes = {};
+  bool isTapped = false;
+
+  String _filter = '';
+  List<String> hours = [
+    "9:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 PM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM"
+  ];
+  Widget buildTimeslotView(bool isTap, List<String> filteredHours) {
+    if (isTap) {
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.all(16.0),
+        child: Wrap(
+          spacing: 4,
+          runSpacing: 4,
+          children: filteredHours.map((hour) {
+            return ChoiceChip(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+                side: BorderSide(color: kPrimaryColor, width: 1.5),
+              ),
+              label: SmallFont(
+                text: hour,
+                color: hoursCheckBoxes[hour] ?? false
+                    ? Colors.white
+                    : Colors.black,
+                size: 15.0,
+                fontWeight: FontWeight.w600,
+              ),
+              backgroundColor: Colors.white,
+              selectedColor: kPrimaryColor,
+              labelStyle: TextStyle(
+                  color: hoursCheckBoxes[hour] ?? false
+                      ? Colors.white
+                      : Colors.black),
+              selected: hoursCheckBoxes[hour] ?? false,
+              onSelected: (bool selected) {
+                // selected = !selected;
+                setState(() {
+                  hoursCheckBoxes[hour] = selected;
+                });
+              },
+            );
+          }).toList(),
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     var product = Get.find<doctorList_controller>().doctorlist[widget.pageId];
+    List<String> filteredHours = hours
+        .where((hour) => hour.toLowerCase().contains(_filter.toLowerCase()))
+        .toList();
 
     return Scaffold(
       backgroundColor: kBGColor,
@@ -110,6 +174,16 @@ class _DocProfilePageState extends State<DocProfilePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ChatScreen(
+                                        pageId: widget.pageId,
+                                      ),
+                                    ),
+                                  );
+                                },
                                 child: PhysicalModel(
                                   elevation: 8.0,
                                   color: Colors.white,
@@ -137,6 +211,16 @@ class _DocProfilePageState extends State<DocProfilePage> {
                                 ),
                               ),
                               GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => AudioCallScreen(
+                                        pageId: widget.pageId,
+                                      ),
+                                    ),
+                                  );
+                                },
                                 child: PhysicalModel(
                                   elevation: 8.0,
                                   color: Colors.white,
@@ -164,6 +248,16 @@ class _DocProfilePageState extends State<DocProfilePage> {
                                 ),
                               ),
                               GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => VideoCallScreen(
+                                        pageId: widget.pageId,
+                                      ),
+                                    ),
+                                  );
+                                },
                                 child: PhysicalModel(
                                   elevation: 8.0,
                                   color: Colors.white,
@@ -232,9 +326,10 @@ class _DocProfilePageState extends State<DocProfilePage> {
                                     dFormatter.format(date);
                                 final String day = DateFormat('E').format(date);
                                 final isSelected = selectedIndex == index;
+                                isTapped = !selectedIndex.isNegative;
 
                                 return Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(5.0),
                                   child: GestureDetector(
                                     onTap: () {
                                       setState(() {
@@ -301,6 +396,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                             ),
                           ),
                         ),
+                        buildTimeslotView(isTapped, filteredHours),
                         const SizedBox(
                           height: 20.0,
                         ),
@@ -346,6 +442,7 @@ class _DocProfilePageState extends State<DocProfilePage> {
                                         text:
                                             'Appointment Booked Successfully.'),
                                   );
+                                  Navigator.pop(context);
                                 }
                               },
                               child: Container(
@@ -374,7 +471,10 @@ class _DocProfilePageState extends State<DocProfilePage> {
                               ),
                             ),
                           ),
-                        )
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
                       ],
                     ),
                   ),

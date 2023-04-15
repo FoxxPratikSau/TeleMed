@@ -89,7 +89,7 @@ class IntroPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         size: 20.0,
                       ),
-                      messageText: SmallFont(text: 'Currently unavailable'),
+                      messageText: SmallFont(text: 'Coming Soon!'),
                     );
                   }),
                 ),
