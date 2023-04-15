@@ -189,7 +189,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
         .toList();
 
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:5000/predict'),
+      Uri.parse('http://192.168.180.186:5000/predict'),
       body: json.encode({'symptoms': symptoms}),
       headers: {'Content-Type': 'application/json'},
     );
