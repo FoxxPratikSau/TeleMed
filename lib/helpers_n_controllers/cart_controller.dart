@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tele_med/helpers_n_controllers/cart_repo.dart';
 import 'package:tele_med/models/cart_model.dart';
 import 'package:tele_med/models/medicines.dart';
+import 'package:tele_med/widgets/big_font.dart';
+import 'package:tele_med/widgets/small_font.dart';
 
 class CartController extends GetxController {
   final CartRepo cartRepo;
@@ -46,11 +49,24 @@ class CartController extends GetxController {
         });
       } else {
         Get.snackbar(
-            'Item count', 'You should at least add 1 item to the cart.');
+          '',
+          '',
+          animationDuration: const Duration(seconds: 2),
+          barBlur: 10.0,
+          titleText: BigFont(
+            text: 'Item count',
+            color: Colors.red,
+            textAlign: TextAlign.left,
+            fontWeight: FontWeight.bold,
+            size: 20.0,
+          ),
+          messageText:
+              SmallFont(text: 'You should at least add 1 item to the cart.'),
+        );
       }
-    }
 
-    update();
+      update();
+    }
   }
 
   bool existInCart(medicine product) {

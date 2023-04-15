@@ -45,21 +45,21 @@
         {
             "id": 7,
             "name": "Telmisartan",
-            "desc": "Telmisartan works by blocking the action of a hormone called angiotensin II, which causes blood vessels to narrow and increases blood pressure. By blocking the action of this hormone, Telmisartan relaxes blood vessels and helps lower blood pressure, making it easier for the heart to pump blood. Telmisartan is usually taken orally, once a day, with or without food. The dose may vary depending on the individual's medical condition, age, and response to treatment. It may take several weeks for the medication to reach its full effect.",
+            "desc": "Telmisartan works by blocking the action of a hormone called angiotensin II, which causes blood vessels to narrow and increases blood pressure. By blocking the action of this hormone, Telmisartan relaxes blood vessels and helps lower blood pressure, making it easier for the heart to pump blood.",
             "price": 160,
             "image": "images/Telmisartan.png"
         },
         {
             "id": 8,
             "name": "Amlodipine",
-            "desc": "Amlodipine is a medication that belongs to a class of drugs called calcium channel blockers. It is used to treat high blood pressure (hypertension) and chest pain (angina) caused by coronary artery disease. Amlodipine works by relaxing and widening blood vessels, allowing blood to flow more easily and reducing the workload on the heart. This helps lower blood pressure and relieve chest pain.",
+            "desc": "Amlodipine is a medication that belongs to he heart. This helps lower blood pressure and relieve chest pa class of drugs called calcium channel blockers. It is used to treat high blood pressure (hypertension) and chest pain (angina) caused by coronary artery disease.",
             "price": 420,
             "image": "images/Amlodipine.png"
         },
         {
             "id": 9,
             "name": "Gabapentin",
-            "desc": "Gabapentin is a medication that is primarily used to treat seizures and neuropathic pain (nerve pain) caused by various conditions such as diabetes, shingles, or spinal cord injuries. It is also sometimes prescribed off-label for conditions such as anxiety disorders, restless leg syndrome, and alcohol withdrawal. Gabapentin works by decreasing the activity of certain chemicals in the brain and nerves that are involved in seizures and pain. It is structurally related to the neurotransmitter GABA (gamma-aminobutyric acid), which helps to reduce excessive electrical activity in the brain.",
+            "desc": "Gabapentin is a medication that is primarily used to treat seizures and neuropathic pain (nerve pain) caused by various conditions such as diabetes, shingles, or spinal cord injuries. It is also sometimes prescribed off-label for conditions such as anxiety disorders, restless leg syndrome, and alcohol withdrawal.",
             "price": 306,
             "image": "images/Gabapentin.png"
         }

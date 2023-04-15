@@ -126,7 +126,24 @@ class _ProfilePageState extends State<ProfilePage> {
                                   borderRadius: BorderRadius.circular(15.0),
                                   child: MaterialButton(
                                     padding: const EdgeInsets.all(0.0),
-                                    onPressed: () => print('Tapped'),
+                                    onPressed: () {
+                                      Get.snackbar(
+                                        '',
+                                        '',
+                                        animationDuration:
+                                            const Duration(seconds: 2),
+                                        barBlur: 10.0,
+                                        titleText: BigFont(
+                                          text: 'Attention',
+                                          color: Colors.red,
+                                          textAlign: TextAlign.left,
+                                          fontWeight: FontWeight.bold,
+                                          size: 20.0,
+                                        ),
+                                        messageText:
+                                            SmallFont(text: 'Coming Soon!'),
+                                      );
+                                    },
                                     child: Container(
                                       height: 60.0,
                                       decoration: BoxDecoration(
@@ -167,7 +184,24 @@ class _ProfilePageState extends State<ProfilePage> {
                                   borderRadius: BorderRadius.circular(15.0),
                                   child: MaterialButton(
                                     padding: const EdgeInsets.all(0.0),
-                                    onPressed: () => print('Tapped'),
+                                    onPressed: (() {
+                                      Get.snackbar(
+                                        '',
+                                        '',
+                                        animationDuration:
+                                            const Duration(seconds: 2),
+                                        barBlur: 10.0,
+                                        titleText: BigFont(
+                                          text: 'Attention',
+                                          color: Colors.red,
+                                          textAlign: TextAlign.left,
+                                          fontWeight: FontWeight.bold,
+                                          size: 20.0,
+                                        ),
+                                        messageText:
+                                            SmallFont(text: 'Coming Soon!'),
+                                      );
+                                    }),
                                     child: Container(
                                       height: 60.0,
                                       decoration: BoxDecoration(
@@ -209,7 +243,24 @@ class _ProfilePageState extends State<ProfilePage> {
                                   child: MaterialButton(
                                     padding: const EdgeInsets.all(0.0),
                                     //minWidth: double.infinity,
-                                    onPressed: () => print('Tapped'),
+                                    onPressed: (() {
+                                      Get.snackbar(
+                                        '',
+                                        '',
+                                        animationDuration:
+                                            const Duration(seconds: 2),
+                                        barBlur: 10.0,
+                                        titleText: BigFont(
+                                          text: 'Attention',
+                                          color: Colors.red,
+                                          textAlign: TextAlign.left,
+                                          fontWeight: FontWeight.bold,
+                                          size: 20.0,
+                                        ),
+                                        messageText:
+                                            SmallFont(text: 'Coming Soon!'),
+                                      );
+                                    }),
                                     child: Container(
                                       height: 60.0,
                                       //width: double.maxFinite,

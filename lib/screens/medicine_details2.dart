@@ -44,7 +44,7 @@ class MedDetailPage2 extends StatelessWidget {
                     builder: (controller) {
                       return GestureDetector(
                         onTap: () {
-                          Get.to(const CartPage());
+                          Get.to(CartPage());
                         },
                         child: Stack(
                           children: [
@@ -133,6 +133,7 @@ class MedDetailPage2 extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     padding: const EdgeInsets.only(top: 20.0),
@@ -145,6 +146,18 @@ class MedDetailPage2 extends StatelessWidget {
                         color: Colors.black,
                         fontWeight: FontWeight.w500),
                   ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: BigFont(
+                      text: '₹ ${product.price.toString()}',
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                      size: 40.0,
+                    ),
+                  )
                 ],
               ),
             ),
@@ -218,7 +231,7 @@ class MedDetailPage2 extends StatelessWidget {
                             end: Alignment.bottomRight,
                           )),
                       child: BigFont(
-                        text: '₹ ${product.price.toString()} | Add to Cart',
+                        text: 'Add to Cart',
                         color: Colors.white,
                       ),
                     ),

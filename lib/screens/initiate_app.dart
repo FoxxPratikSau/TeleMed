@@ -89,7 +89,7 @@ class _InitiatePageState extends State<InitiatePage> {
                       ),
                       BottomNavigationBarItem(
                         icon: Image.asset(
-                          'images/search.png',
+                          'images/stethoscope.png',
                           height: 35,
                           color: _selectedIndex == 1
                               ? const Color.fromARGB(255, 20, 20, 137)

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/screens/medicine_details.dart';
 import 'package:tele_med/widgets/big_font.dart';
@@ -22,9 +24,16 @@ class _ShopMedicinePageState extends State<ShopMedicinePage> {
   var _currentPageValue = 0.0;
   final double _scaleFactor = 0.8;
   final double _height = dimensions.size260;
+  List<dynamic> data = [];
+  bool isTyping = false;
+  TextEditingController searchController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
+    String jsonData =
+        '[{"name": "Paracetamol"},{"name": "Aspirin"},{"name": "Ibuprofen"},{"name": "Ciprofloxacin"},{"name": "Amoxicillin"},{"name": "Levofloxacin"},{"name": "Azithromycin"},{"name": "Domperidone"},{"name": "Omeprazole"},{"name": "Metformin"},{"name": "Atorvastatin"},{"name": "Metoprolol"},{"name": "Telmisartan"},{"name": "Amlodipine"},{"name": "Gabapentin"}]';
+    data = jsonDecode(jsonData);
     pageController.addListener(() {
       setState(() {
         _currentPageValue = pageController.page!;
@@ -38,206 +47,262 @@ class _ShopMedicinePageState extends State<ShopMedicinePage> {
     super.dispose();
   }
 
-  final searchController = TextEditingController();
-  String search = "";
+  Widget changeWidget(bool isTyping) {
+    if (isTyping) {
+      return Expanded(
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) {
+            if (data[index]['name']
+                .toLowerCase()
+                .contains(searchController.text.toLowerCase())) {
+              return ListTile(
+                title: BigFont(
+                  text: data[index]['name'],
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.bold,
+                  textAlign: TextAlign.left,
+                ),
+                onTap: () {
+                  // Navigate to another page when the ListTile is tapped
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        if (index >= 0 && index < 6) {
+                          return MedDetailPage(
+                            pageId: index,
+                          );
+                        } else {
+                          return MedDetailPage2(
+                            pageId: (index - 6),
+                          );
+                        }
+                      },
+                    ),
+                  );
+                },
+              );
+            } else {
+              return Container();
+            }
+          },
+        ),
+      );
+    } else {
+      return Expanded(
+          child: Padding(
+        padding: const EdgeInsets.all(0.0),
+        child: Column(children: [
+          GetBuilder<medicine_controller>(
+            builder: (medicineList) {
+              return SizedBox(
+                height: dimensions.size260,
+                child: PageView.builder(
+                  controller: pageController,
+                  itemCount: medicineList.medicine_items.length,
+                  itemBuilder: (context, position) {
+                    return _buildPageItem(
+                        position, medicineList.medicine_items[position]);
+                  },
+                ),
+              );
+            },
+          ),
+          SizedBox(
+            height: dimensions.size15,
+          ),
+          GetBuilder<medicine_controller>(
+            builder: (medicineList) {
+              return DotsIndicator(
+                dotsCount: medicineList.medicine_items.length,
+                position: _currentPageValue,
+                decorator: DotsDecorator(
+                  activeColor: const Color.fromARGB(255, 34, 18, 156),
+                  size: const Size.square(9.0),
+                  activeSize: const Size(18.0, 9.0),
+                  activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
+                ),
+              );
+            },
+          ),
+
+          //Popular text*********************************************
+          SizedBox(height: dimensions.size10),
+          Container(
+            margin: EdgeInsets.only(left: dimensions.size20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                BigFont(
+                  text: 'New Stock',
+                  size: 28,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: dimensions.size20),
+
+          //Recommended food*****************************
+          GetBuilder<medicine_controller>(builder: (medicines) {
+            return ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 9,
+                itemBuilder: (context, index) {
+                  final medicineIndex = medicines.medicine_items2[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MedDetailPage2(pageId: index),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                          bottom: dimensions.size15,
+                          right: dimensions.size10 * 2),
+                      child: Row(
+                        children: [
+                          //image section**************
+                          Container(
+                            width: dimensions.size45 * 2,
+                            height: dimensions.size45 * 2,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 253, 208, 200),
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(medicineIndex.image!)),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: dimensions.size45 * 2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(dimensions.size20),
+                                  bottomRight:
+                                      Radius.circular(dimensions.size20),
+                                ),
+                                color: Colors.white,
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.only(left: dimensions.size10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    BigFont(text: medicineIndex.name!),
+                                    SmallFont(
+                                      text:
+                                          "₹ ${medicineIndex.price.toString()}",
+                                      color: Colors.red,
+                                      size: dimensions.size25,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                });
+          }),
+          const SizedBox(
+            height: 80.0,
+          ),
+        ]),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBGColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: dimensions.size30,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: dimensions.size15, right: dimensions.size15),
-                child: BigFont(
-                  textAlign: TextAlign.left,
-                  text: "Buy Medicines",
-                  color: const Color.fromARGB(255, 2, 2, 119),
-                  size: dimensions.size30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: dimensions.size20,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: dimensions.size15, right: dimensions.size15),
-                child: Container(
-                  height: dimensions.size20 * 2,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(dimensions.size10),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    height: dimensions.size30,
                   ),
-                  child: TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      hintStyle: const TextStyle(fontSize: 17),
-                      hintText: 'Search ,e.g. Paracetamol',
-                      suffixIcon: Container(
-                        decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 2, 2, 119),
-                            borderRadius:
-                                BorderRadius.circular(dimensions.size10)),
-                        child: GestureDetector(
-                          onTap: null,
-                          child: Image.asset(
-                            'images/search.png',
-                            scale: 17.0,
-                            color: Colors.white,
-                          ),
-                        ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: dimensions.size15, right: dimensions.size15),
+                    child: BigFont(
+                      textAlign: TextAlign.left,
+                      text: "Buy Medicines",
+                      color: const Color.fromARGB(255, 2, 2, 119),
+                      size: dimensions.size30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: dimensions.size20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: dimensions.size15, right: dimensions.size15),
+                    child: Container(
+                      height: dimensions.size20 * 2,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(dimensions.size10),
                       ),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(dimensions.size10),
-                    ),
-                    onChanged: (value) {
-                      search = value;
-                      setState(() {});
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: dimensions.size30,
-              ),
-              GetBuilder<medicine_controller>(
-                builder: (medicineList) {
-                  return SizedBox(
-                    height: dimensions.size260,
-                    child: PageView.builder(
-                      controller: pageController,
-                      itemCount: medicineList.medicine_items.length,
-                      itemBuilder: (context, position) {
-                        return _buildPageItem(
-                            position, medicineList.medicine_items[position]);
-                      },
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: dimensions.size15,
-              ),
-              GetBuilder<medicine_controller>(
-                builder: (medicineList) {
-                  return DotsIndicator(
-                    dotsCount: medicineList.medicine_items.length,
-                    position: _currentPageValue,
-                    decorator: DotsDecorator(
-                      activeColor: const Color.fromARGB(255, 34, 18, 156),
-                      size: const Size.square(9.0),
-                      activeSize: const Size(18.0, 9.0),
-                      activeShape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
-                    ),
-                  );
-                },
-              ),
-
-              //Popular text*********************************************
-              SizedBox(height: dimensions.size10),
-              Container(
-                margin: EdgeInsets.only(left: dimensions.size20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    BigFont(
-                      text: 'New Stock',
-                      size: 28,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: dimensions.size20),
-
-              //Recommended food*****************************
-              GetBuilder<medicine_controller>(builder: (medicines) {
-                return ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      final medicineIndex = medicines.medicine_items2[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  MedDetailPage2(pageId: index),
+                      child: TextField(
+                        controller: searchController,
+                        decoration: InputDecoration(
+                          hintStyle: const TextStyle(fontSize: 17),
+                          hintText: 'Search ,e.g. Paracetamol',
+                          suffixIcon: Container(
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 2, 2, 119),
+                                borderRadius:
+                                    BorderRadius.circular(dimensions.size10)),
+                            child: GestureDetector(
+                              child: Image.asset(
+                                'images/search.png',
+                                scale: 17.0,
+                                color: Colors.white,
+                              ),
                             ),
-                          );
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              bottom: dimensions.size15,
-                              right: dimensions.size10 * 2),
-                          child: Row(
-                            children: [
-                              //image section**************
-                              Container(
-                                width: dimensions.size45 * 2,
-                                height: dimensions.size45 * 2,
-                                decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 253, 208, 200),
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(medicineIndex.image!)),
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  height: dimensions.size45 * 2,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topRight:
-                                          Radius.circular(dimensions.size20),
-                                      bottomRight:
-                                          Radius.circular(dimensions.size20),
-                                    ),
-                                    color: Colors.white,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: dimensions.size10),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        BigFont(text: medicineIndex.name!),
-                                        SmallFont(
-                                          text:
-                                              "₹ ${medicineIndex.price.toString()}",
-                                          color: Colors.red,
-                                          size: dimensions.size25,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
                           ),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.all(dimensions.size10),
                         ),
-                      );
-                    });
-              }),
-              const SizedBox(
-                height: 80.0,
-              )
-            ],
-          ),
+                        onChanged: (value) {
+                          setState(() {
+                            isTyping = true;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: dimensions.size30,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: changeWidget(isTyping),
+              ),
+            ),
+          ],
         ),
       ),
     );
