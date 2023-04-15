@@ -32,10 +32,10 @@ These instructions will help you get a copy of the project up and running on you
    https://github.com/FoxxPratikSau/TeleMed.git
 
 2. Change directory
-   cd TeleMed
+   'cd TeleMed'
 
 3. Install dependencies
-   flutter pub get
+   'flutter pub get'
 
 4. Setup Firebase
 
@@ -49,7 +49,7 @@ These instructions will help you get a copy of the project up and running on you
 - Update the API keys in the `lib/screens/cart_page.dart` file.
 
 6. Run the app
-   flutter run
+   'flutter run'
 
 ## Contributing
 
