@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tele_med/lung_cancer/lung_classifier.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
+import 'package:get/get.dart';
 
 class LungCancerPage extends StatefulWidget {
   @override
@@ -70,7 +70,7 @@ class _LungCancerPageState extends State<LungCancerPage> {
         titleSpacing: 20,
         elevation: 0,
         title: BigFont(
-          text: 'Skin Cancer Detection',
+          text: 'Lung Cancer Detection',
           color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
@@ -92,7 +92,7 @@ class _LungCancerPageState extends State<LungCancerPage> {
                     text: 'No image selected',
                   )
                 : Container(
-                  padding:
+                    padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
@@ -105,9 +105,9 @@ class _LungCancerPageState extends State<LungCancerPage> {
                     child: Image.file(_image!),
                   ),
             SizedBox(height: 20),
-            SmallFont(text:_predictionResult),
+            SmallFont(text: _predictionResult),
             SizedBox(height: 20),
-           GestureDetector(
+            GestureDetector(
               onTap: () => _getImage(),
               child: Container(
                 height: 40.0,
@@ -123,9 +123,29 @@ class _LungCancerPageState extends State<LungCancerPage> {
                 )),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             GestureDetector(
-              onTap: () => _predictImage(),
+              onTap: () {
+                if (_image != null) {
+                  _predictImage();
+                } else {
+                  Get.snackbar(
+                    '',
+                    '',
+                    duration: const Duration(seconds: 2),
+                    animationDuration: const Duration(seconds: 1),
+                    barBlur: 10.0,
+                    titleText: BigFont(
+                      text: 'Attention',
+                      color: Colors.red,
+                      textAlign: TextAlign.left,
+                      fontWeight: FontWeight.bold,
+                      size: 20.0,
+                    ),
+                    messageText: SmallFont(text: 'No Image Selected!'),
+                  );
+                }
+              },
               child: Container(
                 height: 40.0,
                 width: 90.0,

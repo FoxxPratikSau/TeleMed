@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'classifier.dart';
-import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
+// import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 
 class SkinCancerPage extends StatefulWidget {
   @override
@@ -123,7 +123,27 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
             ),
             SizedBox(height: 20),
             GestureDetector(
-              onTap: () => _predictImage(),
+              onTap: () {
+                if (_image != null) {
+                  _predictImage();
+                } else {
+                  Get.snackbar(
+                    '',
+                    '',
+                    duration: const Duration(seconds: 2),
+                    animationDuration: const Duration(seconds: 1),
+                    barBlur: 10.0,
+                    titleText: BigFont(
+                      text: 'Attention',
+                      color: Colors.red,
+                      textAlign: TextAlign.left,
+                      fontWeight: FontWeight.bold,
+                      size: 20.0,
+                    ),
+                    messageText: SmallFont(text: 'No Image Selected!'),
+                  );
+                }
+              },
               child: Container(
                 height: 40.0,
                 width: 90.0,
