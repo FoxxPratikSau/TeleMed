@@ -40,7 +40,7 @@ dependencies:
   google_fonts: ^4.0.3
   google_sign_in: ^6.1.0
   http: ^0.13.5
-  image: ^4.0.15
+  image: ^3.0.2
   image_picker: ^0.8.7+2
   intl: ^0.17.0
   loading_animation_widget: ^1.2.0+4
@@ -73,6 +73,8 @@ flutter:
     - assets/files/
     - assets/
     - assets/symptom_checker.tflite
+    - assets/skin_cancer.tflite
+    - assets/Lung_cancer.tflite
     - assets/diseaseNames.txt
     - assets/symptoms.txt
     - images/
