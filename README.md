@@ -15,55 +15,57 @@ TeleMed is a powerful and comprehensive Flutter application that aims to revolut
 7. **Payment Integration**: Razorpay gateway for smooth and secure payments.
 
 ## Future Aspects
-- Integration of Electronic Medical Records (EMR) using Google Cloud for Healthcare.
-- Expansion of medical imaging capabilities to include more types of scans and conditions.
-- Integration of wearable health devices for real-time monitoring of vital signs.
-- Addition of health and fitness tracking features to promote proactive healthcare.
-- Incorporation of AI-assisted personalized health recommendations based on user data.
+- **Integration of Electronic Medical Records (EMR)** using **Google Cloud for Healthcare**.
+- Expansion of **medical imaging capabilities** to include more types of scans and conditions.
+- Integration of **wearable health devices** for real-time monitoring of vital signs.
+- Addition of **health and fitness tracking features** to promote proactive healthcare.
+- Incorporation of **AI-assisted personalized health recommendations** based on user data.
 
 ## Getting Started
 
 These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
 
-## Prerequisites
+### Prerequisites
 
 - Flutter
 - Android Studio or Visual Studio Code
 - Firebase Account
 - Razorpay Account
+- Flask installed
+- TFlite setup
 
-## Installation
+### Installation
 
-1. Clone the repository
+1. *Clone the repository
    https://github.com/FoxxPratikSau/TeleMed.git
 
-2. Change directory
+2. *Change directory
    `cd TeleMed`
 
-3. Install dependencies
+3. *Install dependencies
    `flutter pub get`
 
-4. Setup Firebase
+4. *Setup Firebase
 
 - Create a new Firebase project and download the `google-services.json` file.
 - Place the file in the `android/app` directory.
 - Follow the instructions for setting up Firebase Authentication.
 
-5. Setup Razorpay
+5. *Setup Razorpay
 
 - Create a new Razorpay account and follow the instructions to get API keys.
 - Update the API keys in the `lib/screens/cart_page.dart` file.
 
-6. Setup TFLite
+6. *Setup TFLite
 
 - run the batch file `install.bat` at the root directory to get the relevant structure needed to run tflite models on Android Devices
 
-7. Start the Flask server
+7. *Start the Flask server
 - go to the `Symptom Model` and start the Flask server.
 - Write `python app.py` on the terminal.
 - Change the address in the Symptom checker page inside `lib`.
 
-8. Run the app
+8. *Run the app
    `flutter run`
 ## ScreenShots
 
