@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
    <application
-        android:label="tele_med"
+        android:label="TeleMed"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

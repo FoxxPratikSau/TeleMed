@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:tele_med/screens/doc_profile.dart';
+import 'package:tele_med/screens/medical_imaging.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/dimensions.dart';
@@ -133,9 +134,7 @@ class _HomePageState extends State<HomePage> {
                             shadowColor: kPrimaryColor,
                             borderRadius: BorderRadius.circular(30),
                             child: Container(
-                              padding: const EdgeInsets.all(20.0),
                               height: 175.0,
-                              width: double.maxFinite,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
@@ -171,7 +170,12 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(10.0),
                         child: GestureDetector(
                           onTap: () {
-                            print('Medical Imaging');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MedicalImaging(),
+                              ),
+                            );
                           },
                           child: PhysicalModel(
                             elevation: 8.0,
