@@ -36,36 +36,36 @@ These instructions will help you get a copy of the project up and running on you
 
 ### Installation
 
-1. *Clone the repository
+1. *Clone the repository*
    https://github.com/FoxxPratikSau/TeleMed.git
 
-2. *Change directory
+2. *Change directory*
    `cd TeleMed`
 
-3. *Install dependencies
+3. *Install dependencies*
    `flutter pub get`
 
-4. *Setup Firebase
+4. *Setup Firebase*
 
 - Create a new Firebase project and download the `google-services.json` file.
 - Place the file in the `android/app` directory.
 - Follow the instructions for setting up Firebase Authentication.
 
-5. *Setup Razorpay
+5. *Setup Razorpay*
 
 - Create a new Razorpay account and follow the instructions to get API keys.
 - Update the API keys in the `lib/screens/cart_page.dart` file.
 
-6. *Setup TFLite
+6. *Setup TFLite*
 
 - run the batch file `install.bat` at the root directory to get the relevant structure needed to run tflite models on Android Devices
 
-7. *Start the Flask server
+7. *Start the Flask server*
 - go to the `Symptom Model` and start the Flask server.
 - Write `python app.py` on the terminal.
 - Change the address in the Symptom checker page inside `lib`.
 
-8. *Run the app
+8. *Run the app*
    `flutter run`
 ## ScreenShots
 
