@@ -72,23 +72,23 @@ class _MyAppState extends State<MyApp> {
     Get.find<doctorList_controller>().getDoctorsList();
     Get.find<catagories_controller>().getCatagoryList();
 
-    // return GetMaterialApp.router(
-    //   title: 'TeleMed',
-    //   localizationsDelegates: const [
-    //     FFLocalizationsDelegate(),
-    //     GlobalMaterialLocalizations.delegate,
-    //     GlobalWidgetsLocalizations.delegate,
-    //     GlobalCupertinoLocalizations.delegate,
-    //   ],
-    //   locale: _locale,
-    //   supportedLocales: const [Locale('en', '')],
-    //   theme: ThemeData(brightness: Brightness.light),
-    //   themeMode: _themeMode,
-    //   routeInformationParser: _router.routeInformationParser,
-    //   routerDelegate: _router.routerDelegate,
-    // );
-    return GetMaterialApp(
-      home: ChatScreen(pageId: 0,),
+    return GetMaterialApp.router(
+      title: 'TeleMed',
+      localizationsDelegates: const [
+        FFLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: _locale,
+      supportedLocales: const [Locale('en', '')],
+      theme: ThemeData(brightness: Brightness.light),
+      themeMode: _themeMode,
+      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
     );
+    // return GetMaterialApp(
+    //   home: ChatScreen(pageId: 0,),
+    // );
   }
 }
