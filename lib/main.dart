@@ -7,6 +7,9 @@ import 'package:tele_med/helpers_n_controllers/catagories_controller.dart';
 import 'package:tele_med/helpers_n_controllers/doctorList_controller.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/helpers_n_controllers/dependencies.dart' as dep;
+import 'package:tele_med/index.dart';
+import 'package:tele_med/screens/chat_screen.dart';
+import 'package:tele_med/screens/home_page/home_page.dart';
 import 'helpers_n_controllers/camera_control.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -85,7 +88,7 @@ class _MyAppState extends State<MyApp> {
       routerDelegate: _router.routerDelegate,
     );
     // return GetMaterialApp(
-    //   home: HomePageWidget(),
+    //   home: ChatScreen(pageId: 0,),
     // );
   }
 }
