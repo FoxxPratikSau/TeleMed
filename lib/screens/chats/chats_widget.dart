@@ -308,7 +308,11 @@ class _ChatsWidgetState extends State<ChatsWidget>
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(DoctorProfileWidget(pageId: position));
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => DoctorProfileWidget(pageId: position)),
+            );
           },
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),

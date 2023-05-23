@@ -279,7 +279,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () {
-                Get.to(DoctorProfileWidget(pageId: index));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DoctorProfileWidget(pageId: index)),
+                );
               },
               child: Container(
                 width: 150,

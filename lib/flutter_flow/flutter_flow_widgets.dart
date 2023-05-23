@@ -194,6 +194,7 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
     }
 
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
       height: widget.options.height,
       width: widget.options.width,
       child: ElevatedButton(
