@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 
 class ExpandableText extends StatefulWidget {
   final String text;
@@ -44,17 +45,30 @@ class _ExpandableTextState extends State<ExpandableText> {
         });
       },
       behavior: HitTestBehavior.translucent,
+      // child: Text(
+      //   style: GoogleFonts.poppins(
+      //     textStyle: TextStyle(
+      //       color: widget.color,
+      //       fontWeight: widget.fontWeight,
+      //       fontSize: widget.size,
+      //     ),
+      //   ),
+      //   controller.text,
+      //   maxLines: isExpanded ? null : 3,
+      //   overflow: TextOverflow.fade,
+      // ),
       child: Text(
-        style: GoogleFonts.poppins(
-          textStyle: TextStyle(
-            color: widget.color,
-            fontWeight: widget.fontWeight,
-            fontSize: widget.size,
-          ),
-        ),
         controller.text,
-        maxLines: isExpanded ? null : 3,
         overflow: TextOverflow.fade,
+        maxLines: isExpanded ? null : 3,
+        style: FlutterFlowTheme.of(context).bodySmall.override(
+              fontFamily: 'Urbanist',
+              fontSize: widget.size,
+              color: const Color(0xFF585858),
+              letterSpacing: 0.6,
+              fontWeight: FontWeight.w600,
+              lineHeight: 1.2,
+            ),
       ),
     );
   }

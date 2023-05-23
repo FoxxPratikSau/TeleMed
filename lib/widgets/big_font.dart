@@ -33,7 +33,6 @@ class big_font extends StatelessWidget {
 }
 // ignore_for_file: must_be_immutable
 
-
 class BigFont extends StatelessWidget {
   Color? color;
   final String text;

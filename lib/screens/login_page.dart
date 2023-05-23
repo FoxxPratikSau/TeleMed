@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:tele_med/components/textfield.dart';
+import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/screens/initiate_app.dart';
 import 'package:tele_med/widgets/big_font.dart';
@@ -12,7 +13,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tele_med/essentials/auth_service.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:get/get.dart';
-import 'package:tele_med/essentials/user_data.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -50,16 +50,21 @@ class _SignInState extends State<SignIn> {
                     ),
                     Image.asset(
                       'images/profile_solid.png',
-                      scale: 2.7,
-                      color: Colors.black45,
+                      scale: 3,
+                      color: Colors.black26,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    BigFont(
-                      text: "Welcome Back",
-                      size: 35,
-                      color: Colors.black87,
+                    Text(
+                      'Welcome Back',
+                      style: FlutterFlowTheme.of(context).displaySmall.override(
+                            fontFamily: 'Recoleta',
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: false,
+                            fontSize: 35,
+                            color: FlutterFlowTheme.of(context).quaternary,
+                          ),
                     ),
                     const SizedBox(
                       height: 5,
@@ -131,7 +136,7 @@ class _SignInState extends State<SignIn> {
                             children: [
                               SmallFont(
                                 text: "Forgot Password?",
-                                color: kPrimaryColor,
+                                color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ],
                           ),
@@ -219,7 +224,7 @@ class _SignInState extends State<SignIn> {
                               emailController.clear();
                               passwordController.clear();
                             },
-                            bgColor: kPrimaryColor,
+                            bgColor: FlutterFlowTheme.of(context).primary,
                             title: 'LOGIN',
                             cHeight: 60.0,
                           ),
@@ -229,7 +234,17 @@ class _SignInState extends State<SignIn> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SmallFont(text: "Don't have account? "),
+                              Text(
+                                'Don\'t have an account? ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Urbanist',
+                                      color: Colors.grey,
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
                               GestureDetector(
                                 onTap: (() {
                                   Navigator.push(
@@ -239,9 +254,16 @@ class _SignInState extends State<SignIn> {
                                     ),
                                   );
                                 }),
-                                child: SmallFont(
-                                  text: "Create a new account",
-                                  color: Colors.red,
+                                child: Text(
+                                  'Create an account',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Urbanist',
+                                        color: Colors.red,
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                 ),
                               ),
                             ],
@@ -275,22 +297,22 @@ class _SignInState extends State<SignIn> {
                                   //   name: user.displayName.toString(),
                                   //   photoUrl: user.photoURL.toString(),
                                   // ));
-                                  Get.snackbar(
-                                    '',
-                                    '',
-                                    animationDuration:
-                                        const Duration(seconds: 1),
-                                    barBlur: 5.0,
-                                    titleText: BigFont(
-                                      text: 'Successfull',
-                                      color: Colors.red,
-                                      textAlign: TextAlign.left,
-                                      fontWeight: FontWeight.bold,
-                                      size: 20.0,
-                                    ),
-                                    messageText: SmallFont(
-                                        text: 'Logged In successfully.'),
-                                  );
+                                  // Get.snackbar(
+                                  //   '',
+                                  //   '',
+                                  //   animationDuration:
+                                  //       const Duration(seconds: 1),
+                                  //   barBlur: 5.0,
+                                  //   titleText: BigFont(
+                                  //     text: 'Successfull',
+                                  //     color: Colors.red,
+                                  //     textAlign: TextAlign.left,
+                                  //     fontWeight: FontWeight.bold,
+                                  //     size: 20.0,
+                                  //   ),
+                                  //   messageText: SmallFont(
+                                  //       text: 'Logged In successfully.'),
+                                  // );
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -308,21 +330,24 @@ class _SignInState extends State<SignIn> {
                                 print(e);
                               }
                             },
-                            child: Image.asset("images/google_logo.png"),
+                            child: Image.asset("images/google_logo.png",
+                                color: FlutterFlowTheme.of(context).quaternary),
                           ),
                           const SizedBox(
                             width: 15,
                           ),
                           MaterialButton(
                             onPressed: null,
-                            child: Image.asset("images/facebook_logo.png"),
+                            child: Image.asset("images/facebook_logo.png",
+                                color: FlutterFlowTheme.of(context).quaternary),
                           ),
                           const SizedBox(
                             width: 15,
                           ),
                           MaterialButton(
                             onPressed: null,
-                            child: Image.asset("images/twitter_logo.png"),
+                            child: Image.asset("images/twitter_logo.png",
+                                color: FlutterFlowTheme.of(context).quaternary),
                           ),
                         ],
                       ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tele_med/components/rounded_button.dart';
+import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/screens/initiate_app.dart';
 import '../widgets/big_font.dart';
@@ -46,22 +47,27 @@ class _SignupState extends State<Signup> {
             child: ListView(
               children: [
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const SizedBox(
-                      height: 70,
+                      height: 50,
                     ),
-                    BigFont(
-                      text: "Create Account",
-                      size: 35,
-                      fontWeight: FontWeight.bold,
+                    Text(
+                      'Create Account',
+                      style: FlutterFlowTheme.of(context).displaySmall.override(
+                            fontFamily: 'Recoleta',
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: false,
+                            fontSize: 30,
+                            color: FlutterFlowTheme.of(context).quaternary,
+                          ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 30),
+                      padding: const EdgeInsets.only(
+                          bottom: 50, top: 20, left: 30, right: 30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -294,7 +300,7 @@ class _SignupState extends State<Signup> {
                               phoneController.clear();
                               confirmpasswordController.clear();
                             },
-                            bgColor: kPrimaryColor,
+                            bgColor: FlutterFlowTheme.of(context).primary,
                             title: 'CREATE ACCOUNT',
                             cHeight: 60.0,
                           ),
@@ -304,7 +310,11 @@ class _SignupState extends State<Signup> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SmallFont(text: "Already have an account? "),
+                              SmallFont(
+                                text: "Already have an account? ",
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey,
+                              ),
                               GestureDetector(
                                 onTap: (() {
                                   Navigator.pop(context);
@@ -312,6 +322,7 @@ class _SignupState extends State<Signup> {
                                 child: SmallFont(
                                   text: "Login",
                                   color: Colors.red,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ],
@@ -377,22 +388,27 @@ class _SignupState extends State<Signup> {
                                       print(e);
                                     }
                                   },
-                                  child: Image.asset("images/google_logo.png"),
+                                  child: Image.asset("images/google_logo.png",
+                                      color: FlutterFlowTheme.of(context)
+                                          .quaternary),
                                 ),
                                 const SizedBox(
                                   width: 15,
                                 ),
                                 MaterialButton(
                                   onPressed: null,
-                                  child:
-                                      Image.asset("images/facebook_logo.png"),
+                                  child: Image.asset("images/facebook_logo.png",
+                                      color: FlutterFlowTheme.of(context)
+                                          .quaternary),
                                 ),
                                 const SizedBox(
                                   width: 15,
                                 ),
                                 MaterialButton(
                                   onPressed: null,
-                                  child: Image.asset("images/twitter_logo.png"),
+                                  child: Image.asset("images/twitter_logo.png",
+                                      color: FlutterFlowTheme.of(context)
+                                          .quaternary),
                                 ),
                               ],
                             ),

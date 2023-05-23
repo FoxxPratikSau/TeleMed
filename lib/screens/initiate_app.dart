@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
+import 'package:tele_med/screens/medicine_store/medicine_store_widget.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/essentials/auth_service.dart';
-import 'package:tele_med/screens/consultation_page.dart';
-import 'package:tele_med/screens/home_page.dart';
-import 'package:tele_med/screens/profile_page.dart';
-import 'package:tele_med/screens/shop_medicine_page.dart';
+import 'package:tele_med/screens/home_page/home_page.dart';
 import 'package:get/get.dart';
+
+import 'profile/profile_widget.dart';
 
 class InitiatePage extends StatefulWidget {
   final loginController = Get.find<AuthService>();
@@ -19,10 +20,10 @@ class InitiatePage extends StatefulWidget {
 class _InitiatePageState extends State<InitiatePage> {
   int _selectedIndex = 0;
   final List<Widget> _pages = <Widget>[
-    HomePage(),
-    const ConsultPage(),
-    const ShopMedicinePage(),
-    ProfilePage(),
+    HomePageWidget(),
+    const Placeholder(),
+    const MedicineStoreWidget(),
+    ProfileWidget(),
   ];
 
   void _onItemTapped(int index) {
@@ -45,34 +46,36 @@ class _InitiatePageState extends State<InitiatePage> {
           right: 0,
           child: Padding(
             padding:
-                const EdgeInsets.only(bottom: 15.0, left: 20.0, right: 20.0),
+                const EdgeInsets.only(bottom: 15.0, left: 25.0, right: 25.0),
             child: PhysicalModel(
-              elevation: 10.0,
+              elevation: 5.0,
               color: Colors.white,
-              shadowColor: kPrimaryColor,
+              shadowColor: FlutterFlowTheme.of(context).primary,
               borderRadius: const BorderRadius.all(
-                Radius.circular(20),
+                Radius.circular(25),
               ),
               child: Container(
                 decoration: const BoxDecoration(
                   //border: Border.all(color: kPrimaryColor, width: 2.0),
                   borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+                    Radius.circular(25),
                   ),
                 ),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(
-                    Radius.circular(20),
+                    Radius.circular(25),
                   ),
                   child: BottomNavigationBar(
                     currentIndex: _selectedIndex,
                     onTap: _onItemTapped,
                     unselectedItemColor: Colors.white,
-                    selectedItemColor: const Color.fromARGB(255, 20, 20, 137),
-                    selectedLabelStyle: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                          fontWeight: FontWeight.w600, fontSize: 12.0),
-                    ),
+                    selectedItemColor: FlutterFlowTheme.of(context).primary,
+                    selectedLabelStyle: FlutterFlowTheme.of(context)
+                        .bodySmall
+                        .override(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Urbanist',
+                            fontSize: 12.0),
                     showUnselectedLabels: false,
                     items: <BottomNavigationBarItem>[
                       BottomNavigationBarItem(
@@ -80,9 +83,9 @@ class _InitiatePageState extends State<InitiatePage> {
                           _selectedIndex == 0
                               ? 'images/home_solid.png'
                               : 'images/home.png',
-                          height: 35,
+                          height: 25,
                           color: _selectedIndex == 0
-                              ? const Color.fromARGB(255, 20, 20, 137)
+                              ? FlutterFlowTheme.of(context).primary
                               : Colors.grey,
                         ),
                         label: 'Home',
@@ -90,9 +93,9 @@ class _InitiatePageState extends State<InitiatePage> {
                       BottomNavigationBarItem(
                         icon: Image.asset(
                           'images/stethoscope.png',
-                          height: 35,
+                          height: 25,
                           color: _selectedIndex == 1
-                              ? const Color.fromARGB(255, 20, 20, 137)
+                              ? FlutterFlowTheme.of(context).primary
                               : Colors.grey,
                         ),
                         label: 'Consult',
@@ -102,9 +105,9 @@ class _InitiatePageState extends State<InitiatePage> {
                           _selectedIndex == 2
                               ? 'images/shop_solid.png'
                               : 'images/shop.png',
-                          height: 35,
+                          height: 25,
                           color: _selectedIndex == 2
-                              ? const Color.fromARGB(255, 20, 20, 137)
+                              ? FlutterFlowTheme.of(context).primary
                               : Colors.grey,
                         ),
                         label: 'Buy',
@@ -114,9 +117,9 @@ class _InitiatePageState extends State<InitiatePage> {
                           _selectedIndex == 3
                               ? 'images/profile_solid.png'
                               : 'images/profile.png',
-                          height: 35,
+                          height: 25,
                           color: _selectedIndex == 3
-                              ? const Color.fromARGB(255, 20, 20, 137)
+                              ? FlutterFlowTheme.of(context).primary
                               : Colors.grey,
                         ),
                         label: 'Profile',

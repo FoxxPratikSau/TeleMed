@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:tele_med/screens/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:get/get.dart';
-import 'package:tele_med/widgets/big_font.dart';
-import 'package:tele_med/widgets/small_font.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -36,8 +34,8 @@ class IntroPage extends StatelessWidget {
                       child: DefaultTextStyle(
                         textAlign: TextAlign.center,
                         style: GoogleFonts.rammettoOne(
-                          textStyle: const TextStyle(
-                            color: Colors.black87,
+                          textStyle: TextStyle(
+                            color: FlutterFlowTheme.of(context).quaternary,
                             fontSize: 40.0,
                             fontWeight: FontWeight.w300,
                           ),
@@ -59,7 +57,7 @@ class IntroPage extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: IntroButton(
-                  bgColor: kPrimaryColor,
+                  bgColor: FlutterFlowTheme.of(context).secondary,
                   title: 'Continue as User',
                   onPress: (() {
                     Navigator.push(
@@ -74,23 +72,23 @@ class IntroPage extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: IntroButton(
-                  bgColor: kPrimaryColor,
+                  bgColor: FlutterFlowTheme.of(context).primary,
                   title: 'Continue as Doctor',
                   onPress: (() {
-                    Get.snackbar(
-                      '',
-                      '',
-                      animationDuration: const Duration(seconds: 2),
-                      barBlur: 10.0,
-                      titleText: BigFont(
-                        text: 'Attention',
-                        color: Colors.red,
-                        textAlign: TextAlign.left,
-                        fontWeight: FontWeight.bold,
-                        size: 20.0,
-                      ),
-                      messageText: SmallFont(text: 'Coming Soon!'),
-                    );
+                    // Get.snackbar(
+                    //   '',
+                    //   '',
+                    //   animationDuration: const Duration(seconds: 2),
+                    //   barBlur: 10.0,
+                    //   titleText: BigFont(
+                    //     text: 'Attention',
+                    //     color: Colors.red,
+                    //     textAlign: TextAlign.left,
+                    //     fontWeight: FontWeight.bold,
+                    //     size: 20.0,
+                    //   ),
+                    //   messageText: SmallFont(text: 'Coming Soon!'),
+                    // );
                   }),
                 ),
               ),
