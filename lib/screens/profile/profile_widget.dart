@@ -441,7 +441,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 24.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 10.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [

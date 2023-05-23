@@ -57,7 +57,7 @@ class IntroPage extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: IntroButton(
-                  bgColor: FlutterFlowTheme.of(context).secondary,
+                  bgColor: FlutterFlowTheme.of(context).primary,
                   title: 'Continue as User',
                   onPress: (() {
                     Navigator.push(
@@ -72,7 +72,7 @@ class IntroPage extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: IntroButton(
-                  bgColor: FlutterFlowTheme.of(context).primary,
+                  bgColor: FlutterFlowTheme.of(context).secondary,
                   title: 'Continue as Doctor',
                   onPress: (() {
                     // Get.snackbar(
