@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tele_med/widgets/constants.dart';
 
 class IntroButton extends StatelessWidget {
   final Function()? onPress;
@@ -21,7 +20,6 @@ class IntroButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
-        elevation: 15.0,
         color: bgColor,
         borderRadius: BorderRadius.circular(15.0),
         child: GestureDetector(
@@ -29,14 +27,6 @@ class IntroButton extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
-              gradient: LinearGradient(
-                colors: [
-                  kPrimaryColor,
-                  const Color(0xFF000030),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
             ),
             height: cHeight,
             child: Center(
@@ -44,7 +34,7 @@ class IntroButton extends StatelessWidget {
                 title,
                 style: GoogleFonts.poppins(
                   textStyle:
-                      const TextStyle(color: Colors.white, fontSize: 20.0),
+                      const TextStyle(color: Colors.white, fontSize: 15.0),
                 ),
               ),
             ),
