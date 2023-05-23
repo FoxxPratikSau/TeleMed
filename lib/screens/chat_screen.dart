@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,84 +34,90 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         leadingWidth: 60,
         toolbarHeight: 70.0,
         titleSpacing: 0.0,
-        shadowColor: kPrimaryColor,
-        elevation: 20.0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20),
+        backgroundColor: Colors.white,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage(product.image!),
+                radius: 20.0,
+              ),
+              const SizedBox(
+                width: 10.0,
+              ),
+              BigFont(
+                text: 'Dr. ${product.name!}',
+                fontWeight: FontWeight.normal,
+                color: Colors.black,
+              ),
+            ],
           ),
-        ),
-        backgroundColor: kPrimaryColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage(product.image!),
-              radius: 20.0,
-            ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            BigFont(
-              text: 'Dr. ${product.name!}',
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ],
         ),
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                reverse: true,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                  vertical: 20.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: messageBubbles,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  reverse: true,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: messageBubbles,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              decoration: kMessageContainerDecoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      controller: _textController,
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20.0,
-                          overflow: TextOverflow.visible,
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.pink.shade100,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                          controller: _textController,
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.0,
+                              overflow: TextOverflow.visible,
+                            ),
+                          ),
+                          onChanged: (value) {},
+                          decoration: kMessageTextFieldDecoration,
                         ),
                       ),
-                      onChanged: (value) {},
-                      decoration: kMessageTextFieldDecoration,
-                    ),
+                      TextButton(
+                        onPressed: () => _handleSubmitted(_textController.text),
+                        child: Text(
+                          'Send',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  TextButton(
-                    onPressed: () => _handleSubmitted(_textController.text),
-                    child: Text(
-                      'Send',
-                      style: kSendButtonTextStyle,
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
