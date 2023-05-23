@@ -6,7 +6,6 @@ import 'package:tele_med/screens/no_items_page.dart';
 import '../../widgets/big_font.dart';
 import '../../widgets/reusable_icons.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:tele_med/widgets/dimensions.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:tele_med/essentials/auth_service.dart';
 
@@ -44,9 +43,9 @@ class _CartPageState extends State<CartPage> {
       body: Stack(
         children: [
           Positioned(
-            left: dimensions.size20,
-            right: dimensions.size20,
-            top: dimensions.size45,
+            left: 20,
+            right: 20,
+            top: 45,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -77,9 +76,9 @@ class _CartPageState extends State<CartPage> {
           GetBuilder<CartController>(builder: (cartController) {
             return cartController.getItems.isNotEmpty
                 ? Positioned(
-                    top: dimensions.size30 * 3.5,
-                    left: dimensions.size20,
-                    right: dimensions.size20,
+                    top: 30 * 3.5,
+                    left: 20,
+                    right: 20,
                     bottom: 0,
                     child: MediaQuery.removePadding(
                         context: context,
@@ -94,10 +93,9 @@ class _CartPageState extends State<CartPage> {
                                   decoration: BoxDecoration(
                                       color: const Color.fromARGB(
                                           255, 235, 238, 167),
-                                      borderRadius: BorderRadius.circular(
-                                          dimensions.size20)),
-                                  margin: EdgeInsets.all(dimensions.size10),
-                                  height: dimensions.size20 * 5,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  margin: EdgeInsets.all(10),
+                                  height: 20 * 5,
                                   width: double.maxFinite,
                                   child: Row(
                                     children: [
@@ -132,10 +130,10 @@ class _CartPageState extends State<CartPage> {
                                         //   }
                                         // },
                                         child: Container(
-                                          width: dimensions.size20 * 5,
-                                          height: dimensions.size20 * 5,
+                                          width: 20 * 5,
+                                          height: 20 * 5,
                                           margin: EdgeInsets.only(
-                                            right: dimensions.size10,
+                                            right: 10,
                                           ),
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
@@ -146,7 +144,7 @@ class _CartPageState extends State<CartPage> {
                                               ),
                                             ),
                                             borderRadius: BorderRadius.circular(
-                                              dimensions.size20,
+                                              20,
                                             ),
                                             color: Colors.white,
                                           ),
@@ -154,7 +152,7 @@ class _CartPageState extends State<CartPage> {
                                       ),
                                       Expanded(
                                           child: SizedBox(
-                                        height: dimensions.size20 * 5,
+                                        height: 20 * 5,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -178,32 +176,18 @@ class _CartPageState extends State<CartPage> {
                                                 ),
                                                 Container(
                                                   padding: EdgeInsets.all(
-                                                    dimensions.size10,
+                                                    10,
                                                   ),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                      dimensions.size20,
+                                                      20,
                                                     ),
                                                     color: Colors.white,
                                                   ),
                                                   child: Row(
                                                     children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          cartController
-                                                              .addItem(
-                                                                  cartList[
-                                                                          index]
-                                                                      .product!,
-                                                                  -1);
-                                                        },
-                                                        child: Icon(
-                                                          Icons.remove,
-                                                          color: Colors.grey
-                                                              .withOpacity(0.4),
-                                                        ),
-                                                      ),
+                                                      Text('QTY '),
                                                       Padding(
                                                         padding:
                                                             const EdgeInsets
@@ -214,21 +198,6 @@ class _CartPageState extends State<CartPage> {
                                                           text: cartList[index]
                                                               .quantity
                                                               .toString(),
-                                                        ),
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          cartController
-                                                              .addItem(
-                                                                  cartList[
-                                                                          index]
-                                                                      .product!,
-                                                                  1);
-                                                        },
-                                                        child: Icon(
-                                                          Icons.add,
-                                                          color: Colors.grey
-                                                              .withOpacity(0.4),
                                                         ),
                                                       ),
                                                     ],
@@ -254,26 +223,25 @@ class _CartPageState extends State<CartPage> {
       bottomNavigationBar: GetBuilder<CartController>(
         builder: (cartController) {
           return Container(
-            height: dimensions.size100,
+            height: 100,
             padding: EdgeInsets.symmetric(
-              vertical: dimensions.size10,
-              horizontal: dimensions.size20,
+              vertical: 10,
+              horizontal: 20,
             ),
             decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.4),
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(dimensions.size20 * 2),
-                  topRight: Radius.circular(dimensions.size20 * 2),
+                  topLeft: Radius.circular(20 * 2),
+                  topRight: Radius.circular(20 * 2),
                 )),
             child: cartController.getItems.isNotEmpty
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(dimensions.size20),
+                        padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(dimensions.size20),
+                          borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
                         ),
                         child: Row(
@@ -318,10 +286,9 @@ class _CartPageState extends State<CartPage> {
                           }
                         },
                         child: Container(
-                          padding: EdgeInsets.all(dimensions.size20),
+                          padding: EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(dimensions.size20),
+                              borderRadius: BorderRadius.circular(20),
                               gradient: LinearGradient(
                                 colors: [
                                   kPrimaryColor,

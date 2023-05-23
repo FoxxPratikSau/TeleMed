@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:tele_med/helpers_n_controllers/catagories_controller.dart';
 import 'package:tele_med/helpers_n_controllers/doctorList_controller.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/helpers_n_controllers/dependencies.dart' as dep;
@@ -67,9 +66,9 @@ class _MyAppState extends State<MyApp> {
     Get.find<medicine_controller>().getMedicineList();
     Get.find<medicine_controller>().getMedicine2List();
     Get.find<doctorList_controller>().getDoctorsList();
-    Get.find<catagories_controller>().getCatagoryList();
 
     return GetMaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'TeleMed',
       localizationsDelegates: const [
         FFLocalizationsDelegate(),

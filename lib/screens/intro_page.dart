@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
+import 'package:tele_med/screens/doctor_screens/doctor_login.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/components/rounded_button.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -75,20 +76,12 @@ class IntroPage extends StatelessWidget {
                   bgColor: FlutterFlowTheme.of(context).secondary,
                   title: 'Continue as Doctor',
                   onPress: (() {
-                    // Get.snackbar(
-                    //   '',
-                    //   '',
-                    //   animationDuration: const Duration(seconds: 2),
-                    //   barBlur: 10.0,
-                    //   titleText: BigFont(
-                    //     text: 'Attention',
-                    //     color: Colors.red,
-                    //     textAlign: TextAlign.left,
-                    //     fontWeight: FontWeight.bold,
-                    //     size: 20.0,
-                    //   ),
-                    //   messageText: SmallFont(text: 'Coming Soon!'),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DoctorLogin(),
+                      ),
+                    );
                   }),
                 ),
               ),

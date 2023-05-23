@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tele_med/components/rounded_button.dart';
+import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 import 'package:tele_med/lung_cancer/Lung_page.dart';
 import 'package:tele_med/skin_cancer/sc_page.dart';
 import 'package:tele_med/widgets/constants.dart';
@@ -21,7 +22,8 @@ class MedicalImaging extends StatelessWidget {
               children: [
                 IntroButton(
                   cHeight: 70.0,
-                  bgColor: kPrimaryColor,
+                  // bgColor: FlutterFlowTheme.of(context).primary,
+                  bgColor: Colors.blue,
                   title: 'Skin Cancer Detector',
                   onPress: (() {
                     Navigator.push(
@@ -34,7 +36,8 @@ class MedicalImaging extends StatelessWidget {
                 ),
                 IntroButton(
                   cHeight: 70.0,
-                  bgColor: kPrimaryColor,
+                  // bgColor: FlutterFlowTheme.of(context).secondary,
+                  bgColor: Colors.pink,
                   title: 'Lung Cancer Detector',
                   onPress: (() {
                     Navigator.push(
