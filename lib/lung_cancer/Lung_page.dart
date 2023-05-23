@@ -66,7 +66,7 @@ class _LungCancerPageState extends State<LungCancerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 2, 2, 119),
+        backgroundColor: Color(0xFF3879E9),
         titleSpacing: 20,
         elevation: 0,
         title: BigFont(
@@ -97,7 +97,7 @@ class _LungCancerPageState extends State<LungCancerPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
-                        color: const Color.fromARGB(255, 2, 2, 119),
+                        color: Color(0xFF3879E9),
                         width: 3,
                       ),
                       color: Colors.white,
@@ -114,7 +114,7 @@ class _LungCancerPageState extends State<LungCancerPage> {
                 width: 180.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 2, 2, 119),
+                  color: Color(0xFF3879E9),
                 ),
                 child: Center(
                     child: SmallFont(
@@ -151,7 +151,7 @@ class _LungCancerPageState extends State<LungCancerPage> {
                 width: 90.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 2, 2, 119),
+                  color: Color(0xFF3879E9),
                 ),
                 child: Center(
                     child: SmallFont(

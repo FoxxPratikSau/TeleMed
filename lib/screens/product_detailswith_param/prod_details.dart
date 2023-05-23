@@ -1,8 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors
 
 import 'package:get/get.dart';
+import 'package:tele_med/helpers_n_controllers/cart_controller.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
+import 'package:tele_med/screens/cart_page.dart';
+import 'package:tele_med/widgets/dimensions.dart';
 
+import '../../widgets/resuable_icons.dart';
 import '/components/search_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -277,6 +281,8 @@ class _ProdDetailsState extends State<ProdDetails>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
     var med = Get.find<medicine_controller>().medicine_items2[widget.pageId];
+    Get.find<medicine_controller>()
+        .initProduct(med, Get.find<CartController>());
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -375,43 +381,53 @@ class _ProdDetailsState extends State<ProdDetails>
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed('Cart');
-                                  },
-                                  child: Container(
-                                    width: 48.0,
-                                    height: 48.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).quinary,
-                                      borderRadius: BorderRadius.circular(16.0),
+                               GetBuilder<medicine_controller>(
+                    builder: (controller) {
+                      return GestureDetector(
+                        onTap: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => CartPage()),
+  );
+},
+                        child: Stack(
+                          children: [
+                            const ReusableIcon(
+                                iconColor: Colors.black,
+                                backgroundColor: Color.fromARGB(255, 228, 228, 231),
+                                icon: Icons.shopping_cart_outlined),
+                            controller.totalItems >= 1
+                                // ignore: prefer_const_constructors
+                                ? Positioned(
+                                    right: 0,
+                                    top: 0,
+                                    // ignore: prefer_const_constructors
+                                    child: ReusableIcon(
+                                      icon: Icons.circle,
+                                      size: 20,
+                                      iconColor: Colors.transparent,
+                                      backgroundColor:
+                                          const Color.fromARGB(255, 255, 17, 0),
                                     ),
-                                    child: Stack(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 12.0, 12.0, 12.0),
-                                          child: Image.asset(
-                                            'assets/images/Shopping_Bag_01.png',
-                                            width: 24.0,
-                                            height: 24.0,
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+                                  )
+                                : Container(),
+                            Get.find<medicine_controller>().totalItems >= 1
+                                ? Positioned(
+                                    right: 8,
+                                    top: 4.5,
+                                    child: 
+                                      Text( Get.find<medicine_controller>()
+                                          .totalItems
+                                          .toString(),style: TextStyle(fontSize: 12),)
+                                      
+                                    
+                                  )
+                                : Container()
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                             ],
                           ),
                         ],
@@ -909,7 +925,8 @@ class _ProdDetailsState extends State<ProdDetails>
                   ).animateOnPageLoad(
                       animationsMap['columnOnPageLoadAnimation6']!),
                 ),
-                Padding(
+                GetBuilder<medicine_controller>(builder: (medicine){
+                  return Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
                   child: Column(
@@ -928,9 +945,9 @@ class _ProdDetailsState extends State<ProdDetails>
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('Cart');
-                                },
+                                // onTap: () async {
+                                //   context.pushNamed('Cart');
+                                // },
                                 child: Container(
                                   width: 160.0,
                                   height: 48.0,
@@ -944,16 +961,29 @@ class _ProdDetailsState extends State<ProdDetails>
                                   ),
                                   child: Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Add to Cart',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Urbanist',
-                                            fontSize: 13.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+
+                        GestureDetector(
+                            onTap: () {
+                              medicine.setQuantity(false);
+                            },
+                            child:
+                                const Icon(Icons.remove, color: Colors.grey)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child:Text(medicine.inCartItems.toString(),style: TextStyle(fontSize: dimensions.size20),)
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            medicine.setQuantity(true);
+                          },
+                          child: const Icon(Icons.add, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  
                                   ),
                                 ),
                               ),
@@ -969,21 +999,22 @@ class _ProdDetailsState extends State<ProdDetails>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  ScaffoldMessenger.of(context)
-                                      .clearSnackBars();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Button Clicked1',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor: Color(0x00000000),
-                                    ),
-                                  );
+                                  // ScaffoldMessenger.of(context)
+                                  //     .clearSnackBars();
+                                  // ScaffoldMessenger.of(context).showSnackBar(
+                                  //   SnackBar(
+                                  //     content: Text(
+                                  //       'Button Clicked1',
+                                  //       style: TextStyle(
+                                  //         color: FlutterFlowTheme.of(context)
+                                  //             .primaryText,
+                                  //       ),
+                                  //     ),
+                                  //     duration: Duration(milliseconds: 4000),
+                                  //     backgroundColor: Color(0x00000000),
+                                  //   ),
+                                  // );
+                                  medicine.addItem(med);
                                 },
                                 child: Container(
                                   width: 160.0,
@@ -995,7 +1026,7 @@ class _ProdDetailsState extends State<ProdDetails>
                                   child: Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
-                                      'Buy Now',
+                                      'Add to Cart',
                                       style: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -1015,7 +1046,9 @@ class _ProdDetailsState extends State<ProdDetails>
                     ],
                   ).animateOnPageLoad(
                       animationsMap['columnOnPageLoadAnimation7']!),
-                ),
+                );
+                }),
+                
                 Divider(
                   height: 24.0,
                   thickness: 1.0,

@@ -64,7 +64,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 2, 2, 119),
+        backgroundColor: Color(0xFFEE9CDA),
         titleSpacing: 20,
         elevation: 0,
         title: BigFont(
@@ -95,7 +95,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
-                        color: const Color.fromARGB(255, 2, 2, 119),
+                        color: Color(0xFFEE9CDA),
                         width: 3,
                       ),
                       color: Colors.white,
@@ -112,7 +112,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                 width: 180.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 2, 2, 119),
+                  color: Color(0xFFEE9CDA),
                 ),
                 child: Center(
                     child: SmallFont(
@@ -149,7 +149,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                 width: 90.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 2, 2, 119),
+                  color: Color(0xFFEE9CDA),
                 ),
                 child: Center(
                     child: SmallFont(

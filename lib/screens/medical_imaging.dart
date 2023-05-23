@@ -21,7 +21,7 @@ class MedicalImaging extends StatelessWidget {
               children: [
                 IntroButton(
                   cHeight: 70.0,
-                  bgColor: kPrimaryColor,
+                  bgColor: Color(0xFFEE9CDA),
                   title: 'Skin Cancer Detector',
                   onPress: (() {
                     Navigator.push(
@@ -34,7 +34,7 @@ class MedicalImaging extends StatelessWidget {
                 ),
                 IntroButton(
                   cHeight: 70.0,
-                  bgColor: kPrimaryColor,
+                  bgColor:  Color(0xFF3879E9),
                   title: 'Lung Cancer Detector',
                   onPress: (() {
                     Navigator.push(

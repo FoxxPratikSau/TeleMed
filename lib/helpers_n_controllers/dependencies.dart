@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:tele_med/essentials/auth_service.dart';
 import 'package:tele_med/helpers_n_controllers/cart_controller.dart';
 import 'package:tele_med/helpers_n_controllers/cart_repo.dart';
 import 'package:tele_med/helpers_n_controllers/catagories_controller.dart';
@@ -11,7 +12,7 @@ Future<void> init() async {
   Get.lazyPut(() => doctorList_controller());
   Get.lazyPut(() => catagories_controller());
   Get.lazyPut(() => CartController(cartRepo: Get.find()));
-
+  Get.lazyPut(() => AuthService());
   //repos
   Get.lazyPut(() => CartRepo());
 }

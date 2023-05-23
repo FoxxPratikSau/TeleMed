@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'screens/medicine_store/medicine_store_widget.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,23 +70,23 @@ class _MyAppState extends State<MyApp> {
     Get.find<doctorList_controller>().getDoctorsList();
     Get.find<catagories_controller>().getCatagoryList();
 
-    return GetMaterialApp.router(
-      title: 'TeleMed',
-      localizationsDelegates: const [
-        FFLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: _locale,
-      supportedLocales: const [Locale('en', '')],
-      theme: ThemeData(brightness: Brightness.light),
-      themeMode: _themeMode,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
-    );
-    // return GetMaterialApp(
-    //   home: HomePageWidget(),
+    // return GetMaterialApp.router(
+    //   title: 'TeleMed',
+    //   localizationsDelegates: const [
+    //     FFLocalizationsDelegate(),
+    //     GlobalMaterialLocalizations.delegate,
+    //     GlobalWidgetsLocalizations.delegate,
+    //     GlobalCupertinoLocalizations.delegate,
+    //   ],
+    //   locale: _locale,
+    //   supportedLocales: const [Locale('en', '')],
+    //   theme: ThemeData(brightness: Brightness.light),
+    //   themeMode: _themeMode,
+    //   routeInformationParser: _router.routeInformationParser,
+    //   routerDelegate: _router.routerDelegate,
     // );
+    return const GetMaterialApp(
+      home: MedicineStoreWidget(),
+    );
   }
 }

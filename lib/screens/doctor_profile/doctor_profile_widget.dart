@@ -29,6 +29,147 @@ class _DoctorProfileWidgetState extends State<DoctorProfileWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
 
+  void showBillBottomSheet(double amount) {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        color: Color(0xFF3879E9),
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Text(
+                'Appointment Bill',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Color(0xFFEE9CDA),
+              ),
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Appointment Charge -',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      Text(
+                        '\₹${amount.toStringAsFixed(2)}',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'CGST -',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      Text(
+                        '\₹ 11.25',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'SGST -',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      Text(
+                        '\₹ 11.25',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5.0),
+                  Text(
+                    "------------------------------------------------------",
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Total Amount -',
+                        style: TextStyle(fontSize: 21),
+                      ),
+                      Text(
+                        '\₹${(amount + 22.50).toStringAsFixed(2)}',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Color.fromARGB(255, 19, 8, 103),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      //Add payment gateway...
+                    },
+                    child: Text(
+                      'Pay',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Color.fromARGB(255, 19, 8, 103),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      // Add your logic for declining the payment
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      'Decline',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
   final animationsMap = {
     'columnOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -913,7 +1054,8 @@ class _DoctorProfileWidgetState extends State<DoctorProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('Appoinments');
+                            double billAmount = 300.0; // Replace with your desired amount
+    showBillBottomSheet(billAmount);
                           },
                           child: Container(
                             width: double.infinity,
