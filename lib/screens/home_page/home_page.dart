@@ -5,6 +5,7 @@ import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/index.dart';
 import 'package:tele_med/models/doctors.dart';
 import 'package:tele_med/models/medicines.dart';
+import 'package:tele_med/screens/features_screen.dart';
 
 import '../../helpers_n_controllers/doctorList_controller.dart';
 import '/components/recent_products_widget.dart';
@@ -607,7 +608,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('EhrFiles');
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => FeaturesScreen()));
                                 },
                                 child: Container(
                                   width: 120.0,

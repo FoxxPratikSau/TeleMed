@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
+import 'package:tele_med/screens/features_screen.dart';
 import 'package:tele_med/screens/medicine_store/medicine_store_widget.dart';
 import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/essentials/auth_service.dart';
@@ -21,7 +22,7 @@ class _InitiatePageState extends State<InitiatePage> {
   int _selectedIndex = 0;
   final List<Widget> _pages = <Widget>[
     HomePageWidget(),
-    const Placeholder(),
+    FeaturesScreen(),
     const MedicineStoreWidget(),
     ProfileWidget(),
   ];
@@ -92,13 +93,11 @@ class _InitiatePageState extends State<InitiatePage> {
                       ),
                       BottomNavigationBarItem(
                         icon: Image.asset(
-                          'images/stethoscope.png',
-                          height: 25,
-                          color: _selectedIndex == 1
-                              ? FlutterFlowTheme.of(context).primary
-                              : Colors.grey,
+                          'assets/images/lab.png',
+                          height: 40,
+                          color: _selectedIndex == 1 ? null : Colors.grey,
                         ),
-                        label: 'Consult',
+                        label: 'Features',
                       ),
                       BottomNavigationBarItem(
                         icon: Image.asset(

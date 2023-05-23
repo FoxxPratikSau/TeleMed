@@ -88,10 +88,10 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                 ),
               ),
               Positioned.fill(
-                left: 290,
+                left: 250,
                 right: 10,
                 bottom: 85.0,
-                top: 500,
+                top: 475,
                 child: GestureDetector(
                   onTap: () {
                     showDialog(

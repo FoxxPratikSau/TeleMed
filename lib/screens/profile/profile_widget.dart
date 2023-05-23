@@ -3,6 +3,7 @@
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:tele_med/essentials/auth_service.dart';
+import 'package:tele_med/screens/intro_page.dart';
 
 import '../login_page.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -726,7 +727,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignIn(),
+                          builder: (context) => const IntroPage(),
                         ),
                       );
                       setState(() {

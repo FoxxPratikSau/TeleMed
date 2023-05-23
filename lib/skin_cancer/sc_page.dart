@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 import 'package:tele_med/widgets/big_font.dart';
 import 'package:tele_med/widgets/small_font.dart';
 import 'classifier.dart';
@@ -64,7 +65,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 2, 2, 119),
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         titleSpacing: 20,
         elevation: 0,
         title: BigFont(
@@ -95,7 +96,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
-                        color: const Color.fromARGB(255, 2, 2, 119),
+                        color: FlutterFlowTheme.of(context).primary,
                         width: 3,
                       ),
                       color: Colors.white,
@@ -112,7 +113,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                 width: 180.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 2, 2, 119),
+                  color: FlutterFlowTheme.of(context).primary,
                 ),
                 child: Center(
                     child: SmallFont(
@@ -149,7 +150,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                 width: 90.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 2, 2, 119),
+                  color: FlutterFlowTheme.of(context).primary,
                 ),
                 child: Center(
                     child: SmallFont(
