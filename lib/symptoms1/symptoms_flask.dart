@@ -189,8 +189,9 @@ class _SymptomCheckerState extends State<SymptomChecker>
         .toList();
 
     final response = await http.post(
-      Uri.parse('http://192.168.147.229:5000/predict'),
+      //Uri.parse('http://192.168.147.229:5000/predict'),
       //Uri.parse('http://34.29.154.239:5000/predict'),
+      Uri.parse('https://0.0.0.0/predict'),
       body: json.encode({'symptoms': symptoms}),
       headers: {'Content-Type': 'application/json'},
     );
@@ -231,30 +232,32 @@ class _SymptomCheckerState extends State<SymptomChecker>
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 2, 119),
+          backgroundColor: Colors.white,
           titleSpacing: 20,
           elevation: 0,
-          title: BigFont(
-            text: 'Predict Your Disease',
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.elliptical(
-                30,
-                20,
-              ),
+          title: Text(
+            'Predict Your Disease',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
             ),
           ),
+          // shape: const RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.elliptical(
+          //       30,
+          //       20,
+          //     ),
+          //   ),
+          // ),
           actions: [
-            GestureDetector(
-              child: Image.asset(
-                'images/search.png',
-                scale: 17.0,
-                color: Colors.white,
+            IconButton(
+              icon: Icon(
+                _isSearching ? Icons.close : Icons.search,
+                color: Colors.black,
               ),
-              onTap: () {
+              onPressed: () {
                 setState(() {
                   _isSearching = !_isSearching;
                 });
@@ -269,17 +272,23 @@ class _SymptomCheckerState extends State<SymptomChecker>
           children: [
             if (_isSearching)
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
                   controller: _searchQueryController,
+                  style: TextStyle(color: Colors.blue),
                   decoration: InputDecoration(
-                    labelText: 'Search symptoms',
                     hintText: 'Search symptoms',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    fillColor: Colors.white,
                     filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsets.all(12),
+                    prefixIcon: Icon(Icons.search, color: Colors.blue),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide.none),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(color: Colors.pink)),
+                    hintStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
               ),
@@ -287,29 +296,29 @@ class _SymptomCheckerState extends State<SymptomChecker>
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16.0),
                 child: Wrap(
-                  spacing: 4,
-                  runSpacing: 4,
+                  spacing: 8,
+                  runSpacing: 8,
                   children: filteredSymptoms.map((symptom) {
                     return ChoiceChip(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
-                        side: const BorderSide(
-                            color: Color.fromARGB(255, 2, 2, 119)),
+                        side: BorderSide(
+                            color: symptomCheckboxes[symptom] ?? false
+                                ? Colors.pink
+                                : Colors.blue),
                       ),
-                      label: SmallFont(
-                        text: symptom,
-                        color: symptomCheckboxes[symptom] ?? false
-                            ? Colors.white
-                            : Colors.black,
-                        size: 15.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      backgroundColor: Colors.white,
-                      selectedColor: const Color.fromARGB(255, 2, 2, 119),
-                      labelStyle: TextStyle(
+                      label: Text(
+                        symptom,
+                        style: TextStyle(
                           color: symptomCheckboxes[symptom] ?? false
                               ? Colors.white
-                              : Colors.black),
+                              : Colors.black,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      backgroundColor: Colors.white,
+                      selectedColor: Colors.pink,
                       selected: symptomCheckboxes[symptom] ?? false,
                       onSelected: (bool selected) {
                         setState(() {
@@ -327,58 +336,71 @@ class _SymptomCheckerState extends State<SymptomChecker>
                 child: Container(
                   width: double.infinity,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(
-                      color: const Color.fromARGB(255, 2, 2, 119),
-                      width: 3,
-                    ),
+                    // borderRadius: BorderRadius.circular(30),
                     color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                   ),
-                  child: Stack(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text(
+                          'Your selected symptoms are:',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                      _buildSelectedSymptoms(),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: BigFont(
-                              text: 'Your selected symptoms are:',
-                              size: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          TextButton(
+                            onPressed: _clearAllSelectedSymptoms,
+                            child: Text(
+                              'Clear All',
+                              style: TextStyle(
+                                color: Colors.pink,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
-                          _buildSelectedSymptoms(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: _clearAllSelectedSymptoms,
-                                child: SmallFont(
-                                  text: 'Clear All',
-                                  color: const Color.fromARGB(255, 2, 2, 119),
+                          ElevatedButton(
+                            onPressed: () => _predictDisease(context),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () => _predictDisease(context),
-                                child: Container(
-                                  height: 40.0,
-                                  width: 60.0,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    color: const Color.fromARGB(255, 2, 2, 119),
-                                  ),
-                                  child: Center(
-                                      child: SmallFont(
-                                    text: 'Next',
-                                    color: Colors.white,
-                                  )),
-                                ),
+                              padding: MaterialStateProperty.all(
+                                  EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10)),
+                            ),
+                            child: Text(
+                              'Next',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
                               ),
-                            ],
+                            ),
                           ),
                         ],
                       ),
@@ -397,38 +419,48 @@ class _SymptomCheckerState extends State<SymptomChecker>
       context: context,
       builder: (BuildContext context) {
         return Dialog(
-          backgroundColor: kBGColor,
-          insetPadding:
-              const EdgeInsets.symmetric(horizontal: 30, vertical: 300),
+          backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(25),
           ),
           child: Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(30),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                BigFont(
-                  text: "Predicted Disease",
-                  size: 24,
-                  fontWeight: FontWeight.bold,
+                Text(
+                  "Predicted Disease",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                SmallFont(
-                  text: _disease!,
-                  fontWeight: FontWeight.w600,
-                  size: 20,
-                  color: const Color.fromARGB(255, 2, 2, 119),
+                SizedBox(height: 20),
+                Text(
+                  _disease!,
+                  style: TextStyle(
+                    color: Colors.pink,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
+                SizedBox(height: 30),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    backgroundColor: const Color.fromARGB(255, 2, 2, 119),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   ),
                   onPressed: () => Navigator.of(context).pop(),
-                  child: SmallFont(
-                    text: 'Close',
-                    color: Colors.white,
+                  child: Text(
+                    'Close',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ],
@@ -443,14 +475,19 @@ class _SymptomCheckerState extends State<SymptomChecker>
     List<Widget> selectedSymptomChips = symptomCheckboxes.entries
         .where((entry) => entry.value)
         .map((entry) => Chip(
-              label: SmallFont(
-                text: entry.key,
-                color: Colors.white,
-                size: 15.0,
-                fontWeight: FontWeight.w600,
+              label: Text(
+                entry.key,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              backgroundColor: const Color.fromARGB(255, 2, 2, 119),
-              //labelStyle: TextStyle(color: Colors.white),
+              backgroundColor: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             ))
         .toList();
 
