@@ -3,9 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:tele_med/widgets/big_font.dart';
-import 'package:tele_med/widgets/constants.dart';
-import 'package:tele_med/widgets/small_font.dart';
 
 class SymptomChecker extends StatefulWidget {
   const SymptomChecker({super.key});
@@ -190,7 +187,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
 
     final response = await http.post(
       //Uri.parse('http://192.168.147.229:5000/predict'),
-      Uri.parse('http://35.202.157.182:5000/predict'),
+      Uri.parse('http://34.27.6.191:5000/predict'),
       // Uri.parse('https://0.0.0.0/predict'),
       body: json.encode({'symptoms': symptoms}),
       headers: {'Content-Type': 'application/json'},
