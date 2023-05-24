@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tele_med/widgets/dimensions.dart';
 
 class NoItemsPage extends StatelessWidget {
   final String text;
@@ -11,28 +10,30 @@ class NoItemsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Image.asset(
-          imagepath,
-          height: MediaQuery.of(context).size.height * 0.25,
-          width: MediaQuery.of(context).size.width * 0.25,
-        ),
-        SizedBox(
-          height: dimensions.size20,
-        ),
-        Container(
-          margin: EdgeInsets.all(dimensions.size20),
-          child: Center(
-              child: Text(
-            text,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.red, fontSize: 16),
-          )),
-        )
-      ],
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Image.asset(
+            imagepath,
+            height: MediaQuery.of(context).size.height * 0.25,
+            width: MediaQuery.of(context).size.width * 0.25,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            margin: EdgeInsets.all(20),
+            child: Center(
+                child: Text(
+              text,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.red, fontSize: 16),
+            )),
+          )
+        ],
+      ),
     );
   }
 }

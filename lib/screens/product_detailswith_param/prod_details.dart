@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tele_med/helpers_n_controllers/cart_controller.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/screens/cart_page.dart';
+import 'package:tele_med/screens/no_items_page.dart';
 // import 'package:tele_med/widgets/dimensions.dart';
 import 'package:tele_med/widgets/reusable_icons.dart';
 import '/components/search_widget.dart';
@@ -384,11 +385,22 @@ class _ProdDetailsState extends State<ProdDetails>
                                 builder: (controller) {
                                   return GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => CartPage()),
-                                      );
+                                      if (controller.totalItems >= 1) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => CartPage()),
+                                        );
+                                      } else {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => NoItemsPage(
+                                                    text:
+                                                        'Your Cart is Empty,Please add some items.',
+                                                  )),
+                                        );
+                                      }
                                     },
                                     child: Stack(
                                       children: [
@@ -1008,21 +1020,21 @@ class _ProdDetailsState extends State<ProdDetails>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    // ScaffoldMessenger.of(context)
-                                    //     .clearSnackBars();
-                                    // ScaffoldMessenger.of(context).showSnackBar(
-                                    //   SnackBar(
-                                    //     content: Text(
-                                    //       'Button Clicked1',
-                                    //       style: TextStyle(
-                                    //         color: FlutterFlowTheme.of(context)
-                                    //             .primaryText,
-                                    //       ),
-                                    //     ),
-                                    //     duration: Duration(milliseconds: 4000),
-                                    //     backgroundColor: Color(0x00000000),
-                                    //   ),
-                                    // );
+                                    ScaffoldMessenger.of(context)
+                                        .clearSnackBars();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Added to Cart',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Color(0x00000000),
+                                      ),
+                                    );
                                     medicine.addItem(med);
                                   },
                                   child: Container(

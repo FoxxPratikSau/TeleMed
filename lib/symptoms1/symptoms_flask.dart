@@ -3,9 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:tele_med/widgets/big_font.dart';
-import 'package:tele_med/widgets/constants.dart';
-import 'package:tele_med/widgets/small_font.dart';
 
 class SymptomChecker extends StatefulWidget {
   const SymptomChecker({super.key});
