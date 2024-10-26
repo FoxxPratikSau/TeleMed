@@ -26,9 +26,9 @@ export 'product_detailswith_param_model.dart';
 class ProductDetailswithParamWidget extends StatefulWidget {
   final int pageId;
   const ProductDetailswithParamWidget({
-    Key? key,
+    super.key,
     required this.pageId,
-  }) : super(key: key);
+  });
 
   @override
   _ProductDetailswithParamWidgetState createState() =>
@@ -401,11 +401,9 @@ class _ProductDetailswithParamWidgetState
                                             backgroundColor: Color(0xF2F2F2FF),
                                             icon: Icons.shopping_cart),
                                         controller.totalItems >= 1
-                                            // ignore: prefer_const_constructors
                                             ? Positioned(
                                                 right: 0,
                                                 top: 0,
-                                                // ignore: prefer_const_constructors
                                                 child: ReusableIcon(
                                                   icon: Icons.circle,
                                                   size: 20,
@@ -454,7 +452,7 @@ class _ProductDetailswithParamWidgetState
                     ),
                     child: Stack(
                       children: [
-                        Container(
+                        SizedBox(
                           width: double.infinity,
                           height: 500.0,
                           child: Stack(
@@ -599,9 +597,9 @@ class _ProductDetailswithParamWidgetState
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        children: [
+                                        children: const [
                                           FaIcon(
-                                            FontAwesomeIcons.shareAlt,
+                                            FontAwesomeIcons.share,
                                             color: Color(0xFF828282),
                                             size: 14.0,
                                           ),
@@ -834,7 +832,7 @@ class _ProductDetailswithParamWidgetState
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+                                  children: const [
                                     Icon(
                                       Icons.keyboard_arrow_right,
                                       color: Colors.black,

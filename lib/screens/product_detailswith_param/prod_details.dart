@@ -410,11 +410,9 @@ class _ProdDetailsState extends State<ProdDetails>
                                                 255, 228, 228, 231),
                                             icon: Icons.shopping_cart_outlined),
                                         controller.totalItems >= 1
-                                            // ignore: prefer_const_constructors
                                             ? Positioned(
                                                 right: 0,
                                                 top: 0,
-                                                // ignore: prefer_const_constructors
                                                 child: ReusableIcon(
                                                   icon: Icons.circle,
                                                   size: 20,
@@ -463,7 +461,7 @@ class _ProdDetailsState extends State<ProdDetails>
                     ),
                     child: Stack(
                       children: [
-                        Container(
+                        SizedBox(
                           width: double.infinity,
                           height: 500.0,
                           child: Stack(
@@ -608,9 +606,9 @@ class _ProdDetailsState extends State<ProdDetails>
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        children: [
+                                        children: const [
                                           FaIcon(
-                                            FontAwesomeIcons.shareAlt,
+                                            FontAwesomeIcons.share,
                                             color: Color(0xFF828282),
                                             size: 14.0,
                                           ),
@@ -843,7 +841,7 @@ class _ProdDetailsState extends State<ProdDetails>
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+                                  children: const [
                                     Icon(
                                       Icons.keyboard_arrow_right,
                                       color: Colors.black,

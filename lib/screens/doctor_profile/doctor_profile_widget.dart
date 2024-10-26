@@ -36,7 +36,6 @@ class _DoctorProfileWidgetState extends State<DoctorProfileWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
-  final _formKey = GlobalKey<FormState>();
   final _firestoreService = FirestoreService();
 
   final animationsMap = {
@@ -274,7 +273,7 @@ class _DoctorProfileWidgetState extends State<DoctorProfileWidget>
                     SizedBox(height: 10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           'CGST -',
                           style: TextStyle(fontSize: 18),
@@ -289,7 +288,7 @@ class _DoctorProfileWidgetState extends State<DoctorProfileWidget>
                     SizedBox(height: 10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           'SGST -',
                           style: TextStyle(fontSize: 18),

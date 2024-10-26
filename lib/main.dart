@@ -67,9 +67,11 @@ class _MyAppState extends State<MyApp> {
     Get.find<medicine_controller>().getMedicine2List();
     Get.find<doctorList_controller>().getDoctorsList();
 
-    return GetMaterialApp.router(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'TeleMed',
+      // supportedLocales: localization.supportedLocales,
+      // localizationsDelegates: localization.localizationsDelegates,
       localizationsDelegates: const [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -77,11 +79,10 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
+      routerConfig: _router,
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),
       themeMode: _themeMode,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
     );
     // return GetMaterialApp(
     //   home: VideoCallScreen(pageId: 0,),

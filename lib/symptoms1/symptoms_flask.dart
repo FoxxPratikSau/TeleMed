@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
 
 class SymptomChecker extends StatefulWidget {
   const SymptomChecker({super.key});
@@ -180,34 +180,31 @@ class _SymptomCheckerState extends State<SymptomChecker>
 
   Map<String, bool> symptomCheckboxes = {};
 
-  Future<void> _predictDisease(BuildContext context) async {
-    List<String> symptoms = symptomCheckboxes.keys
-        .where((symptom) => symptomCheckboxes[symptom] == true)
-        .toList();
+  // Future<void> _predictDisease(BuildContext context) async {
+  //   List<String> symptoms = symptomCheckboxes.keys
+  //       .where((symptom) => symptomCheckboxes[symptom] == true)
+  //       .toList();
 
-    final response = await http.post(
-      //Uri.parse('http://192.168.147.229:5000/predict'),
-      Uri.parse('http://34.27.6.191:5000/predict'),
-      // Uri.parse('https://0.0.0.0/predict'),
-      body: json.encode({'symptoms': symptoms}),
-      headers: {'Content-Type': 'application/json'},
-    );
+  //   final response = await http.post(
+  //     Uri.parse('http://192.168.147.229:5000/predict'),
+  //     // Uri.parse('http://34.27.6.191:5000/predict'),
+  //     // Uri.parse('https://0.0.0.0/predict'),
+  //     body: json.encode({'symptoms': symptoms}),
+  //     headers: {'Content-Type': 'application/json'},
+  //   );
 
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       _disease = json.decode(response.body)['disease'];
+  //       // print('Disease name: $_disease');
+  //     });
 
-    if (response.statusCode == 200) {
-      setState(() {
-        _disease = json.decode(response.body)['disease'];
-        print('Disease name: $_disease');
-      });
-
-      // Show the custom disease dialog (you can create a separate method for this)
-      showDiseaseDialog(context);
-    } else {
-      throw Exception('Failed to predict disease');
-    }
-  }
+  //     // Show the custom disease dialog (you can create a separate method for this)
+  //     showDiseaseDialog(context);
+  //   } else {
+  //     throw Exception('Failed to predict disease');
+  //   }
+  // }
 
   void _clearAllSelectedSymptoms() {
     setState(() {
@@ -232,7 +229,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
           backgroundColor: Colors.white,
           titleSpacing: 20,
           elevation: 0,
-          title: Text(
+          title: const Text(
             'Predict Your Disease',
             style: TextStyle(
               color: Colors.black,
@@ -240,14 +237,6 @@ class _SymptomCheckerState extends State<SymptomChecker>
               fontWeight: FontWeight.bold,
             ),
           ),
-          // shape: const RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.vertical(
-          //     bottom: Radius.elliptical(
-          //       30,
-          //       20,
-          //     ),
-          //   ),
-          // ),
           actions: [
             IconButton(
               icon: Icon(
@@ -272,20 +261,20 @@ class _SymptomCheckerState extends State<SymptomChecker>
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
                   controller: _searchQueryController,
-                  style: TextStyle(color: Colors.blue),
+                  style: const TextStyle(color: Colors.blue),
                   decoration: InputDecoration(
                     hintText: 'Search symptoms',
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsets.all(12),
-                    prefixIcon: Icon(Icons.search, color: Colors.blue),
+                    contentPadding: const EdgeInsets.all(12),
+                    prefixIcon: const Icon(Icons.search, color: Colors.blue),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide.none),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(color: Colors.pink)),
-                    hintStyle: TextStyle(color: Colors.grey),
+                        borderSide: const BorderSide(color: Colors.pink)),
+                    hintStyle: const TextStyle(color: Colors.grey),
                   ),
                 ),
               ),
@@ -342,7 +331,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
                         color: Colors.grey.withOpacity(0.2),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -350,8 +339,8 @@ class _SymptomCheckerState extends State<SymptomChecker>
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8.0),
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 8.0),
                         child: Text(
                           'Your selected symptoms are:',
                           style: TextStyle(
@@ -362,13 +351,13 @@ class _SymptomCheckerState extends State<SymptomChecker>
                         ),
                       ),
                       _buildSelectedSymptoms(),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
                             onPressed: _clearAllSelectedSymptoms,
-                            child: Text(
+                            child: const Text(
                               'Clear All',
                               style: TextStyle(
                                 color: Colors.pink,
@@ -377,7 +366,8 @@ class _SymptomCheckerState extends State<SymptomChecker>
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () => _predictDisease(context),
+                            onPressed: () {},
+                            // onPressed: () => _predictDisease(context),
                             style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all(Colors.blue),
@@ -388,10 +378,10 @@ class _SymptomCheckerState extends State<SymptomChecker>
                                 ),
                               ),
                               padding: MaterialStateProperty.all(
-                                  EdgeInsets.symmetric(
+                                  const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 10)),
                             ),
-                            child: Text(
+                            child: const Text(
                               'Next',
                               style: TextStyle(
                                 color: Colors.white,
@@ -425,7 +415,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   "Predicted Disease",
                   style: TextStyle(
                     color: Colors.blue,
@@ -433,27 +423,28 @@ class _SymptomCheckerState extends State<SymptomChecker>
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   _disease!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.pink,
                     fontSize: 22,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    onPrimary: Colors.white,
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
                   ),
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text(
+                  child: const Text(
                     'Close',
                     style: TextStyle(
                       fontSize: 18,
@@ -474,7 +465,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
         .map((entry) => Chip(
               label: Text(
                 entry.key,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15.0,
                   fontWeight: FontWeight.w600,
@@ -484,7 +475,7 @@ class _SymptomCheckerState extends State<SymptomChecker>
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             ))
         .toList();
 

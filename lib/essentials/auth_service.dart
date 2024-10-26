@@ -34,7 +34,7 @@ class AuthService extends GetxController {
       return userCredential.value;
     } on FirebaseAuthException catch (e) {
       print(e.message);
-      throw e;
+      rethrow;
       // return null;
     }
   }

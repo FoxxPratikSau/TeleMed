@@ -8,6 +8,8 @@ import 'package:tele_med/widgets/small_font.dart';
 import 'package:get/get.dart';
 
 class LungCancerPage extends StatefulWidget {
+  const LungCancerPage({super.key});
+
   @override
   _LungCancerPageState createState() => _LungCancerPageState();
 }
@@ -105,9 +107,9 @@ class _LungCancerPageState extends State<LungCancerPage> {
                     ),
                     child: Image.file(_image!),
                   ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SmallFont(text: _predictionResult),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             GestureDetector(
               onTap: () => _getImage(),
               child: Container(

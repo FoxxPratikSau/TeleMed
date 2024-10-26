@@ -103,7 +103,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       TextButton(
                         onPressed: () => _handleSubmitted(_textController.text),
-                        child: Text(
+                        child: const Text(
                           'Send',
                           style: TextStyle(
                             color: Colors.blue,

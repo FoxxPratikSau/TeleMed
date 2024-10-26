@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 import 'package:tele_med/screens/features_screen.dart';
 import 'package:tele_med/screens/medicine_store/medicine_store_widget.dart';
-import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/essentials/auth_service.dart';
 import 'package:tele_med/screens/home_page/home_page.dart';
 import 'package:get/get.dart';

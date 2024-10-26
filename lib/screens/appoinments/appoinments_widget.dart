@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tele_med/essentials/firestore_service.dart';
 import 'package:tele_med/screens/doctor_profile/doctor_profile_widget.dart';

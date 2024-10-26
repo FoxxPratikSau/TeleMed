@@ -2,10 +2,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'notifications_model.dart';
 export 'notifications_model.dart';
@@ -33,7 +31,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           delay: 0.ms,
           duration: 1000.ms,
           hz: 10,
-          offset: Offset(0.0, 0.0),
+          offset: const Offset(0.0, 0.0),
           rotation: 0.087,
         ),
       ],
@@ -52,8 +50,8 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -71,8 +69,8 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -90,8 +88,8 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -109,8 +107,8 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 600.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -128,8 +126,8 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 800.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -167,7 +165,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -199,7 +197,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,7 +209,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                           color: FlutterFlowTheme.of(context).quinary,
                           shape: BoxShape.circle,
                         ),
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: FaIcon(
                           FontAwesomeIcons.solidBell,
                           color: FlutterFlowTheme.of(context).primary,
@@ -220,7 +218,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                       ).animateOnPageLoad(
                           animationsMap['containerOnPageLoadAnimation1']!),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 12.0, 0.0, 12.0),
                         child: Text(
                           'Notifications',
@@ -234,7 +232,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                         scrollDirection: Axis.vertical,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
                             child: Container(
                               width: double.infinity,
@@ -244,7 +242,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -258,7 +256,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         shape: BoxShape.circle,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: ClipRRect(
                                           borderRadius:
@@ -274,7 +272,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -288,7 +286,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       .bodyMedium,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'Your account was successfully funded with \$150',
@@ -315,7 +313,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 'containerOnPageLoadAnimation2']!),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
                             child: Container(
                               width: double.infinity,
@@ -325,7 +323,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -339,7 +337,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         shape: BoxShape.circle,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: ClipRRect(
                                           borderRadius:
@@ -355,7 +353,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -369,7 +367,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       .bodyMedium,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'Your appointment with the doctor is confirmed.',
@@ -396,7 +394,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 'containerOnPageLoadAnimation3']!),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
                             child: Container(
                               width: double.infinity,
@@ -406,7 +404,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -420,7 +418,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         shape: BoxShape.circle,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: ClipRRect(
                                           borderRadius:
@@ -436,7 +434,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -450,7 +448,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       .bodyMedium,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'Your account was successfully funded with \$200',
@@ -477,7 +475,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 'containerOnPageLoadAnimation4']!),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
                             child: Container(
                               width: double.infinity,
@@ -487,7 +485,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -501,7 +499,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         shape: BoxShape.circle,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: ClipRRect(
                                           borderRadius:
@@ -517,7 +515,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -531,7 +529,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       .bodyMedium,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'Your vaccination is ready, make an appointment.',

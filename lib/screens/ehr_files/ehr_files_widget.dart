@@ -2,10 +2,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'ehr_files_model.dart';
 export 'ehr_files_model.dart';
@@ -39,8 +37,8 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -58,8 +56,8 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -95,7 +93,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -137,8 +135,8 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor: Color(0x00000000),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor: const Color(0x00000000),
                           ),
                         );
                       },
@@ -149,7 +147,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                           color: FlutterFlowTheme.of(context).quinary,
                           borderRadius: BorderRadius.circular(16.0),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.more_vert,
                           color: Color(0xFF828282),
                           size: 24.0,
@@ -160,7 +158,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,13 +169,13 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 9.0, 0.0),
                               child: Container(
                                 width: 110.0,
@@ -186,7 +184,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                   color: FlutterFlowTheme.of(context).primary,
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Shared',
                                   style: FlutterFlowTheme.of(context)
@@ -203,7 +201,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 9.0, 0.0),
                               child: Container(
                                 width: 110.0,
@@ -212,7 +210,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                   color: FlutterFlowTheme.of(context).quinary,
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'My Files',
                                   style: FlutterFlowTheme.of(context)
@@ -238,7 +236,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
               Expanded(
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 24.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 24.0),
                   child: MasonryGridView.count(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10.0,
@@ -263,7 +261,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -284,7 +282,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               fit: BoxFit.contain,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'X-Ray',
@@ -300,7 +298,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 '14 files',
@@ -317,7 +315,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.more_vert,
                                           color: Colors.black,
                                           size: 16.0,
@@ -331,7 +329,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).quinary,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(16.0),
                                         bottomRight: Radius.circular(16.0),
                                         topLeft: Radius.circular(0.0),
@@ -339,7 +337,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -361,7 +359,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 width: 24.0,
                                                 height: 24.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.asset(
@@ -370,14 +368,14 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         6.0, 0.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 24.0,
                                                   height: 24.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.asset(
@@ -412,7 +410,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -433,7 +431,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               fit: BoxFit.contain,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'Blood',
@@ -449,7 +447,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 '14 files',
@@ -466,7 +464,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.more_vert,
                                           color: Colors.black,
                                           size: 16.0,
@@ -480,7 +478,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).quinary,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(16.0),
                                         bottomRight: Radius.circular(16.0),
                                         topLeft: Radius.circular(0.0),
@@ -488,7 +486,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -510,7 +508,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 width: 24.0,
                                                 height: 24.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.asset(
@@ -519,14 +517,14 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         6.0, 0.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 24.0,
                                                   height: 24.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.asset(
@@ -561,7 +559,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -582,7 +580,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               fit: BoxFit.contain,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'Diagnostics',
@@ -598,7 +596,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 '14 files',
@@ -615,7 +613,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.more_vert,
                                           color: Colors.black,
                                           size: 16.0,
@@ -629,7 +627,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).quinary,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(16.0),
                                         bottomRight: Radius.circular(16.0),
                                         topLeft: Radius.circular(0.0),
@@ -637,7 +635,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -659,7 +657,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 width: 24.0,
                                                 height: 24.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.network(
@@ -668,14 +666,14 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         6.0, 0.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 24.0,
                                                   height: 24.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.asset(
@@ -710,7 +708,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -731,7 +729,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               fit: BoxFit.contain,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'Misc.',
@@ -747,7 +745,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 '14 files',
@@ -764,7 +762,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.more_vert,
                                           color: Colors.black,
                                           size: 16.0,
@@ -778,7 +776,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).quinary,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(16.0),
                                         bottomRight: Radius.circular(16.0),
                                         topLeft: Radius.circular(0.0),
@@ -786,7 +784,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -808,7 +806,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 width: 24.0,
                                                 height: 24.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.network(
@@ -817,14 +815,14 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         6.0, 0.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 24.0,
                                                   height: 24.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.asset(
@@ -859,7 +857,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -880,7 +878,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               fit: BoxFit.contain,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'Checkup',
@@ -896,7 +894,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 '14 files',
@@ -913,7 +911,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.more_vert,
                                           color: Colors.black,
                                           size: 16.0,
@@ -927,7 +925,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).quinary,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(16.0),
                                         bottomRight: Radius.circular(16.0),
                                         topLeft: Radius.circular(0.0),
@@ -935,7 +933,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -957,7 +955,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 width: 24.0,
                                                 height: 24.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.network(
@@ -966,14 +964,14 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         6.0, 0.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 24.0,
                                                   height: 24.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.asset(
@@ -1008,7 +1006,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1029,7 +1027,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               fit: BoxFit.contain,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'Prescriptions',
@@ -1045,7 +1043,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 '14 files',
@@ -1062,7 +1060,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.more_vert,
                                           color: Colors.black,
                                           size: 16.0,
@@ -1076,7 +1074,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).quinary,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(16.0),
                                         bottomRight: Radius.circular(16.0),
                                         topLeft: Radius.circular(0.0),
@@ -1084,7 +1082,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1106,7 +1104,7 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 width: 24.0,
                                                 height: 24.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.network(
@@ -1115,14 +1113,14 @@ class _EhrFilesWidgetState extends State<EhrFilesWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         6.0, 0.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 24.0,
                                                   height: 24.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.asset(

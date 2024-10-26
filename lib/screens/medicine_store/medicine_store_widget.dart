@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:tele_med/helpers_n_controllers/medicines_controller.dart';
 import 'package:tele_med/models/medicines.dart';
 import 'package:tele_med/screens/product_detailswith_param/prod_details.dart';
-import 'package:tele_med/screens/product_detailswith_param/product_detailswith_param_widget.dart';
 
 import '/components/product_widget.dart';
 import '/components/search_widget.dart';
@@ -368,7 +367,7 @@ class _MedicineStoreWidgetState extends State<MedicineStoreWidget>
                                   .secondaryBackground,
                               borderRadius: BorderRadius.circular(0.0),
                             ),
-                            child: Container(
+                            child: SizedBox(
                               width: double.infinity,
                               height: 160.0,
                               child: Stack(

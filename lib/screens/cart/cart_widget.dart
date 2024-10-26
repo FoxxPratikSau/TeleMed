@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'cart_model.dart';
@@ -50,7 +49,7 @@ class _CartWidgetState extends State<CartWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,13 +80,13 @@ class _CartWidgetState extends State<CartWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Cart',
                         style: FlutterFlowTheme.of(context).displaySmall,
@@ -99,7 +98,7 @@ class _CartWidgetState extends State<CartWidget> {
               Expanded(
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +106,7 @@ class _CartWidgetState extends State<CartWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 48.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 48.0),
                         child: Text(
                           'Your cart is empty!',
                           textAlign: TextAlign.center,

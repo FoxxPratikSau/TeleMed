@@ -1,15 +1,6 @@
 import '/components/product_widget.dart';
-import '/components/search_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class MedicineStoreModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
@@ -31,6 +22,7 @@ class MedicineStoreModel extends FlutterFlowModel {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     productModel1 = createModel(context, () => ProductModel());
     productModel2 = createModel(context, () => ProductModel());
@@ -40,6 +32,7 @@ class MedicineStoreModel extends FlutterFlowModel {
     productModel6 = createModel(context, () => ProductModel());
   }
 
+  @override
   void dispose() {
     productModel1.dispose();
     productModel2.dispose();

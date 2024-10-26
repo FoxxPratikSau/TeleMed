@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
-import 'dart:ui';
 
 class Classifier {
   static const String MODEL_FILE = 'skin_cancer.tflite';
@@ -69,17 +67,17 @@ class Classifier {
   Uint8List imageToByteListFloat32(
       img.Image image, int inputSize, double mean, double std) {
     var convertedBytes = Float32List(1 * inputSize * inputSize * 3);
-    var buffer = Float32List.view(convertedBytes.buffer);
-    int pixelIndex = 0;
+    // var buffer = Float32List.view(convertedBytes.buffer);
+    // int pixelIndex = 0;
     for (int i = 0; i < inputSize; ++i) {
       for (int j = 0; j < inputSize; ++j) {
-        int pixel = image.getPixelSafe(j, i);
-        int red = img.getRed(pixel);
-        int green = img.getGreen(pixel);
-        int blue = img.getBlue(pixel);
-        buffer[pixelIndex++] = (red - mean) / std;
-        buffer[pixelIndex++] = (green - mean) / std;
-        buffer[pixelIndex++] = (blue - mean) / std;
+        // var pixel = image.getPixelSafe(j, i);
+        // int red = img.getRed(pixel);
+        // int green = img.getGreen(pixel);
+        // int blue = img.getBlue(pixel);
+        // buffer[pixelIndex++] = (red - mean) / std;
+        // buffer[pixelIndex++] = (green - mean) / std;
+        // buffer[pixelIndex++] = (blue - mean) / std;
       }
     }
     return convertedBytes.buffer.asUint8List();

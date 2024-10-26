@@ -10,7 +10,7 @@ class doctorList_controller extends GetxController {
 
   // late CartController _cart;
 
-  bool _isLoaded = false;
+  final bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
   Future<void> getDoctorsList() async {
