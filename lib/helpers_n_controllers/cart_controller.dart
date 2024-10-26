@@ -10,7 +10,7 @@ class CartController extends GetxController {
   final CartRepo cartRepo;
   CartController({required this.cartRepo});
 
-  Map<int, cart_model> _items = {};
+  final Map<int, cart_model> _items = {};
   Map<int, cart_model> get items => _items;
   List<cart_model> storageItems = [];
 

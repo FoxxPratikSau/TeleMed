@@ -14,7 +14,7 @@ class medicine_controller extends GetxController {
   List<medicine> get medicine_items2 => _medicine_items2;
   late CartController _cart;
 
-  bool _isLoaded = false;
+  final bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
   int _quantity = 0;
   int get quantity => _quantity;

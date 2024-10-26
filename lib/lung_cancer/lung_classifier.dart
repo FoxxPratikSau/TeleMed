@@ -9,7 +9,7 @@ class Classifier {
   static const String MODEL_FILE_NAME = "assets/Lung_cancer.tflite";
   static const List<String> LABELS = ['Normal', 'Pneumonia'];
 
-  Interpreter _interpreter;
+  final Interpreter _interpreter;
 
   Classifier._(this._interpreter);
 
@@ -26,7 +26,7 @@ class Classifier {
 
       final options = InterpreterOptions()..threads = 4;
       final interpreter =
-          await Interpreter.fromBuffer(modelDataBuffer, options: options);
+          Interpreter.fromBuffer(modelDataBuffer, options: options);
       print("Model loaded successfully");
       return interpreter;
     } catch (e) {
@@ -38,11 +38,6 @@ class Classifier {
   List<String> get labels => LABELS;
 
   Future<List<double>?> predictImage(File imageFile) async {
-    if (_interpreter == null) {
-      print("Interpreter not loaded");
-      return null;
-    }
-
     img.Image? image = img.decodeImage(await imageFile.readAsBytes());
     img.Image resizedImage = img.copyResize(image!, width: 224, height: 224);
 
@@ -56,17 +51,17 @@ class Classifier {
 
   Uint8List _imageToByteListFloat32(img.Image image, int width, int height) {
     var convertedBytes = Float32List(1 * width * height * 3);
-    var buffer = Float32List.view(convertedBytes.buffer);
-    int pixelIndex = 0;
+    // var buffer = Float32List.view(convertedBytes.buffer);
+    // int pixelIndex = 0;
 
-    for (var i = 0; i < height; i++) {
-      for (var j = 0; j < width; j++) {
-        var pixel = image.getPixel(j, i);
-        buffer[pixelIndex++] = (img.getRed(pixel)) / 255;
-        buffer[pixelIndex++] = (img.getGreen(pixel)) / 255;
-        buffer[pixelIndex++] = (img.getBlue(pixel)) / 255;
-      }
-    }
+    // for (var i = 0; i < height; i++) {
+    //   for (var j = 0; j < width; j++) {
+    //     var pixel = image.getPixel(j, i);
+    //     buffer[pixelIndex++] = (img.getRed(pixel)) / 255;
+    //     buffer[pixelIndex++] = (img.getGreen(pixel)) / 255;
+    //     buffer[pixelIndex++] = (img.getBlue(pixel)) / 255;
+    //   }
+    // }
 
     return convertedBytes.buffer.asUint8List();
   }

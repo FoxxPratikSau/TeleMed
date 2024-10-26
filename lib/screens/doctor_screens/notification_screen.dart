@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tele_med/widgets/dimensions.dart';
 
 class NotificationApp extends StatelessWidget {
+  const NotificationApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -9,21 +10,23 @@ class NotificationApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: NotificationScreen(),
+      home: const NotificationScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor Notifications'),
+        title: const Text('Doctor Notifications'),
       ),
       body: ListView(
-        children: [
+        children: const [
           NotificationItem(
             title: 'Incoming Call',
             message: 'John Doe',
@@ -70,13 +73,13 @@ class NotificationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 5),
+      padding: const EdgeInsets.only(top: 5),
       child: ListTile(
         leading: Icon(icon),
         title: Text(title),
         subtitle: Text(message),
         trailing: IconButton(
-          icon: Icon(Icons.clear),
+          icon: const Icon(Icons.clear),
           onPressed: () {
             // Handle notification dismissal
           },

@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'product_model.dart';
 export 'product_model.dart';
@@ -65,11 +64,11 @@ class _ProductWidgetState extends State<ProductWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
-          color: Color(0xFFF2F2F2),
+          color: const Color(0xFFF2F2F2),
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 16.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +81,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                   width: 30.0,
                   height: 30.0,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF5F5F7),
+                    color: const Color(0xFFF5F5F7),
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                   child: ToggleIcon(
@@ -91,12 +90,12 @@ class _ProductWidgetState extends State<ProductWidget> {
                           FFAppState().isFavourite = !FFAppState().isFavourite);
                     },
                     value: FFAppState().isFavourite,
-                    onIcon: Icon(
+                    onIcon: const Icon(
                       Icons.favorite_rounded,
                       color: Color(0xFFFF3535),
                       size: 14.0,
                     ),
-                    offIcon: Icon(
+                    offIcon: const Icon(
                       Icons.favorite_border,
                       color: Color(0xFFFF3535),
                       size: 14.0,
@@ -106,7 +105,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
               child: Image.asset(
                 widget.productImage!,
                 width: 100.0,
@@ -116,7 +115,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -134,7 +133,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 2.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 2.0),
                       child: Text(
                         widget.productCategory!,
                         style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -145,7 +144,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -170,7 +169,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Recoleta',
-                                  color: Color(0xFFFF3535),
+                                  color: const Color(0xFFFF3535),
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.lineThrough,
@@ -181,13 +180,13 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ),
                     ),
                     RatingBarIndicator(
-                      itemBuilder: (context, index) => Icon(
+                      itemBuilder: (context, index) => const Icon(
                         Icons.star_rounded,
                         color: Color(0xFFFFC107),
                       ),
                       direction: Axis.horizontal,
                       rating: widget.productRating!.toDouble(),
-                      unratedColor: Color(0xFF9E9E9E),
+                      unratedColor: const Color(0xFF9E9E9E),
                       itemCount: 5,
                       itemSize: 12.0,
                     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -20,20 +19,20 @@ class FFAppState extends ChangeNotifier {
 
   int _onboardFinalValue = 3;
   int get onboardFinalValue => _onboardFinalValue;
-  set onboardFinalValue(int _value) {
-    _onboardFinalValue = _value;
+  set onboardFinalValue(int value) {
+    _onboardFinalValue = value;
   }
 
   int _onboardingPageScrolled = 1;
   int get onboardingPageScrolled => _onboardingPageScrolled;
-  set onboardingPageScrolled(int _value) {
-    _onboardingPageScrolled = _value;
+  set onboardingPageScrolled(int value) {
+    _onboardingPageScrolled = value;
   }
 
   bool _isFavourite = false;
   bool get isFavourite => _isFavourite;
-  set isFavourite(bool _value) {
-    _isFavourite = _value;
+  set isFavourite(bool value) {
+    _isFavourite = value;
   }
 }
 

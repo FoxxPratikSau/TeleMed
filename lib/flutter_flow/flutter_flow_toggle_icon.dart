@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ToggleIcon extends StatelessWidget {
-  const ToggleIcon({
+  const ToggleIcon({super.key, 
     required this.value,
     required this.onPressed,
     required this.onIcon,

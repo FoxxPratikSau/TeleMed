@@ -9,6 +9,8 @@ import 'classifier.dart';
 // import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 
 class SkinCancerPage extends StatefulWidget {
+  const SkinCancerPage({super.key});
+
   @override
   _SkinCancerPageState createState() => _SkinCancerPageState();
 }
@@ -103,9 +105,9 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                     ),
                     child: Image.file(_image!),
                   ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SmallFont(text: _predictionResult),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             GestureDetector(
               onTap: () => _getImage(),
               child: Container(
@@ -122,7 +124,7 @@ class _SkinCancerPageState extends State<SkinCancerPage> {
                 )),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
                 if (_image != null) {

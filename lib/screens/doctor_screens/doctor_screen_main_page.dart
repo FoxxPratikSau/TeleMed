@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tele_med/screens/doctor_screens/notification_screen.dart';
 import 'package:tele_med/screens/doctor_screens/appointments.dart';
 import 'package:tele_med/screens/doctor_screens/doctor_profile.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class doctor_screen_main_page extends StatefulWidget {
   const doctor_screen_main_page({super.key, required this.pageId});
@@ -17,7 +17,6 @@ class doctor_screen_main_page extends StatefulWidget {
 }
 
 class _doctor_screen_main_pageState extends State<doctor_screen_main_page> {
-  var _selectedIndex = 0;
   late PersistentTabController _controller;
   List pages = [
     appointments(
@@ -30,9 +29,7 @@ class _doctor_screen_main_pageState extends State<doctor_screen_main_page> {
   ];
 
   void ontapNavigation(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(() {});
   }
 
   @override
@@ -82,31 +79,29 @@ class _doctor_screen_main_pageState extends State<doctor_screen_main_page> {
       context,
       controller: _controller,
       screens: _buildScreens(),
+      hideNavigationBarWhenKeyboardAppears: true,
       items: _navBarsItems(),
-      confineInSafeArea: true,
+      confineToSafeArea: true,
       backgroundColor: Colors.white, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
       stateManagement: true, // Default is true.
-      hideNavigationBarWhenKeyboardShows:
-          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
         colorBehindNavBar: Colors.white,
       ),
-      popAllScreensOnTapOfSelectedTab: true,
-      popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: ItemAnimationProperties(
-        // Navigation Bar's items animation properties.
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
-      ),
-      screenTransitionAnimation: ScreenTransitionAnimation(
-        // Screen transition animation on change of selected tab.
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
+      popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
+      animationSettings: NavBarAnimationSettings(
+        screenTransitionAnimation: ScreenTransitionAnimationSettings(
+          animateTabTransition: true,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+        ),
+        navBarItemAnimation: ItemAnimationSettings(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
       ),
       navBarStyle:
           NavBarStyle.style11, // Choose the nav bar style with this property.

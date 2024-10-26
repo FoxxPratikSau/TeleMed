@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tele_med/components/rounded_button.dart';
-import 'package:tele_med/flutter_flow/flutter_flow_theme.dart';
 import 'package:tele_med/lung_cancer/Lung_page.dart';
 import 'package:tele_med/skin_cancer/sc_page.dart';
 import 'package:tele_med/widgets/constants.dart';
@@ -11,7 +10,7 @@ class MedicalImaging extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Scaffold',
+      // title: 'My Scaffold',
       home: Scaffold(
         backgroundColor: kBGColor,
         body: Center(
@@ -29,7 +28,7 @@ class MedicalImaging extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SkinCancerPage(),
+                        builder: (context) => const SkinCancerPage(),
                       ),
                     );
                   }),
@@ -43,7 +42,7 @@ class MedicalImaging extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LungCancerPage(),
+                        builder: (context) => const LungCancerPage(),
                       ),
                     );
                   }),

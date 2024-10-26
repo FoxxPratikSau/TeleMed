@@ -5,7 +5,6 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:tele_med/essentials/auth_service.dart';
 import 'package:tele_med/screens/intro_page.dart';
 
-import '../login_page.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

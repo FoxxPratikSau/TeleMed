@@ -57,15 +57,16 @@ class _MyPageViewState extends State<MyPageView> {
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(30.0),
           ),
-          height: 250.0,
+          // width: 238.4,
+          height: 156.2 * 1.5,
           child: PageView(
             controller: _controller,
             children: List.generate(
               widget.numPages,
               (index) => ClipRRect(
                   borderRadius: BorderRadius.circular(30.0),
-                  child: Image.asset(widget.pageImages[index],
-                      fit: BoxFit.fitHeight)),
+                  child:
+                      Image.asset(widget.pageImages[index], fit: BoxFit.cover)),
             ),
           ),
         ),
@@ -74,7 +75,7 @@ class _MyPageViewState extends State<MyPageView> {
         ),
         DotsIndicator(
           dotsCount: widget.numPages,
-          position: _currentPageValue,
+          position: _currentPageValue.toInt(),
           decorator: DotsDecorator(
             activeColor: kPrimaryColor,
             size: const Size.square(9.0),

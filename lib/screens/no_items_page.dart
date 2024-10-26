@@ -20,11 +20,11 @@ class NoItemsPage extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.25,
             width: MediaQuery.of(context).size.width * 0.25,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             child: Center(
                 child: Text(
               text,

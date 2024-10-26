@@ -140,7 +140,7 @@ class _appointmentsState extends State<appointments> {
                                               ),
                                               Row(
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                       height: 15,
                                                       width: 15,
                                                       child: ClipRRect(

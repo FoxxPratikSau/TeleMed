@@ -21,7 +21,7 @@ class AppStateNotifier extends ChangeNotifier {
 }
 
 GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
-      initialLocation: '/',
+      initialLocation: 'adasd',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) => appStateNotifier.showSplashImage
@@ -37,7 +37,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : OnboardingWidget(),
+          : const OnboardingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -55,12 +55,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : OnboardingWidget(),
+              : const OnboardingWidget(),
           routes: [
             FFRoute(
               name: 'Onboarding',
               path: 'onboarding',
-              builder: (context, params) => OnboardingWidget(),
+              builder: (context, params) => const OnboardingWidget(),
             ),
             FFRoute(
               name: 'HomePage',
@@ -75,12 +75,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Notifications',
               path: 'notifications',
-              builder: (context, params) => NotificationsWidget(),
+              builder: (context, params) => const NotificationsWidget(),
             ),
             FFRoute(
               name: 'MedicineStore',
               path: 'medicineStore',
-              builder: (context, params) => MedicineStoreWidget(),
+              builder: (context, params) => const MedicineStoreWidget(),
             ),
             FFRoute(
               name: 'Profile',
@@ -90,31 +90,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Chats',
               path: 'chats',
-              builder: (context, params) => ChatsWidget(),
+              builder: (context, params) => const ChatsWidget(),
             ),
             FFRoute(
               name: 'EhrFiles',
               path: 'ehrFiles',
-              builder: (context, params) => EhrFilesWidget(),
+              builder: (context, params) => const EhrFilesWidget(),
             ),
             FFRoute(
               name: 'Cart',
               path: 'cart',
-              builder: (context, params) => CartWidget(),
+              builder: (context, params) => const CartWidget(),
             ),
             FFRoute(
               name: 'ProductDetailswithParam',
               path: 'productDetailswithParam',
               builder: (context, params) => const ProductDetailswithParamWidget(
-                // productName: params.getParam('productName', ParamType.String),
-                // productCategory:
-                //     params.getParam('productCategory', ParamType.String),
-                // productPrice: params.getParam('productPrice', ParamType.String),
-                // productRegularPrice:
-                //     params.getParam('productRegularPrice', ParamType.String),
-                // productDescription:
-                //     params.getParam('productDescription', ParamType.String),
-                // productImage: params.getParam('productImage', ParamType.String),
                 pageId: 0,
               ),
             ),
@@ -122,22 +113,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'ProdDetails',
               path: 'prodDetails',
               builder: (context, params) => const ProdDetails(
-                // productName: params.getParam('productName', ParamType.String),
-                // productCategory:
-                //     params.getParam('productCategory', ParamType.String),
-                // productPrice: params.getParam('productPrice', ParamType.String),
-                // productRegularPrice:
-                //     params.getParam('productRegularPrice', ParamType.String),
-                // productDescription:
-                //     params.getParam('productDescription', ParamType.String),
-                // productImage: params.getParam('productImage', ParamType.String),
                 pageId: 0,
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
-      urlPathStrategy: UrlPathStrategy.path,
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -152,7 +133,8 @@ extension NavigationExtensions on BuildContext {
   void safePop() {
     // If there is only one route on the stack, navigate to the initial
     // page instead of popping.
-    if (GoRouter.of(this).routerDelegate.matches.length <= 1) {
+    if (GoRouter.of(this).routerDelegate.currentConfiguration.matches.length <=
+        1) {
       go('/');
     } else {
       pop();
@@ -164,8 +146,8 @@ extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
-    ..addAll(params)
-    ..addAll(queryParams)
+    // ..addAll(params)
+    // ..addAll(queryParams)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -291,5 +273,6 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() =>
+      const TransitionInfo(hasTransition: false);
 }

@@ -19,6 +19,7 @@ class HomePageModel extends FlutterFlowModel {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     recentProductsModel1 = createModel(context, () => RecentProductsModel());
     recentProductsModel2 = createModel(context, () => RecentProductsModel());
@@ -26,6 +27,7 @@ class HomePageModel extends FlutterFlowModel {
     recentProductsModel4 = createModel(context, () => RecentProductsModel());
   }
 
+  @override
   void dispose() {
     textController?.dispose();
     recentProductsModel1.dispose();

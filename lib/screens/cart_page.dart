@@ -94,7 +94,7 @@ class _CartPageState extends State<CartPage> {
                                       color: const Color.fromARGB(
                                           255, 235, 238, 167),
                                       borderRadius: BorderRadius.circular(20)),
-                                  margin: EdgeInsets.all(10),
+                                  margin: const EdgeInsets.all(10),
                                   height: 20 * 5,
                                   width: double.maxFinite,
                                   child: Row(
@@ -132,7 +132,7 @@ class _CartPageState extends State<CartPage> {
                                         child: Container(
                                           width: 20 * 5,
                                           height: 20 * 5,
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                             right: 10,
                                           ),
                                           decoration: BoxDecoration(
@@ -175,7 +175,7 @@ class _CartPageState extends State<CartPage> {
                                                   color: Colors.redAccent,
                                                 ),
                                                 Container(
-                                                  padding: EdgeInsets.all(
+                                                  padding: const EdgeInsets.all(
                                                     10,
                                                   ),
                                                   decoration: BoxDecoration(
@@ -187,7 +187,7 @@ class _CartPageState extends State<CartPage> {
                                                   ),
                                                   child: Row(
                                                     children: [
-                                                      Text('QTY '),
+                                                      const Text('QTY '),
                                                       Padding(
                                                         padding:
                                                             const EdgeInsets
@@ -224,13 +224,13 @@ class _CartPageState extends State<CartPage> {
         builder: (cartController) {
           return Container(
             height: 100,
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 10,
               horizontal: 20,
             ),
             decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.4),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20 * 2),
                   topRight: Radius.circular(20 * 2),
                 )),
@@ -239,7 +239,7 @@ class _CartPageState extends State<CartPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
@@ -286,7 +286,7 @@ class _CartPageState extends State<CartPage> {
                           }
                         },
                         child: Container(
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               gradient: LinearGradient(

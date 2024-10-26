@@ -5,7 +5,6 @@ import 'package:camera/camera.dart';
 import 'package:get/get.dart';
 import 'package:tele_med/helpers_n_controllers/camera_control.dart';
 import 'package:tele_med/widgets/big_font.dart';
-import 'package:tele_med/widgets/constants.dart';
 import 'package:tele_med/helpers_n_controllers/doctorList_controller.dart';
 
 class VideoCallScreen extends StatefulWidget {
@@ -141,7 +140,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                 right: 0,
                 bottom: 0,
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
@@ -156,7 +155,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                     ],
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -182,7 +181,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                               _initCameraController();
                             });
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.switch_camera,
                             color: Colors.blue,
                           ),
@@ -226,7 +225,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.call_end,
                               color: Colors.white,
                             ),
